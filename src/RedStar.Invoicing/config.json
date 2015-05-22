@@ -1,0 +1,10 @@
+{
+  "AppSettings": {
+    "SiteTitle": "RedStar.Invoicing"
+  },
+  "Data": {
+    "DefaultConnection": {
+      "ConnectionString": "Server=(localdb)\\mssqllocaldb;Database=aspnet5-RedStar.Invoicing-4d2302b8-8151-4b32-bf56-6e563e2bfd6d;Trusted_Connection=True;MultipleActiveResultSets=true"
+    }
+  }
+}
