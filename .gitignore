@@ -160,7 +160,7 @@ ClientBin/
 *.publishsettings
 node_modules/
 bower_components/
-jspm_packages
+jspm_packages/
 
 # RIA/Silverlight projects
 Generated_Code/
