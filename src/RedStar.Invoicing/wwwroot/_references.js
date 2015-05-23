@@ -1136,3 +1136,5 @@
 /// <reference path="jspm_packages/github/aurelia/dependency-injection@0.7.1.js" />
 /// <reference path="jspm_packages/github/aurelia/bootstrapper@0.12.0.js" />
 /// <reference path="jspm_packages/github/aurelia/binding@0.6.1.js" />
+/// <reference path="modules/invoice-generator.js" />
+/// <reference path="app.js" />
