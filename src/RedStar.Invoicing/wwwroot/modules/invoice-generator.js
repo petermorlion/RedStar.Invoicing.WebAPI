@@ -1,3 +1,6 @@
 ﻿export class InvoiceGenerator {
-    testText = 'Testing 1-2-3!';
+    companyName = '';
+    companyAddress = '';
+    companyVatNumber = '';
+    invoiceNumber = '';
 }

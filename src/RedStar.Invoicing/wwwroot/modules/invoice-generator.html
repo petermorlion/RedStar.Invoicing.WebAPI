@@ -1,4 +1,17 @@
 ﻿<template>
-    Invoice generator comes here!
-    ${testText}
+    <h1>Invoice generator</h1>
+    <div>
+        <div>
+            <label for="companyName">Company name</label>
+            <input id="companyName" value.bind="companyName" />
+        </div>
+        <div>
+            <label for="companyAddress">Company address</label>
+            <input id="companyAddress" value.bind="companyAddress" />
+        </div>
+    </div>
+    <div>
+        <h2>${companyName}</h2>
+        <span>${companyAddress}</span>
+    </div>
 </template>
