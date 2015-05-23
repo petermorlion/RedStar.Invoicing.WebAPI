@@ -5,8 +5,12 @@
 @if (User.Identity.IsAuthenticated)
 {
     <div aurelia-app>
-        Aurelia app comes here
+        Loading...
     </div>
+
+    <script src="~/jspm_packages/system.js"></script>
+    <script src="~/config.js"></script>
+    <script>System.import('aurelia-bootstrapper');</script>
 }
 else
 {
