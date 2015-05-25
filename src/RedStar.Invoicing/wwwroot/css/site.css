@@ -17,6 +17,15 @@ textarea {
     max-width: 280px;
 }
 
+/* Invoice generator */
+.invoice-form {
+    float: left;
+}
+
+.invoice-template {
+    margin-left: 350px;
+}
+
 /* Carousel */
 .carousel-caption {
     z-index: 10 !important;

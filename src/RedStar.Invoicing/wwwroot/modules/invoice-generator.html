@@ -1,16 +1,16 @@
 ﻿<template>
     <h1>Invoice generator</h1>
-    <div>
+    <div class="invoice-form">
         <div>
-            <label for="companyName">Company name</label>
-            <input id="companyName" value.bind="companyName" />
+            <label for="invoiceNumber">Invoice number</label>
+            <input id="invoiceNumber" value.bind="invoiceNumber" />
         </div>
         <div>
-            <label for="companyAddress">Company address</label>
-            <input id="companyAddress" value.bind="companyAddress" />
+            <label for="invoiceDate">Invoice date</label>
+            <input id="invoiceDate" value.bind="invoiceDate" />
         </div>
     </div>
-    <div>
+    <div class="invoice-template">
         <style>
             .invoice {
                 padding: 30px;
@@ -119,10 +119,10 @@
         <div class="invoice">
             <div class="invoice-number">
                 <span>Factuur</span>
-                <span class="invoice-number-number">2015-004</span>
+                <span class="invoice-number-number">${invoiceNumber}</span>
             </div>
 
-            <img src="logo.png" class="company-logo" />
+            <img src="//images/logo.png" class="company-logo" />
 
             <div class="invoice-body">
                 <p class="company-name">
@@ -142,7 +142,7 @@
                 <div class="date-and-address">
                     <div class="date">
                         <p class="date-header">Datum</p>
-                        <p>April 30, 2015</p>
+                        <p>${invoiceDate}</p>
                     </div>
                     <div class="address">
                         <p class="address-header">Aan</p>
