@@ -34,15 +34,48 @@
 				border-top: 1px solid #AB0808;
 				border-bottom: 1px solid #AB0808;
 			}
-			.date-and-address div {
+			.date, .address {
 				float: left;
 				width: 50%;
 			}
-			.date {
+			.date-header, .address-header {
 				color: #AB0808;
 			}
-			.address {
-				color: #AB0808;
+			.invoice-details {
+				clear: both;
+				margin-top: 30px;
+				margin-bottom: 30px;
+			}
+			.invoice-details table {
+				width: 100%;
+				border-spacing: 0;
+				border-collapse: collapse;
+			}
+			.invoice-details table thead th {
+				background-color: #AB0808;
+				color: #fff;
+				padding: 4px;
+				text-align: left;
+			}
+			.invoice-details table tbody td {
+				padding: 4px;
+				color: #4C483D;
+				border-bottom: 1px solid #9B9482;
+			}
+			.invoice-details table tbody tr:last-child td {
+				padding: 4px;
+				color: #4C483D;
+				border-bottom: 1px solid #AB0808;
+			}
+			.invoice-details table tfoot td {
+				padding: 4px;
+				color: #4C483D;
+				font-weight: bold;
+				border-bottom: 1px solid #AB0808;
+				border-top: 1px solid #AB0808;
+			}
+			.clear-div {
+				clear: both;
 			}
 			.payment-details {
 				float: right;
@@ -80,12 +113,12 @@
 				</p>
 				
 				<div class="date-and-address">
-					<div>
-						<p class="date">Datum</p>
+					<div class="date">
+						<p class="date-header">Datum</p>
 						<p>April 30, 2015</p>
 					</div>
-					<div>
-						<p class="address">Aan</p>
+					<div class="address">
+						<p class="address-header">Aan</p>
 						<p>
 							Team4Talent<br/>
 							Indi&euml;straat 2<br/>
@@ -93,10 +126,74 @@
 							BE 0829.978.322
 						</p>
 					</div>
+					<div class="clear-div"></div>
 				</div>
 				
+				<div></div>
+				
 				<div class="invoice-details">
-					
+					<table>
+						<thead>
+							<tr>
+								<th>Aantal</th>
+								<th>Omschrijving</th>
+								<th>Eenheidsprijs</th>
+								<th>Totaal</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>88</td>
+								<td>Consultancy uren Arcelor-Mittal</td>
+								<td>&euro; 58.75</td>
+								<td>&euro; 5170</td>
+							</tr>
+							<tr>
+								<td>&nbsp;</td>
+								<td></td>
+								<td></td>
+								<td></td>
+							</tr>
+							<tr>
+								<td>&nbsp;</td>
+								<td></td>
+								<td></td>
+								<td></td>
+							</tr>
+							<tr>
+								<td>&nbsp;</td>
+								<td></td>
+								<td></td>
+								<td></td>
+							</tr>
+							<tr>
+								<td></td>
+								<td></td>
+								<td>Subtotaal</td>
+								<td>&euro; 5170</td>
+							</tr>
+							<tr>
+								<td></td>
+								<td></td>
+								<td>BTW</td>
+								<td>&euro; 1085.7</td>
+							</tr>
+							<tr>
+								<td>&nbsp;</td>
+								<td></td>
+								<td></td>
+								<td></td>
+							</tr>
+						</tbody>
+						<tfoot>
+							<tr>
+								<td></td>
+								<td></td>
+								<td>Totaal</td>
+								<td>&euro; 6255.7</td>
+							</tr>
+						</tfoot>
+					</table>
 				</div>
 				
 				<div class="payment-details">
