@@ -189,3 +189,9 @@ FakesAssemblies/
 GeneratedArtifacts/
 _Pvt_Extensions/
 ModelManifest.xml
+
+# Windows files
+Thumbs.db
+
+# Visual Studio 2015
+.vs/
