@@ -16,6 +16,14 @@
         <div>
             <label>Invoice Items</label>
             <button value="add" click.delegate="addInvoiceItem()">Add</button>
+            <div class="invoice-form-invoice-item" repeat.for="item of items">
+                <label>Amount</label>
+                <input value.bind="item.amount" />
+                <label>Description</label>
+                <input value.bind="item.description" />
+                <label>Unit Price</label>
+                <input value.bind="item.unitPrice" />
+            </div>
         </div>
     </div>
     <div class="invoice-template">
@@ -178,7 +186,7 @@
                                 <td>${item.amount}</td>
                                 <td>${item.description}</td>
                                 <td>&euro; ${item.unitPrice}</td>
-                                <td>&euro; <span textcontent.bind="item.getTotal()"></span></td>
+                                <td>&euro; <span textcontent.bind="item.total"></span></td>
                             </tr>
                             <tr>
                                 <td>&nbsp;</td>

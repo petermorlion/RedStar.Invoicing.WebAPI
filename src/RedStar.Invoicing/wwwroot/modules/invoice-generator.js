@@ -1,9 +1,10 @@
-﻿export class InvoiceGenerator {
+﻿import {computedFrom} from 'aurelia-framework';
+
+export class InvoiceGenerator {
     items = [];
 
     addInvoiceItem() {
         this.items.push(new InvoiceItem());
-        console.log('added item');
     }
 }
 
@@ -12,7 +13,8 @@ export class InvoiceItem {
     description = '';
     unitPrice = 1;
 
-    getTotal() {
+    @computedFrom('unitPrice', 'amount')
+    get total() {
         return this.unitPrice * this.amount;
     }
 }

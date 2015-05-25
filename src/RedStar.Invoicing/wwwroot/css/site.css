@@ -20,10 +20,15 @@ textarea {
 /* Invoice generator */
 .invoice-form {
     float: left;
+    width: 350px;
 }
 
 .invoice-template {
     margin-left: 350px;
+}
+
+.invoice-form-invoice-item input {
+    display: block;
 }
 
 /* Carousel */
