@@ -13,6 +13,10 @@
             <label for="customerDetails">Customer Details</label>
             <textarea id="customerDetails" value.bind="customerDetails"></textarea>
         </div>
+        <div>
+            <label>Invoice Items</label>
+            <button value="add" click.delegate="addInvoiceItem()">Add</button>
+        </div>
     </div>
     <div class="invoice-template">
         <style>
@@ -170,23 +174,11 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>88</td>
-                                <td>Consultancy uren Arcelor-Mittal</td>
-                                <td>&euro; 58.75</td>
-                                <td>&euro; 5170</td>
-                            </tr>
-                            <tr>
-                                <td>&nbsp;</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td>&nbsp;</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                            <tr repeat.for="item of items">
+                                <td>${item.amount}</td>
+                                <td>${item.description}</td>
+                                <td>&euro; ${item.unitPrice}</td>
+                                <td>&euro; <span textcontent.bind="item.getTotal()"></span></td>
                             </tr>
                             <tr>
                                 <td>&nbsp;</td>
