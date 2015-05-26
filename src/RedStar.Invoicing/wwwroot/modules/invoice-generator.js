@@ -7,10 +7,14 @@ export class InvoiceGenerator {
         this.items.push(new InvoiceItem());
     }
 
-    get total() {
+    get subtotal() {
         let sum = 0;
         this.items.map(i => sum += i.total);
         return sum;
+    }
+
+    get vat() {
+        return 0.21 * this.subtotal;
     }
 }
 
