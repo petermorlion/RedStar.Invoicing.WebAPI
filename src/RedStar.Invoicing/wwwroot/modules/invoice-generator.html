@@ -74,6 +74,15 @@
                 width: 50%;
             }
 
+            .address pre {
+                padding: 0;
+                margin: 0;
+                font-size: inherit;
+                font-family: inherit;
+                border: 0;
+                background-color: transparent;
+            }
+
             .date-header, .address-header {
                 color: #AB0808;
             }
@@ -163,7 +172,7 @@
                     <div class="address">
                         <p class="address-header">Aan</p>
                         <p>
-                            ${customerDetails}
+                            <pre>${customerDetails}</pre>
                         </p>
                     </div>
                     <div class="clear-div"></div>
