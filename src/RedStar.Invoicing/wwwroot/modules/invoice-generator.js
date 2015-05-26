@@ -6,6 +6,12 @@ export class InvoiceGenerator {
     addInvoiceItem() {
         this.items.push(new InvoiceItem());
     }
+
+    get total() {
+        let sum = 0;
+        this.items.map(i => sum += i.total);
+        return sum;
+    }
 }
 
 export class InvoiceItem {
