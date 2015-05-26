@@ -16,6 +16,10 @@ export class InvoiceGenerator {
     get vat() {
         return 0.21 * this.subtotal;
     }
+
+    get total() {
+        return this.subtotal + this.vat;
+    }
 }
 
 export class InvoiceItem {
