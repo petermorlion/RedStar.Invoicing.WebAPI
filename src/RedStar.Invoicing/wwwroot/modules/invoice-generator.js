@@ -1,10 +1,25 @@
-﻿import {computedFrom} from 'aurelia-framework';
+﻿import {inject} from 'aurelia-framework';
+import {computedFrom} from 'aurelia-framework';
+import {HttpClient} from 'aurelia-http-client';
 
+@inject(HttpClient)
 export class InvoiceGenerator {
     items = [];
 
+    constructor(http) {
+        this.http = http;
+    }
+
     addInvoiceItem() {
         this.items.push(new InvoiceItem());
+    }
+
+    print() {           
+        this.http.post(`http://${window.location.host}/api/pdf`).then(response => {
+            console.log(response.response);
+        }).catch(err => {
+            console.log(err);
+        });
     }
 
     get subtotal() {
