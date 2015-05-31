@@ -17,7 +17,7 @@ export class InvoiceGenerator {
     print() {           
         //TODO: get template from server and then use property instead of DOM
         let html = document.getElementById('invoice-template').innerHTML;
-        let json = { Html : html };
+        let json = { Html : html, InvoiceNumber: invoiceNumber };
         
         this.http.createRequest(`http://${window.location.host}/api/pdf`)
             .asPost()

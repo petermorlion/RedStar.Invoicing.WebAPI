@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNet.Mvc;
+using System.IO;
+using RedStar.Invoicing.Models;
 
 namespace RedStar.Invoicing.Controllers
 {
@@ -7,14 +9,9 @@ namespace RedStar.Invoicing.Controllers
     {
         // POST api/values
         [HttpPost]
-        public string Post([FromBody]Invoice invoice)
+        public void Post([FromBody]Invoice invoice)
         {
-            return "works!";
+            
         }
-    }
-
-    public class Invoice
-    {
-        public string Html { get; set; }
     }
 }
