@@ -7,9 +7,14 @@ namespace RedStar.Invoicing.Controllers
     {
         // POST api/values
         [HttpPost]
-        public string Post([FromBody]string value)
+        public string Post([FromBody]Invoice invoice)
         {
             return "works!";
         }
+    }
+
+    public class Invoice
+    {
+        public string Html { get; set; }
     }
 }

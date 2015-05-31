@@ -15,8 +15,17 @@ export class InvoiceGenerator {
     }
 
     print() {           
-        this.http.post(`http://${window.location.host}/api/pdf`).then(response => {
-            console.log(response.response);
+        //TODO: get template from server and then use property instead of DOM
+        let html = document.getElementById('invoice-template').innerHTML;
+        let json = { Html : html };
+        
+        this.http.createRequest(`http://${window.location.host}/api/pdf`)
+            .asPost()
+            .withHeader('Content-Type', 'application/json; charset=utf-8')
+            .withContent(json)
+            .send()
+            .then(response => {
+                console.log(response.response);
         }).catch(err => {
             console.log(err);
         });
