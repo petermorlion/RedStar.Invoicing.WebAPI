@@ -1,3 +1,7 @@
 <template>
 	<h1>Invoice Settings</h1>
+	<form>
+		<input type="file" change.delegate="fileSelected($event)"></input>
+		<button click.delegate="submit()">Submit</button>
+	</form>
 </template>
