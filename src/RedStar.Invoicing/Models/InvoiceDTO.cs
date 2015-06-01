@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace RedStar.Invoicing.Models
 {
-    public class Invoice
+    public class InvoiceDTO
     {
         public string InvoiceNumber { get; set; }
         public string Html { get; set; }

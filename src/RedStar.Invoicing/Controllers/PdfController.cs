@@ -9,7 +9,7 @@ namespace RedStar.Invoicing.Controllers
     {
         // POST api/values
         [HttpPost]
-        public void Post([FromBody]Invoice invoice)
+        public void Post([FromBody]InvoiceDTO invoice)
         {
             
         }
