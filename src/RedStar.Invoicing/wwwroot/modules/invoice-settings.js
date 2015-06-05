@@ -11,7 +11,7 @@ export class InvoiceSettings {
 	
 	submit() {
 		let reader = new FileReader();
-		reader.readAsText(this.file, 'UTF-8');
+		reader.readAsDataURL(this.file);
 		let that = this;
 		reader.onload = function($event) {
 			that.postToServer($event, that.http);
@@ -23,7 +23,7 @@ export class InvoiceSettings {
 	}
 	
 	postToServer(loadEvent, http) {
-		let json = { logo: event.target.result };
+		let json = { logo: loadEvent.target.result };
 		
 		http.createRequest(`http://${window.location.host}/api/settings`)
             .asPost()

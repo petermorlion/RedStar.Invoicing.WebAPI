@@ -7,6 +7,6 @@ namespace RedStar.Invoicing.Models
 {
     public class SettingsDTO
     {
-        public object Logo { get; set; }
+        public string Logo { get; set; }
     }
 }
