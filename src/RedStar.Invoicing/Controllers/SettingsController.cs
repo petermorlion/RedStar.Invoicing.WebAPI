@@ -20,7 +20,9 @@ namespace RedStar.Invoicing.Controllers
         [HttpPost]
         public async void Post([FromBody]SettingsDTO value)
         {
+            // TODO: image type and size
             var imageBytes = Convert.FromBase64String(value.Logo.Substring(value.Logo.IndexOf(",") + 1));
+            var imageExtension = value.LogoName.Substring(value.LogoName.LastIndexOf("."));
 
             var configuration = new Configuration().AddUserSecrets();
             CloudStorageAccount storageAccount = CloudStorageAccount.Parse(configuration.Get("StorageConnectionString"));
@@ -31,7 +33,7 @@ namespace RedStar.Invoicing.Controllers
             await container.CreateIfNotExistsAsync();
             await container.SetPermissionsAsync(new BlobContainerPermissions { PublicAccess = BlobContainerPublicAccessType.Blob });
 
-            var blockBlob = container.GetBlockBlobReference(Guid.NewGuid().ToString().Replace("-", ""));
+            var blockBlob = container.GetBlockBlobReference(Guid.NewGuid().ToString().Replace("-", "") + imageExtension);
 
             await blockBlob.UploadFromByteArrayAsync(imageBytes, 0, imageBytes.Length);
         }

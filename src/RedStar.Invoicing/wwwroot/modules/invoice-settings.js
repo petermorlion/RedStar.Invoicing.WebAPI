@@ -14,7 +14,7 @@ export class InvoiceSettings {
 		reader.readAsDataURL(this.file);
 		let that = this;
 		reader.onload = function($event) {
-			that.postToServer($event, that.http);
+			that.postToServer($event, that.http, that.file.name);
 		}
 	}
 	
@@ -22,8 +22,8 @@ export class InvoiceSettings {
 		this.file = this.$event.target.files[0];
 	}
 	
-	postToServer(loadEvent, http) {
-		let json = { logo: loadEvent.target.result };
+	postToServer(loadEvent, http, fileName) {
+		let json = { logo: loadEvent.target.result, logoName: fileName };
 		
 		http.createRequest(`http://${window.location.host}/api/settings`)
             .asPost()
