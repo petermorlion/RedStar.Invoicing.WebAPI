@@ -20,6 +20,8 @@ namespace RedStar.Invoicing.Controllers
         [HttpPost]
         public async void Post([FromBody]SettingsDTO value)
         {
+            // TODO: validate invoice template for javascript and other fishy stuff
+
             // TODO: image type and size
             var imageBytes = Convert.FromBase64String(value.Logo.Substring(value.Logo.IndexOf(",") + 1));
             var imageExtension = value.LogoName.Substring(value.LogoName.LastIndexOf("."));
