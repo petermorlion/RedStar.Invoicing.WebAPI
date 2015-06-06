@@ -9,5 +9,6 @@ namespace RedStar.Invoicing.Models
     {
         public string Logo { get; set; }
         public string LogoName { get; set; }
+        public string InvoiceTemplate { get; set; }
     }
 }

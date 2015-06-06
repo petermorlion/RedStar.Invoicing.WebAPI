@@ -10,11 +10,19 @@ export class InvoiceSettings {
 	}
 	
 	submit() {
+		// TODO: validate + don't crash when no logo
 		let reader = new FileReader();
 		reader.readAsDataURL(this.file);
 		let that = this;
 		reader.onload = function($event) {
-			that.postToServer($event, that.http, that.file.name);
+			//TODO: separate class
+			let settingsDTO = {
+				logo: $event.target.result,
+				logoName: that.file.name,
+				invoiceTemplate: that.invoiceTemplate
+			};
+			
+			that.postToServer(settingsDTO, that.http);
 		}
 	}
 	
@@ -22,13 +30,11 @@ export class InvoiceSettings {
 		this.file = this.$event.target.files[0];
 	}
 	
-	postToServer(loadEvent, http, fileName) {
-		let json = { logo: loadEvent.target.result, logoName: fileName };
-		
+	postToServer(settingsDTO, http) {
 		http.createRequest(`http://${window.location.host}/api/settings`)
             .asPost()
             .withHeader('Content-Type', 'application/json; charset=utf-8')
-            .withContent(json)
+            .withContent(settingsDTO)
             .send()
             .then(response => {
                 console.log(response.response);
