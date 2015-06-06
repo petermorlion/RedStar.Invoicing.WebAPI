@@ -21,6 +21,7 @@ using Microsoft.Framework.Logging;
 using Microsoft.Framework.Logging.Console;
 using Microsoft.Framework.Runtime;
 using RedStar.Invoicing.Models;
+using RedStar.Invoicing.Commands;
 
 namespace RedStar.Invoicing
 {
