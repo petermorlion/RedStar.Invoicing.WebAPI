@@ -22,6 +22,8 @@ using Microsoft.Framework.Logging.Console;
 using Microsoft.Framework.Runtime;
 using RedStar.Invoicing.Models;
 using RedStar.Invoicing.Commands;
+using Microsoft.AspNet.Mvc;
+using RedStar.Invoicing.Controllers;
 
 namespace RedStar.Invoicing
 {
@@ -80,6 +82,8 @@ namespace RedStar.Invoicing
 
             // Add MVC services to the services container.
             services.AddMvc();
+
+            services.Configure<MvcOptions>(options => options.Filters.Add(new CustomExceptionFilterAttribute()));
 
             // Uncomment the following line to add Web API services which makes it easier to port Web API 2 controllers.
             // You will also need to add the Microsoft.AspNet.Mvc.WebApiCompatShim package to the 'dependencies' section of project.json.

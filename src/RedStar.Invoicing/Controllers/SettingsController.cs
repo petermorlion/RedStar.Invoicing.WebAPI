@@ -6,6 +6,8 @@ using Microsoft.AspNet.Mvc;
 using RedStar.Invoicing.Models;
 using Newtonsoft.Json;
 using RedStar.Invoicing.Commands;
+using System.Web.Http;
+using System.Net.Http;
 
 // For more information on enabling Web API for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -25,7 +27,7 @@ namespace RedStar.Invoicing.Controllers
         public async void Post([FromBody]SettingsDTO value)
         {
             // TODO: validate invoice template for javascript and other fishy stuff
-            
+
             var command = new Command
             {
                 Name = "SaveSettings",
