@@ -17,7 +17,16 @@ export class InvoiceSettings {
 			invoiceTemplate: this.invoiceTemplate
 		};
 		
-		this.postToServer(settingsDTO);
+		this.http.createRequest(`http://${window.location.host}/api/settings`)
+            .asPost()
+            .withHeader('Content-Type', 'application/json; charset=utf-8')
+            .withContent(settingsDTO)
+            .send()
+            .then(response => {
+                console.log(response.response);
+        }).catch(err => {
+            console.log(err);
+        });
 	}
 	
 	fileSelected() {
@@ -29,18 +38,5 @@ export class InvoiceSettings {
 		reader.onload = function() {
 			that.file = this.result;
 		};
-	}
-	
-	postToServer(settingsDTO) {
-		this.http.createRequest(`http://${window.location.host}/api/settings`)
-            .asPost()
-            .withHeader('Content-Type', 'application/json; charset=utf-8')
-            .withContent(settingsDTO)
-            .send()
-            .then(response => {
-                console.log(response.response);
-        }).catch(err => {
-            console.log(err);
-        });
 	}
 }

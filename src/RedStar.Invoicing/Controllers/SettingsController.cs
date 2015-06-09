@@ -24,7 +24,7 @@ namespace RedStar.Invoicing.Controllers
         }
 
         [HttpPost]
-        public async void Post([FromBody]SettingsDTO value)
+        public async Task<IActionResult> Post([FromBody]SettingsDTO value)
         {
             // TODO: validate invoice template for javascript and other fishy stuff
 
@@ -36,6 +36,8 @@ namespace RedStar.Invoicing.Controllers
 
             _commandsDbContext.Commands.Add(command);
             _commandsDbContext.SaveChanges();
+
+            throw new Exception("test");
         }
     }
 }
