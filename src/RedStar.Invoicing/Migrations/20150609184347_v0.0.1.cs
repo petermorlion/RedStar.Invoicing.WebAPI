@@ -15,23 +15,36 @@ namespace RedStar.Invoicing.Migrations
                 startWith: 1L,
                 incrementBy: 10);
             migration.CreateTable(
-                name: "Command",
+                name: "Invoice",
                 columns: table => new
                 {
-                    Data = table.Column(type: "nvarchar(max)", nullable: true),
-                    Id = table.Column(type: "int", nullable: false),
-                    Name = table.Column(type: "nvarchar(max)", nullable: true)
+                    Html = table.Column(type: "nvarchar(max)", nullable: true),
+                    Id = table.Column(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Command", x => x.Id);
+                    table.PrimaryKey("PK_Invoice", x => x.Id);
+                });
+            migration.CreateTable(
+                name: "UserSettings",
+                columns: table => new
+                {
+                    Id = table.Column(type: "int", nullable: false),
+                    InvoiceTemplate = table.Column(type: "nvarchar(max)", nullable: true),
+                    LogoUrl = table.Column(type: "nvarchar(max)", nullable: true),
+                    UserId = table.Column(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_UserSettings", x => x.Id);
                 });
         }
         
         public override void Down(MigrationBuilder migration)
         {
             migration.DropSequence("DefaultSequence");
-            migration.DropTable("Command");
+            migration.DropTable("Invoice");
+            migration.DropTable("UserSettings");
         }
     }
 }

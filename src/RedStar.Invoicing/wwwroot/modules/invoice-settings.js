@@ -13,7 +13,7 @@ export class InvoiceSettings {
 		//TODO: separate class
 		let settingsDTO = {
 			logo: this.file,
-			logoName: this.file.name,
+			logoName: this.fileName,
 			invoiceTemplate: this.invoiceTemplate
 		};
 		
@@ -34,9 +34,8 @@ export class InvoiceSettings {
 		let file = this.$event.target.files[0];
 		reader.readAsDataURL(file);
 		this.fileName = file.name;
-		let that = this;
-		reader.onload = function() {
-			that.file = this.result;
+		reader.onload = () => {
+			this.file = reader.result;
 		};
 	}
 }

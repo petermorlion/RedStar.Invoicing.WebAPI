@@ -7,8 +7,8 @@ using RedStar.Invoicing.Models;
 
 namespace RedStar.Invoicing.Migrations
 {
-    [ContextType(typeof(CommandsDbContext))]
-    partial class CommandsDbContextModelSnapshot : ModelSnapshot
+    [ContextType(typeof(InvoicesDbContext))]
+    partial class InvoicesDbContextModelSnapshot : ModelSnapshot
     {
         public override IModel Model
         {
@@ -17,16 +17,29 @@ namespace RedStar.Invoicing.Migrations
                 var builder = new BasicModelBuilder()
                     .Annotation("SqlServer:ValueGeneration", "Sequence");
                 
-                builder.Entity("RedStar.Invoicing.Models.Command", b =>
+                builder.Entity("RedStar.Invoicing.Models.Invoice", b =>
                     {
-                        b.Property<string>("Data")
+                        b.Property<string>("Html")
                             .Annotation("OriginalValueIndex", 0);
                         b.Property<int>("Id")
                             .GenerateValueOnAdd()
                             .Annotation("OriginalValueIndex", 1)
                             .Annotation("SqlServer:ValueGeneration", "Default");
-                        b.Property<string>("Name")
+                        b.Key("Id");
+                    });
+                
+                builder.Entity("RedStar.Invoicing.Models.UserSettings", b =>
+                    {
+                        b.Property<int>("Id")
+                            .GenerateValueOnAdd()
+                            .Annotation("OriginalValueIndex", 0)
+                            .Annotation("SqlServer:ValueGeneration", "Default");
+                        b.Property<string>("InvoiceTemplate")
+                            .Annotation("OriginalValueIndex", 1);
+                        b.Property<string>("LogoUrl")
                             .Annotation("OriginalValueIndex", 2);
+                        b.Property<string>("UserId")
+                            .Annotation("OriginalValueIndex", 3);
                         b.Key("Id");
                     });
                 

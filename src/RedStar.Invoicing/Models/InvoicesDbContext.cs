@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace RedStar.Invoicing.Models
 {
-    public class CommandsDbContext : DbContext
+    public class InvoicesDbContext : DbContext
     {
         private static bool _created;
 
-        public CommandsDbContext()
+        public InvoicesDbContext()
         {
             if (!_created)
             {
@@ -19,6 +19,7 @@ namespace RedStar.Invoicing.Models
             }
         }
 
-        public DbSet<Command> Commands { get; set; }
+        public DbSet<Invoice> Invoices { get; set; }
+        public DbSet<UserSettings> UserSettings { get; set; }
     }
 }

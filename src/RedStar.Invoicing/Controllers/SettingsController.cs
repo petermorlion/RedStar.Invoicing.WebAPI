@@ -5,39 +5,66 @@ using System.Threading.Tasks;
 using Microsoft.AspNet.Mvc;
 using RedStar.Invoicing.Models;
 using Newtonsoft.Json;
-using RedStar.Invoicing.Commands;
 using System.Web.Http;
 using System.Net.Http;
-
+using Microsoft.WindowsAzure.Storage;
+using Microsoft.WindowsAzure.Storage.Blob;
+using Microsoft.Framework.ConfigurationModel;
+using Microsoft.AspNet.Authorization;
+using System.Security.Claims;
 // For more information on enabling Web API for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace RedStar.Invoicing.Controllers
 {
     [Route("api/[controller]")]
+    [Authorize]
     public class SettingsController : Controller
     {
-        private CommandsDbContext _commandsDbContext;
+        private InvoicesDbContext _invoicesDbContext;
 
-        public SettingsController(CommandsDbContext commandsDbContext)
+        public SettingsController(InvoicesDbContext invoicesDbContext)
         {
-            _commandsDbContext = commandsDbContext;
+            _invoicesDbContext = invoicesDbContext;
         }
 
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody]SettingsDTO value)
+        //[ValidateAntiForgeryToken]
+        public async Task<IActionResult> Post([FromBody]SettingsDTO settingsDto)
         {
             // TODO: validate invoice template for javascript and other fishy stuff
+            // TODO: image type and size
+            var imageBytes = Convert.FromBase64String(settingsDto.Logo.Substring(settingsDto.Logo.IndexOf(",") + 1));
+            var imageExtension = settingsDto.LogoName.Substring(settingsDto.LogoName.LastIndexOf("."));
 
-            var command = new Command
+            var configuration = new Configuration().AddUserSecrets();
+            CloudStorageAccount storageAccount = CloudStorageAccount.Parse(configuration.Get("StorageConnectionString"));
+            var blobClient = storageAccount.CreateCloudBlobClient();
+            var container = blobClient.GetContainerReference("icons");
+
+            // TODO: only do once?
+            await container.CreateIfNotExistsAsync();
+            await container.SetPermissionsAsync(new BlobContainerPermissions { PublicAccess = BlobContainerPublicAccessType.Blob });
+
+            var userId = Context.User.GetUserId();
+
+            var blockBlob = container.GetBlockBlobReference(userId.Replace("-", "") + imageExtension);
+
+            await blockBlob.UploadFromByteArrayAsync(imageBytes, 0, imageBytes.Length);
+
+            var userSetting = _invoicesDbContext.UserSettings.SingleOrDefault(x => x.UserId.ToString() == userId);
+
+            if (userSetting == null)
             {
-                Name = "SaveSettings",
-                Data = JsonConvert.SerializeObject(value)
-            };
+                userSetting = new UserSettings { UserId = userId } ;
+                _invoicesDbContext.Add(userSetting);
+            }
 
-            _commandsDbContext.Commands.Add(command);
-            _commandsDbContext.SaveChanges();
+            userSetting.InvoiceTemplate = settingsDto.InvoiceTemplate;
+            userSetting.LogoUrl = blockBlob.Uri.AbsoluteUri;
 
-            throw new Exception("test");
+            await _invoicesDbContext.SaveChangesAsync();
+
+            return new HttpStatusCodeResult(200);
         }
     }
 }

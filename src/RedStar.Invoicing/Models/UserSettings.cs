@@ -5,10 +5,11 @@ using System.Threading.Tasks;
 
 namespace RedStar.Invoicing.Models
 {
-    public class Command
+    public class UserSettings
     {
         public int Id { get; set; }
-        public string Name { get; set; }
-        public string Data { get; set; }
+        public string UserId { get; set; }
+        public string LogoUrl { get; set; }
+        public string InvoiceTemplate { get; set; }
     }
 }
