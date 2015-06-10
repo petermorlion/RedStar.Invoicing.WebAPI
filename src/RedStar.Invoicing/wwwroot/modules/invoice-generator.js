@@ -9,6 +9,16 @@ export class InvoiceGenerator {
     constructor(http) {
         this.http = http;
     }
+    
+    activate() {
+        this.http
+            .get(`http://${window.location.host}/api/invoice`)
+            .then(response => {
+                console.log(response);
+            }).catch(err => {
+                console.log(err); 
+            });
+    }
 
     addInvoiceItem() {
         this.items.push(new InvoiceItem());
@@ -19,7 +29,7 @@ export class InvoiceGenerator {
         let html = document.getElementById('invoice-template').innerHTML;
         let json = { html : html, invoiceNumber: this.invoiceNumber };
         
-        this.http.createRequest(`http://${window.location.host}/api/pdf`)
+        this.http.createRequest(`http://${window.location.host}/api/invoice`)
             .asPost()
             .withHeader('Content-Type', 'application/json; charset=utf-8')
             .withContent(json)
