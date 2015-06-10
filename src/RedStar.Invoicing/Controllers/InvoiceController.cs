@@ -5,7 +5,7 @@ using RedStar.Invoicing.Models;
 namespace RedStar.Invoicing.Controllers
 {
     [Route("api/[controller]")]
-    public class PdfController : Controller
+    public class InvoiceController : Controller
     {
         // POST api/values
         [HttpPost]
