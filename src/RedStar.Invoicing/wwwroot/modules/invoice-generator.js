@@ -5,16 +5,19 @@ import {HttpClient} from 'aurelia-http-client';
 @inject(HttpClient)
 export class InvoiceGenerator {
     items = [];
+    invoiceTemplate = '';
 
     constructor(http) {
         this.http = http;
     }
     
     activate() {
+        let that = this;
         this.http
             .get(`http://${window.location.host}/api/invoice`)
             .then(response => {
-                console.log(response);
+                that.invoiceTemplate = response.content.InvoiceTemplate;
+                that.logoUrl = response.content.LogoUrl;
             }).catch(err => {
                 console.log(err); 
             });
