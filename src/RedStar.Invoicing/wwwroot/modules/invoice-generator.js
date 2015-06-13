@@ -10,18 +10,6 @@ export class InvoiceGenerator {
     constructor(http) {
         this.http = http;
     }
-    
-    activate() {
-        let that = this;
-        this.http
-            .get(`http://${window.location.host}/api/invoice`)
-            .then(response => {
-                that.invoiceTemplate = response.content.InvoiceTemplate;
-                that.logoUrl = response.content.LogoUrl;
-            }).catch(err => {
-                console.log(err); 
-            });
-    }
 
     addInvoiceItem() {
         this.items.push(new InvoiceItem());

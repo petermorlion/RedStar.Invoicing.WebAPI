@@ -1,0 +1,44 @@
+﻿@model InvoiceGeneratorViewModel
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    // ViewBag.Title = "Invoice generator";
+}
+
+<template>
+    <h1>Invoice generator</h1>
+    <div class="invoice-form">
+        <div>
+            <label for="invoiceNumber">Invoice Number</label>
+            <input id="invoiceNumber" value.bind="invoiceNumber" />
+        </div>
+        <div>
+            <label for="invoiceDate">Invoice Date</label>
+            <input id="invoiceDate" value.bind="invoiceDate" />
+        </div>
+        <div>
+            <label for="customerDetails">Customer Details</label>
+            <textarea id="customerDetails" value.bind="customerDetails"></textarea>
+        </div>
+        <div>
+            <label>Invoice Items</label>
+            <button value="add" click.delegate="addInvoiceItem()">Add</button>
+            <div class="invoice-form-invoice-item" repeat.for="item of items">
+                <label>Amount</label>
+                <input value.bind="item.amount" />
+                <label>Description</label>
+                <input value.bind="item.description" />
+                <label>Unit Price</label>
+                <input value.bind="item.unitPrice" />
+            </div>
+        </div>
+        <div>
+            <button click.delegate="print()">Print</button>
+        </div>
+    </div>
+
+    <div class="invoice-template" id="invoice-template">
+        @Model.InvoiceTemplate
+    </div>
+</template>

@@ -18,19 +18,6 @@ namespace RedStar.Invoicing.Controllers
             _invoicesDbContext = invoicesDbContext;
         }
 
-        [HttpGet]
-        public InvoiceGenerationDTO Get()
-        {
-            var userId = Context.User.GetUserId();
-            var userSetting = _invoicesDbContext.UserSettings.SingleOrDefault(x => x.UserId.ToString() == userId);
-
-            return new InvoiceGenerationDTO
-            {
-                InvoiceTemplate = userSetting.InvoiceTemplate,
-                LogoUrl = userSetting.LogoUrl
-            };
-        }
-
         [HttpPost]
         public void Post([FromBody]InvoiceDTO invoice)
         {

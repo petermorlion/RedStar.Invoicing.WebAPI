@@ -1,4 +1,14 @@
-﻿export class App {
+﻿import {ConventionalViewStrategy} from 'aurelia-framework';
+
+ConventionalViewStrategy.convertModuleIdToViewUrl = function(moduleId){
+    if (moduleId === 'modules/invoice-generator') {
+        return 'InvoiceGenerator';
+    }
+    
+    return moduleId.replace('view-models', 'views') + '.html';
+}
+
+export class App {
     configureRouter(config, router){
         config.title = 'Redstar Invoicing';
         config.map([
