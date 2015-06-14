@@ -10,6 +10,19 @@ export class InvoiceGenerator {
     constructor(http) {
         this.http = http;
     }
+    
+    activate() {
+        let that = this;
+        this.http
+            // TODO: use /api/
+            .get(`http://${window.location.host}/invoicegenerator/logourl`)
+            .then(response => {
+                console.log('Logo url: ' + response.content)
+                that.logoUrl = response.content;
+            }).catch(err => {
+                console.log(err); 
+            });
+    }
 
     addInvoiceItem() {
         this.items.push(new InvoiceItem());
