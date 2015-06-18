@@ -17,7 +17,6 @@ export class InvoiceGenerator {
             // TODO: use /api/
             .get(`http://${window.location.host}/invoicegenerator/logourl`)
             .then(response => {
-                console.log('Logo url: ' + response.content)
                 that.logoUrl = response.content;
             }).catch(err => {
                 console.log(err); 
