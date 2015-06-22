@@ -1,0 +1,9 @@
+<template>
+	<h1>Invoice Settings</h1>
+	<form>
+		<input type="file" change.delegate="fileSelected($event)" accept="image/*"></input>
+		<label for="invoice-template">Invoice Template</label>
+		<textarea id="invoice-template" value.bind="invoiceTemplate"></textarea>
+		<button click.delegate="submit()">Submit</button>
+	</form>
+</template>

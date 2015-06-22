@@ -1,71 +1,112 @@
-﻿import {inject} from 'aurelia-framework';
-import {computedFrom} from 'aurelia-framework';
-import {HttpClient} from 'aurelia-http-client';
+System.register(['babel-runtime/helpers/create-class', 'babel-runtime/helpers/class-call-check', 'babel-runtime/helpers/create-decorated-class', 'aurelia-framework', 'aurelia-http-client'], function (_export) {
+    var _createClass, _classCallCheck, _createDecoratedClass, inject, computedFrom, HttpClient, InvoiceGenerator, InvoiceItem;
 
-@inject(HttpClient)
-export class InvoiceGenerator {
-    items = [];
-    invoiceTemplate = '';
+    return {
+        setters: [function (_babelRuntimeHelpersCreateClass) {
+            _createClass = _babelRuntimeHelpersCreateClass['default'];
+        }, function (_babelRuntimeHelpersClassCallCheck) {
+            _classCallCheck = _babelRuntimeHelpersClassCallCheck['default'];
+        }, function (_babelRuntimeHelpersCreateDecoratedClass) {
+            _createDecoratedClass = _babelRuntimeHelpersCreateDecoratedClass['default'];
+        }, function (_aureliaFramework) {
+            inject = _aureliaFramework.inject;
+            computedFrom = _aureliaFramework.computedFrom;
+        }, function (_aureliaHttpClient) {
+            HttpClient = _aureliaHttpClient.HttpClient;
+        }],
+        execute: function () {
+            'use strict';
 
-    constructor(http) {
-        this.http = http;
-    }
-    
-    activate() {
-        let that = this;
-        this.http
-            // TODO: use /api/
-            .get(`http://${window.location.host}/invoicegenerator/logourl`)
-            .then(response => {
-                that.logoUrl = response.content;
-            }).catch(err => {
-                console.log(err); 
-            });
-    }
+            InvoiceGenerator = (function () {
+                function InvoiceGenerator(http) {
+                    _classCallCheck(this, _InvoiceGenerator);
 
-    addInvoiceItem() {
-        this.items.push(new InvoiceItem());
-    }
+                    this.items = [];
+                    this.invoiceTemplate = '';
 
-    print() {           
-        //TODO: get template from server and then use property instead of DOM
-        let html = document.getElementById('invoice-template').innerHTML;
-        let json = { html : html, invoiceNumber: this.invoiceNumber };
-        
-        this.http.createRequest(`http://${window.location.host}/api/invoice`)
-            .asPost()
-            .withHeader('Content-Type', 'application/json; charset=utf-8')
-            .withContent(json)
-            .send()
-            .then(response => {
-                console.log(response.response);
-        }).catch(err => {
-            console.log(err);
-        });
-    }
+                    this.http = http;
+                }
 
-    get subtotal() {
-        let sum = 0;
-        this.items.map(i => sum += i.total);
-        return sum;
-    }
+                var _InvoiceGenerator = InvoiceGenerator;
 
-    get vat() {
-        return 0.21 * this.subtotal;
-    }
+                _createClass(_InvoiceGenerator, [{
+                    key: 'activate',
+                    value: function activate() {
+                        var that = this;
+                        this.http
+                        // TODO: use /api/
+                        .get('http://' + window.location.host + '/invoicegenerator/logourl').then(function (response) {
+                            that.logoUrl = response.content;
+                        })['catch'](function (err) {
+                            console.log(err);
+                        });
+                    }
+                }, {
+                    key: 'addInvoiceItem',
+                    value: function addInvoiceItem() {
+                        this.items.push(new InvoiceItem());
+                    }
+                }, {
+                    key: 'print',
+                    value: function print() {
+                        //TODO: get template from server and then use property instead of DOM
+                        var html = document.getElementById('invoice-template').innerHTML;
+                        var json = { html: html, invoiceNumber: this.invoiceNumber };
 
-    get total() {
-        return this.subtotal + this.vat;
-    }
-}
+                        this.http.createRequest('http://' + window.location.host + '/api/invoice').asPost().withHeader('Content-Type', 'application/json; charset=utf-8').withContent(json).send().then(function (response) {
+                            console.log(response.response);
+                        })['catch'](function (err) {
+                            console.log(err);
+                        });
+                    }
+                }, {
+                    key: 'subtotal',
+                    get: function () {
+                        var sum = 0;
+                        this.items.map(function (i) {
+                            return sum += i.total;
+                        });
+                        return sum;
+                    }
+                }, {
+                    key: 'vat',
+                    get: function () {
+                        return 0.21 * this.subtotal;
+                    }
+                }, {
+                    key: 'total',
+                    get: function () {
+                        return this.subtotal + this.vat;
+                    }
+                }]);
 
-export class InvoiceItem {
-    amount = 1;
-    description = '';
-    unitPrice = 1;
+                InvoiceGenerator = inject(HttpClient)(InvoiceGenerator) || InvoiceGenerator;
+                return InvoiceGenerator;
+            })();
 
-    @computedFrom('unitPrice', 'amount')
-    get total() {
-        return this.unitPrice * this.amount;
-    }
-}
+            _export('InvoiceGenerator', InvoiceGenerator);
+
+            InvoiceItem = (function () {
+                function InvoiceItem() {
+                    _classCallCheck(this, InvoiceItem);
+
+                    this.amount = 1;
+                    this.description = '';
+                    this.unitPrice = 1;
+                }
+
+                _createDecoratedClass(InvoiceItem, [{
+                    key: 'total',
+                    decorators: [computedFrom('unitPrice', 'amount')],
+                    get: function () {
+                        return this.unitPrice * this.amount;
+                    }
+                }]);
+
+                return InvoiceItem;
+            })();
+
+            _export('InvoiceItem', InvoiceItem);
+        }
+    };
+});

@@ -5,7 +5,8 @@ System.config({
     "optional": [
       "runtime"
     ],
-    "stage": 0
+    "stage": 0,
+    "modules": "system"
   },
   "paths": {
     "*": "*.js",
