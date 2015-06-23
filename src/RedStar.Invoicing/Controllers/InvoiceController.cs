@@ -4,6 +4,7 @@ using RedStar.Invoicing.Models;
 using System.Security.Claims;
 using System.Linq;
 using Microsoft.AspNet.Authorization;
+using System.Threading.Tasks;
 
 namespace RedStar.Invoicing.Controllers
 {
@@ -19,9 +20,18 @@ namespace RedStar.Invoicing.Controllers
         }
 
         [HttpPost]
-        public void Post([FromBody]InvoiceDTO invoice)
+        public async Task<IActionResult> Post([FromBody]InvoiceDTO invoice)
         {
-            
+            var generatedInvoice = new Invoice
+            {
+                UserId = Context.User.GetUserId(),
+                Html = invoice.Html
+            };
+
+            _invoicesDbContext.Invoices.Add(generatedInvoice);
+            await _invoicesDbContext.SaveChangesAsync();
+
+            return new HttpStatusCodeResult(200);
         }
     }
 }

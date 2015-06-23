@@ -8,6 +8,7 @@ namespace RedStar.Invoicing.Models
     public class Invoice
     {
         public int Id { get; set; }
+        public string UserId { get; set; }
         public string Html { get; set; }
     }
 }
