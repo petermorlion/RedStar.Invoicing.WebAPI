@@ -1,8 +1,6 @@
 ﻿using Microsoft.AspNet.Mvc;
-using System.IO;
 using RedStar.Invoicing.Models;
 using System.Security.Claims;
-using System.Linq;
 using Microsoft.AspNet.Authorization;
 using System.Threading.Tasks;
 
