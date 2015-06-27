@@ -29,7 +29,7 @@
     "WindowsAzure.Storage": "4.4.1-preview",
     "Newtonsoft.Json": "7.0.1-beta3",
     "Microsoft.Framework.DependencyInjection": "1.0.0-beta4",
-    "Microsoft.AspNet.Mvc.WebApiCompatShim": "6.0.0-beta4"
+    "Microsoft.AspNet.Mvc.WebApiCompatShim": "6.0.0-beta4",
   },
 
   "commands": {
