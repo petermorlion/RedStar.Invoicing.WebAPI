@@ -20,15 +20,7 @@ namespace RedStar.Invoicing.Controllers
         {
             _invoicesDbContext = invoicesDbContext;
         }
-
-        [HttpGet]
-        public string Test()
-        {
-            var c = new Configuration();
-            c.AddEnvironmentVariables();
-            return c["Data:DefaultConnection:ConnectionString"];
-        }
-
+        
         [HttpPost]
         public async Task<IActionResult> Post([FromBody]InvoiceDTO invoiceDto)
         {

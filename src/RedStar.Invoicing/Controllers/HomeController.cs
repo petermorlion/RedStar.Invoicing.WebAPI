@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Mvc;
+using Microsoft.Framework.ConfigurationModel;
 
 namespace RedStar.Invoicing.Controllers
 {
@@ -15,7 +16,10 @@ namespace RedStar.Invoicing.Controllers
 
         public IActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            var c = new Configuration();
+            c.AddEnvironmentVariables();
+
+            ViewBag.Message = c["Data:DefaultConnection:ConnectionString"];
 
             return View();
         }
