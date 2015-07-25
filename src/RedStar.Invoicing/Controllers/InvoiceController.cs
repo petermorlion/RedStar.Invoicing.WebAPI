@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using Microsoft.Framework.ConfigurationModel;
 
 namespace RedStar.Invoicing.Controllers
 {
@@ -18,6 +19,14 @@ namespace RedStar.Invoicing.Controllers
         public InvoiceController(InvoicesDbContext invoicesDbContext)
         {
             _invoicesDbContext = invoicesDbContext;
+        }
+
+        [HttpGet]
+        public string Test()
+        {
+            var c = new Configuration();
+            c.AddEnvironmentVariables();
+            return c["Data:DefaultConnection:ConnectionString"];
         }
 
         [HttpPost]
