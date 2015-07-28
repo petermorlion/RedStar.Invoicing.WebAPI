@@ -10,43 +10,37 @@ namespace RedStar.Invoicing.Migrations
     [ContextType(typeof(InvoicesDbContext))]
     partial class InvoicesDbContextModelSnapshot : ModelSnapshot
     {
-        public override IModel Model
+        public override void BuildModel(ModelBuilder builder)
         {
-            get
+            builder.Annotation("SqlServer:ValueGeneration", "Sequence");
+
+            builder.Entity("RedStar.Invoicing.Models.Invoice", b =>
             {
-                var builder = new BasicModelBuilder()
-                    .Annotation("SqlServer:ValueGeneration", "Sequence");
-                
-                builder.Entity("RedStar.Invoicing.Models.Invoice", b =>
-                    {
-                        b.Property<string>("Html")
-                            .Annotation("OriginalValueIndex", 0);
-                        b.Property<int>("Id")
-                            .GenerateValueOnAdd()
-                            .Annotation("OriginalValueIndex", 1)
-                            .Annotation("SqlServer:ValueGeneration", "Default");
-                        b.Property<string>("UserId")
-                            .Annotation("OriginalValueIndex", 2);
-                        b.Key("Id");
-                    });
-                
-                builder.Entity("RedStar.Invoicing.Models.UserSettings", b =>
-                    {
-                        b.Property<int>("Id")
-                            .GenerateValueOnAdd()
-                            .Annotation("OriginalValueIndex", 0)
-                            .Annotation("SqlServer:ValueGeneration", "Default");
-                        b.Property<string>("InvoiceTemplate")
-                            .Annotation("OriginalValueIndex", 1);
-                        b.Property<string>("LogoUrl")
-                            .Annotation("OriginalValueIndex", 2);
-                        b.Property<string>("UserId")
-                            .Annotation("OriginalValueIndex", 3);
-                        b.Key("Id");
-                    });
-                
-                return builder.Model;
-            }
+                b.Property<string>("Html")
+                    .Annotation("OriginalValueIndex", 0);
+                b.Property<int>("Id")
+                    .GenerateValueOnAdd()
+                    .Annotation("OriginalValueIndex", 1)
+                    .Annotation("SqlServer:ValueGeneration", "Default");
+                b.Property<string>("UserId")
+                    .Annotation("OriginalValueIndex", 2);
+                b.Key("Id");
+            });
+
+            builder.Entity("RedStar.Invoicing.Models.UserSettings", b =>
+            {
+                b.Property<int>("Id")
+                    .GenerateValueOnAdd()
+                    .Annotation("OriginalValueIndex", 0)
+                    .Annotation("SqlServer:ValueGeneration", "Default");
+                b.Property<string>("InvoiceTemplate")
+                    .Annotation("OriginalValueIndex", 1);
+                b.Property<string>("LogoUrl")
+                    .Annotation("OriginalValueIndex", 2);
+                b.Property<string>("UserId")
+                    .Annotation("OriginalValueIndex", 3);
+                b.Key("Id");
+            });
         }
     }
 }

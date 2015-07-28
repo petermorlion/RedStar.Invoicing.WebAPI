@@ -9,7 +9,7 @@ using System.Web.Http;
 using System.Net.Http;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Blob;
-using Microsoft.Framework.ConfigurationModel;
+using Microsoft.Framework.Configuration;
 using Microsoft.AspNet.Authorization;
 using System.Security.Claims;
 // For more information on enabling Web API for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
@@ -20,11 +20,13 @@ namespace RedStar.Invoicing.Controllers
     [Authorize]
     public class SettingsController : Controller
     {
+        private IConfiguration _configuration;
         private InvoicesDbContext _invoicesDbContext;
 
-        public SettingsController(InvoicesDbContext invoicesDbContext)
+        public SettingsController(InvoicesDbContext invoicesDbContext, IConfiguration configuration)
         {
             _invoicesDbContext = invoicesDbContext;
+            _configuration = configuration;
         }
 
         [HttpPost]
@@ -36,8 +38,7 @@ namespace RedStar.Invoicing.Controllers
             var imageBytes = Convert.FromBase64String(settingsDto.Logo.Substring(settingsDto.Logo.IndexOf(",") + 1));
             var imageExtension = settingsDto.LogoName.Substring(settingsDto.LogoName.LastIndexOf("."));
 
-            var configuration = new Configuration().AddUserSecrets();
-            CloudStorageAccount storageAccount = CloudStorageAccount.Parse(configuration.Get("StorageConnectionString"));
+            CloudStorageAccount storageAccount = CloudStorageAccount.Parse(_configuration.Get("StorageConnectionString"));
             var blobClient = storageAccount.CreateCloudBlobClient();
             var container = blobClient.GetContainerReference("icons");
 

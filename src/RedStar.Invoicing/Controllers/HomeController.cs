@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Mvc;
-using Microsoft.Framework.ConfigurationModel;
+using Microsoft.Framework.Configuration;
 
 namespace RedStar.Invoicing.Controllers
 {
@@ -16,17 +16,14 @@ namespace RedStar.Invoicing.Controllers
 
         public IActionResult About()
         {
-            var c = new Configuration();
-            c.AddEnvironmentVariables();
-
-            ViewBag.Message = c["Data:DefaultConnection:ConnectionString"];
+            ViewData["Message"] = "Your application description page.";
 
             return View();
         }
 
         public IActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            ViewData["Message"] = "Your contact page.";
 
             return View();
         }

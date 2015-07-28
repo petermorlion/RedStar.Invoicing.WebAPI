@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
-using Microsoft.Framework.ConfigurationModel;
+using Microsoft.Framework.Configuration;
 
 namespace RedStar.Invoicing.Controllers
 {
