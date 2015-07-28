@@ -6,6 +6,7 @@ using Microsoft.AspNet.Mvc;
 using System.Security.Claims;
 using RedStar.Invoicing.Models;
 using Microsoft.AspNet.Mvc.Rendering;
+using Microsoft.Framework.Configuration;
 
 // For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -13,11 +14,13 @@ namespace RedStar.Invoicing.Controllers
 {
     public class InvoiceGeneratorController : Controller
     {
+        private IConfiguration _configuration;
         private InvoicesDbContext _invoicesDbContext;
 
-        public InvoiceGeneratorController(InvoicesDbContext invoicesDbContext)
+        public InvoiceGeneratorController(InvoicesDbContext invoicesDbContext, IConfiguration configuration)
         {
             _invoicesDbContext = invoicesDbContext;
+            _configuration = configuration;
         }
 
         // GET: /<controller>/
@@ -31,6 +34,11 @@ namespace RedStar.Invoicing.Controllers
             viewModel.LogoUrl = userSetting.LogoUrl;
 
             return View(viewModel);
+        }
+
+        public string ConnStr()
+        {
+            return _configuration.Get("Data:DefaultConnection:ConnectionString");
         }
 
         public string LogoUrl()
