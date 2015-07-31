@@ -14,6 +14,7 @@
   <PropertyGroup>
     <SchemaVersion>2.0</SchemaVersion>
     <DevelopmentServerPort>52710</DevelopmentServerPort>
+    <ApplicationInsightsResourceId>/subscriptions/c1b93de3-5fd9-4f67-be38-dce3dd761eec/resourcegroups/RedstarInvoicing/providers/microsoft.insights/components/RedStar.Invoicing</ApplicationInsightsResourceId>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <ProduceOutputsOnBuild>False</ProduceOutputsOnBuild>
