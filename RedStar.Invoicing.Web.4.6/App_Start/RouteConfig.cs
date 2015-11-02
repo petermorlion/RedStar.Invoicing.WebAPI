@@ -18,6 +18,9 @@ namespace RedStar.Invoicing.Web._4._6
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
+
+            routes.IgnoreRoute("aurelia/dist/{file}.js");
+            routes.IgnoreRoute("aurelia/dist/{file}.html");
         }
     }
 }

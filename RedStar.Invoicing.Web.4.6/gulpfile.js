@@ -1,4 +1,5 @@
-﻿var gulp = require("gulp"),
+﻿/// <binding AfterBuild='build' />
+var gulp = require("gulp"),
    babel = require("gulp-babel")
       fs = require("fs");
 
@@ -19,3 +20,5 @@ gulp.task('build-html', function () {
     gulp.src([aureliaSrc + '/**/*.html'])
       .pipe(gulp.dest(aureliaDist));
 });
+
+gulp.task('build', ['babel', 'build-html']);

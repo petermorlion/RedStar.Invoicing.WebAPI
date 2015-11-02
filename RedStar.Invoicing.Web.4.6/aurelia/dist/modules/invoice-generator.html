@@ -1,0 +1,251 @@
+<template>
+    <h1>Invoice generator</h1>
+    <div class="invoice-form">
+        <div>
+            <label for="invoiceNumber">Invoice Number</label>
+            <input id="invoiceNumber" value.bind="invoiceNumber" />
+        </div>
+        <div>
+            <label for="invoiceDate">Invoice Date</label>
+            <input id="invoiceDate" value.bind="invoiceDate" />
+        </div>
+        <div>
+            <label for="customerDetails">Customer Details</label>
+            <textarea id="customerDetails" value.bind="customerDetails"></textarea>
+        </div>
+        <div>
+            <label>Invoice Items</label>
+            <button value="add" click.delegate="addInvoiceItem()">Add</button>
+            <div class="invoice-form-invoice-item" repeat.for="item of items">
+                <label>Amount</label>
+                <input value.bind="item.amount" />
+                <label>Description</label>
+                <input value.bind="item.description" />
+                <label>Unit Price</label>
+                <input value.bind="item.unitPrice" />
+            </div>
+        </div>
+        <div>
+            <button click.delegate="print()">Print</button>
+        </div>
+    </div>
+
+    <div class="invoice-template" id="invoice-template">
+        <style>
+            .invoice {
+                padding: 30px;
+                font-family: Arial;
+                color: #4C483D;
+                width: 210mm;
+                border: 1px solid #AAA;
+                position: relative;
+            }
+
+            .invoice-number {
+                transform: rotate(-90deg);
+                transform-origin: right top 0;
+                top: 40px;
+                left: -700px;
+                position: absolute;
+                font-size: 40px;
+                text-align: right;
+                width: 200mm;
+            }
+
+            .invoice-number-number {
+                color: #AB0808;
+            }
+
+            .invoice-body {
+                margin-left: 100px;
+            }
+
+            .company-name {
+                color: #AB0808;
+                font-size: 30px;
+                margin: 0;
+            }
+
+            .company-logo {
+                float: right;
+                width: 100px;
+            }
+
+            .date-and-address {
+                border-top: 1px solid #AB0808;
+                border-bottom: 1px solid #AB0808;
+            }
+
+            .date, .address {
+                float: left;
+                width: 50%;
+            }
+
+            .address pre {
+                padding: 0;
+                margin: 0;
+                font-size: inherit;
+                font-family: inherit;
+                border: 0;
+                background-color: transparent;
+            }
+
+            .date-header, .address-header {
+                color: #AB0808;
+            }
+
+            .invoice-details {
+                clear: both;
+                margin-top: 30px;
+                margin-bottom: 30px;
+            }
+
+            .invoice-details table {
+                width: 100%;
+                border-spacing: 0;
+                border-collapse: collapse;
+            }
+
+            .invoice-details table thead th {
+                background-color: #AB0808;
+                color: #fff;
+                padding: 4px;
+                text-align: left;
+            }
+
+            .invoice-details table tbody td {
+                padding: 4px;
+                color: #4C483D;
+                border-bottom: 1px solid #9B9482;
+            }
+
+            .invoice-details table tbody tr:last-child td {
+                padding: 4px;
+                color: #4C483D;
+                border-bottom: 1px solid #AB0808;
+            }
+
+            .invoice-details table tfoot td {
+                padding: 4px;
+                color: #4C483D;
+                font-weight: bold;
+                border-bottom: 1px solid #AB0808;
+                border-top: 1px solid #AB0808;
+            }
+
+            .clear-div {
+                clear: both;
+            }
+
+            .payment-details {
+                float: right;
+                text-align: right;
+                color: #AB0808;
+            }
+
+            .footer {
+                clear: both;
+            }
+        </style>
+        
+        <div class="invoice">
+            <div class="invoice-number">
+                <span>Factuur</span>
+                <span class="invoice-number-number">${invoiceNumber}</span>
+            </div>
+
+            <img src="./images/logo.png" class="company-logo" />
+
+            <div class="invoice-body">
+                <p class="company-name">
+                    Red Star IT bvba
+                </p>
+                <p>
+                    Jacob van Maerlantstraat 15, 8000 Brugge<br />
+                    BE 0567.952.321<br />
+                    RPR Gent, afdeling Brugge<br />
+                </p>
+                </p>
+                <p>
+                    BE89 7380 4096 9485<br />
+                    KREDBEBB
+                </p>
+
+                <div class="date-and-address">
+                    <div class="date">
+                        <p class="date-header">Datum</p>
+                        <p>${invoiceDate}</p>
+                    </div>
+                    <div class="address">
+                        <p class="address-header">Aan</p>
+                        <p>
+                            <pre>${customerDetails}</pre>
+                        </p>
+                    </div>
+                    <div class="clear-div"></div>
+                </div>
+
+                <div></div>
+
+                <div class="invoice-details">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Aantal</th>
+                                <th>Omschrijving</th>
+                                <th>Eenheidsprijs</th>
+                                <th>Totaal</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr repeat.for="item of items">
+                                <td>${item.amount}</td>
+                                <td>${item.description}</td>
+                                <td>&euro; ${item.unitPrice}</td>
+                                <td>&euro; <span textcontent.bind="item.total"></span></td>
+                            </tr>
+                            <tr>
+                                <td>&nbsp;</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td>Subtotaal</td>
+                                <td>&euro; ${subtotal}</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td>BTW</td>
+                                <td>&euro; ${vat}</td>
+                            </tr>
+                            <tr>
+                                <td>&nbsp;</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td>Totaal</td>
+                                <td>&euro; ${total}</td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+
+                <div class="payment-details">
+                    Gelieve binnen 30 dagen te voldoen op rekeningnummer BE89 7380 4096 9485<br />
+                    t.n.v. Red Star IT bvba met vermelding "${invoiceNumber}".
+                </div>
+            </div>
+            <div class="footer"></div>
+        </div>
+    </div>
+</template>

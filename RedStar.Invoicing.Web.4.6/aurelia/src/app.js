@@ -1,20 +1,18 @@
 ﻿import {ConventionalViewStrategy} from 'aurelia-framework';
 
 ConventionalViewStrategy.convertModuleIdToViewUrl = function(moduleId){
-    console.log(moduleId);
-            if (moduleId === 'modules/invoice-generator') {
-                 console.log('Returning InvoiceGenerator');
-                 return 'InvoiceGenerator';
-            }
-             
-            console.log('Returning ' + moduleId + '.html');
-            return moduleId + '.html';
-        };  
+    console.log('Requested module with id "' + moduleId + '".');
+    var id = (moduleId.endsWith('.js') || moduleId.endsWith('.ts')) ? moduleId.substring(0, moduleId.length - 3) : moduleId;
+    if (id === 'modules/invoice-generator') {
+        return 'InvoiceGenerator';
+    }
+
+    return id + '.html';
+}
+
         
 export class App {
     configureRouter(config, router) {
-                
-              
         
         router.configure(config => {
             config.title = 'Redstar Invoicing';
