@@ -21,7 +21,7 @@ namespace RedStar.Invoicing.Web._4._6.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+            : base("SqlConnection", throwIfV1Schema: false)
         {
         }
 
