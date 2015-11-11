@@ -18,39 +18,33 @@ System.register(['babel-runtime/helpers/create-class', 'babel-runtime/helpers/cl
 				function InvoiceSettings(http) {
 					_classCallCheck(this, _InvoiceSettings);
 
-					this.file = '';
-
 					this.http = http;
 				}
 
 				_createClass(InvoiceSettings, [{
 					key: 'submit',
 					value: function submit() {
-						//TODO: separate class
-						var settingsDTO = {
-							logo: this.file,
-							logoName: this.fileName,
-							invoiceTemplate: this.invoiceTemplate
-						};
-
-						this.http.createRequest('http://' + window.location.host + '/api/settings').asPost().withHeader('Content-Type', 'application/json; charset=utf-8').withContent(settingsDTO).send().then(function (response) {
-							console.log(response.response);
-						})['catch'](function (err) {
-							console.log(err);
-						});
-					}
-				}, {
-					key: 'fileSelected',
-					value: function fileSelected() {
 						var _this = this;
 
+						//TODO: separate class
 						var reader = new FileReader();
-						var file = this.$event.target.files[0];
-						reader.readAsDataURL(file);
-						this.fileName = file.name;
 						reader.onload = function () {
-							_this.file = reader.result;
+							var file = reader.result;
+
+							var settingsDTO = {
+								logo: file,
+								logoName: _this.files[0].name,
+								invoiceTemplate: _this.invoiceTemplate
+							};
+
+							_this.http.createRequest('http://' + window.location.host + '/api/settings').asPost().withHeader('Content-Type', 'application/json; charset=utf-8').withContent(settingsDTO).send().then(function (response) {
+								console.log(response.response);
+							})['catch'](function (err) {
+								console.log(err);
+							});
 						};
+
+						reader.readAsDataURL(this.files[0]);
 					}
 				}]);
 

@@ -17,7 +17,7 @@ using Newtonsoft.Json;
 
 namespace RedStar.Invoicing.Web._4._6.Controllers
 {
-    [Route("api/[controller]")]
+    [RoutePrefix("api/settings")]
     [Authorize]
     public class SettingsController : ApiController
     {
@@ -26,6 +26,7 @@ namespace RedStar.Invoicing.Web._4._6.Controllers
 
         }
 
+        [Route("")]
         [HttpPost]
         //[ValidateAntiForgeryToken]
         public async Task<HttpResponseMessage> Post([FromBody]SettingsDTO settingsDto)
@@ -53,9 +54,9 @@ namespace RedStar.Invoicing.Web._4._6.Controllers
             var authorizationKey = ConfigurationManager.AppSettings["DocumentDBAuthorizationKey"];
             using (var client = new DocumentClient(new Uri(documentDBUrl), authorizationKey))
             {
-                var database = client.CreateDatabaseQuery().Where(x => x.Id == "RedStarInvoicing").First();
+                var database = client.CreateDatabaseQuery().Where(x => x.Id == "RedStarInvoicing").AsEnumerable().First();
                 DocumentCollection documentCollection = client.CreateDocumentCollectionQuery(database.SelfLink, "UserSettings").First();
-                var document = client.CreateDocumentQuery(documentCollection.SelfLink).Where(d => d.Id == userId).FirstOrDefault();
+                var document = client.CreateDocumentQuery(documentCollection.SelfLink).Where(d => d.Id == userId).AsEnumerable().FirstOrDefault();
 
                 if (document == null)
                 {
