@@ -196,3 +196,4 @@ Thumbs.db
 # Visual Studio 2015
 .vs/
 Web.Release.config
+Web.Debug.config
