@@ -9,6 +9,11 @@ using System.Web.Http;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Blob;
 using Microsoft.AspNet.Identity;
+using System.Configuration;
+using Microsoft.Azure.Documents.Client;
+using Microsoft.Azure.Documents;
+using Microsoft.Azure.Documents.Linq;
+using Newtonsoft.Json;
 
 namespace RedStar.Invoicing.Web._4._6.Controllers
 {
@@ -30,7 +35,7 @@ namespace RedStar.Invoicing.Web._4._6.Controllers
             var imageBytes = Convert.FromBase64String(settingsDto.Logo.Substring(settingsDto.Logo.IndexOf(",") + 1));
             var imageExtension = settingsDto.LogoName.Substring(settingsDto.LogoName.LastIndexOf("."));
 
-            var storageAccount = CloudStorageAccount.Parse("");
+            var storageAccount = CloudStorageAccount.Parse(ConfigurationManager.ConnectionStrings["CloudStorageConnection"].ConnectionString);
             var blobClient = storageAccount.CreateCloudBlobClient();
             var container = blobClient.GetContainerReference("icons");
 
@@ -44,18 +49,33 @@ namespace RedStar.Invoicing.Web._4._6.Controllers
 
             await blockBlob.UploadFromByteArrayAsync(imageBytes, 0, imageBytes.Length);
 
-            //var userSetting = _invoicesDbContext.UserSettings.SingleOrDefault(x => x.UserId.ToString() == userId);
+            var documentDBUrl = ConfigurationManager.AppSettings["DocumentDBEndpointUrl"];
+            var authorizationKey = ConfigurationManager.AppSettings["DocumentDBAuthorizationKey"];
+            using (var client = new DocumentClient(new Uri(documentDBUrl), authorizationKey))
+            {
+                var database = client.CreateDatabaseQuery().Where(x => x.Id == "RedStarInvoicing").First();
+                DocumentCollection documentCollection = client.CreateDocumentCollectionQuery(database.SelfLink, "UserSettings").First();
+                var document = client.CreateDocumentQuery(documentCollection.SelfLink).Where(d => d.Id == userId).FirstOrDefault();
 
-            //if (userSetting == null)
-            //{
-            //    userSetting = new UserSettings { UserId = userId };
-            //    _invoicesDbContext.Add(userSetting);
-            //}
+                if (document == null)
+                {
+                    var userSettings = new UserSettings
+                    {
+                        UserId = userId,
+                        LogoUrl = blockBlob.Uri.AbsoluteUri,
+                        InvoiceTemplate = settingsDto.InvoiceTemplate
+                    };
 
-            //userSetting.InvoiceTemplate = settingsDto.InvoiceTemplate;
-            //userSetting.LogoUrl = blockBlob.Uri.AbsoluteUri;
-
-            //await _invoicesDbContext.SaveChangesAsync();
+                    await client.CreateDocumentAsync(document.SelfLink, userSettings);
+                }
+                else
+                {
+                    UserSettings userSettings = JsonConvert.DeserializeObject<UserSettings>(document.ToString());
+                    userSettings.LogoUrl = blockBlob.Uri.AbsoluteUri;
+                    userSettings.InvoiceTemplate = settingsDto.InvoiceTemplate;
+                    await client.ReplaceDocumentAsync(document.SelfLink, userSettings);
+                }
+            }
 
             return new HttpResponseMessage(HttpStatusCode.OK);
         }
