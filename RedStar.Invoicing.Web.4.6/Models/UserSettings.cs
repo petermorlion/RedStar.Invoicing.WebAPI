@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +9,7 @@ namespace RedStar.Invoicing.Web._4._6.Models
 {
     public class UserSettings
     {
-        public int Id { get; set; }
+        [JsonProperty("id")]
         public string UserId { get; set; }
         public string LogoUrl { get; set; }
         public string InvoiceTemplate { get; set; }

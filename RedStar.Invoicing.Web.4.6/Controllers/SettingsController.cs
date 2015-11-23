@@ -1,6 +1,5 @@
 ﻿using RedStar.Invoicing.Web._4._6.Models;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -21,6 +20,9 @@ namespace RedStar.Invoicing.Web._4._6.Controllers
     [Authorize]
     public class SettingsController : ApiController
     {
+        private const string DatabaseId = "RedStarInvoicing";
+        private const string DocumentCollectionId = "UserSettings";
+
         public SettingsController()
         {
 
@@ -54,9 +56,22 @@ namespace RedStar.Invoicing.Web._4._6.Controllers
             var authorizationKey = ConfigurationManager.AppSettings["DocumentDBAuthorizationKey"];
             using (var client = new DocumentClient(new Uri(documentDBUrl), authorizationKey))
             {
-                var database = client.CreateDatabaseQuery().Where(x => x.Id == "RedStarInvoicing").AsEnumerable().First();
-                DocumentCollection documentCollection = client.CreateDocumentCollectionQuery(database.SelfLink, "UserSettings").First();
-                var document = client.CreateDocumentQuery(documentCollection.SelfLink).Where(d => d.Id == userId).AsEnumerable().FirstOrDefault();
+                var database = client.CreateDatabaseQuery().Where(x => x.Id == DatabaseId).AsEnumerable().FirstOrDefault();
+                if (database == null)
+                {
+                    database = await client.CreateDatabaseAsync(new Database { Id = DatabaseId });
+                }
+
+                var databaseLink = string.Format("dbs/{0}", DatabaseId);
+                DocumentCollection documentCollection = client.CreateDocumentCollectionQuery(databaseLink).Where(c => c.Id == DocumentCollectionId).ToArray().FirstOrDefault();
+                if(documentCollection == null)
+                {
+                    documentCollection = await client.CreateDocumentCollectionAsync(databaseLink, new DocumentCollection { Id = DocumentCollectionId });
+                }
+
+                var documentCollectionLink = string.Format("dbs/{0}/colls/{1}", DatabaseId, DocumentCollectionId);
+
+                var document = client.CreateDocumentQuery<UserSettings>(documentCollectionLink).Where(d => d.UserId == userId).AsEnumerable().FirstOrDefault();
 
                 if (document == null)
                 {
@@ -67,14 +82,14 @@ namespace RedStar.Invoicing.Web._4._6.Controllers
                         InvoiceTemplate = settingsDto.InvoiceTemplate
                     };
 
-                    await client.CreateDocumentAsync(document.SelfLink, userSettings);
+                    await client.CreateDocumentAsync(documentCollectionLink, userSettings);
                 }
                 else
                 {
-                    UserSettings userSettings = JsonConvert.DeserializeObject<UserSettings>(document.ToString());
-                    userSettings.LogoUrl = blockBlob.Uri.AbsoluteUri;
-                    userSettings.InvoiceTemplate = settingsDto.InvoiceTemplate;
-                    await client.ReplaceDocumentAsync(document.SelfLink, userSettings);
+                    var documentLink = string.Format("dbs/{0}/colls/{1}/docs/{2}", DatabaseId, DocumentCollectionId, userId);
+                    document.LogoUrl = blockBlob.Uri.AbsoluteUri;
+                    document.InvoiceTemplate = settingsDto.InvoiceTemplate;
+                    await client.ReplaceDocumentAsync(documentLink, document);
                 }
             }
 
