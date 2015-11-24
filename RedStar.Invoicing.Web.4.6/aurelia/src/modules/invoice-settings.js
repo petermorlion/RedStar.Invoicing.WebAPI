@@ -1,13 +1,17 @@
 import {inject} from 'aurelia-framework';
 import {HttpClient} from 'aurelia-http-client';
+import {toastr} from 'toastr';
 
 @inject(HttpClient)
+@inject(toastr)
 export class InvoiceSettings {
-	constructor(http) {
-		this.http = http;
+    constructor(http, toastr) {
+        this.http = http;
+        this.toastr = toastr;
 	}
 	
-	submit() {
+    submit() {
+        toastr.info("Saving...");
 	    //TODO: separate class
 	    let reader = new FileReader();
 	    reader.onload = () => {
@@ -26,6 +30,7 @@ export class InvoiceSettings {
                 .send()
                 .then(response => {
                     console.log(response.response);
+                    toastr.info("Settings saved")
                 }).catch(err => {
                     console.log(err);
                 });
