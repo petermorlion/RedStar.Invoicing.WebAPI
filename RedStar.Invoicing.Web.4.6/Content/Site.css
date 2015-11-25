@@ -21,17 +21,14 @@
     white-space: normal;
 }
 
-/* Set width on the form input elements since they're 100% wide by default */
-input,
-select,
-textarea {
-    max-width: 280px;
-}
-
 .custom-progress { width: 100px; height: 100px; font-size: 40px; }
 .custom-progress-idle { display: none; }
 .custom-progress-busy .check { display: none; }
 .custom-progress-done .spinner { display: none; }
+
+.invoice-template-textarea {
+    width: 100%;
+}
 
 @media(min-width:1000px) {
     .invoice-template {

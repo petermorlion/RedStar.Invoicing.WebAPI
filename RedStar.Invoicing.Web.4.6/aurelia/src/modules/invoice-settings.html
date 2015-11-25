@@ -2,12 +2,17 @@
     <require from="../components/custom-progress.html"></require>
 
 	<h1>Invoice Settings</h1>
-	<form>
-		<input type="file" files.bind="files" accept="image/*"></input>
-		<label for="invoice-template">Invoice Template</label>
-		<textarea id="invoice-template" value.bind="invoiceTemplate"></textarea>
-		<button click.delegate="submit()">Submit</button>
-	</form>
+    <form>
+        <div class="form-group">
+            <label for="logoInput">Logo</label>
+            <input id="logoInput" type="file" files.bind="files" accept="image/*"></input>
+        </div>
+        <div class="form-group">
+            <label for="invoice-template">Invoice Template</label>
+            <textarea id="invoice-template" value.bind="invoiceTemplate" class="invoice-template-textarea"></textarea>
+        </div>
+        <button click.delegate="submit()">Submit</button>
+    </form>
     <custom-progress status.bind="status"></custom-progress>
     <div innerhtml.bind="invoiceTemplate"></div>
 </template>
