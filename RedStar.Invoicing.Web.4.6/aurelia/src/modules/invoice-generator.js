@@ -14,9 +14,10 @@ export class InvoiceGenerator {
     activate() {
         this.http
             // TODO: use /api/
-            .get(`http://${window.location.host}/invoicegenerator/logourl`)
+            .get(`http://${window.location.host}/api/invoicegenerator`)
             .then(response => {
-                this.logoUrl = response.content;
+                this.logoUrl = response.content.LogoUrl;
+                this.invoiceTemplate = response.content.InvoiceTemplate;
             }).catch(err => {
                 console.log(err); 
             });

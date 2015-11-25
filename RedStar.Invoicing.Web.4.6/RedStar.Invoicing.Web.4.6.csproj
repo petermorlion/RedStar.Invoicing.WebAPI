@@ -211,6 +211,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\InvoiceGeneratorController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\SettingsController.cs" />
     <Compile Include="Global.asax.cs">
@@ -218,6 +219,7 @@
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\InvoiceGeneratorDTO.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\SettingsDTO.cs" />
     <Compile Include="Models\UserSettings.cs" />

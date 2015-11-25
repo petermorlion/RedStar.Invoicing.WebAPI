@@ -34,8 +34,9 @@ System.register(['babel-runtime/helpers/create-class', 'babel-runtime/helpers/cl
 
                         this.http
                         // TODO: use /api/
-                        .get('http://' + window.location.host + '/invoicegenerator/logourl').then(function (response) {
-                            _this.logoUrl = response.content;
+                        .get('http://' + window.location.host + '/api/invoicegenerator').then(function (response) {
+                            _this.logoUrl = response.content.LogoUrl;
+                            _this.invoiceTemplate = response.content.InvoiceTemplate;
                         })['catch'](function (err) {
                             console.log(err);
                         });
