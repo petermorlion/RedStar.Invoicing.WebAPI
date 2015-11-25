@@ -23,6 +23,11 @@ textarea {
     max-width: 280px;
 }
 
+.custom-progress { width: 100px; height: 100px; }
+.custom-progress-idle {}
+.custom-progress-busy { background-color: green; }
+.custom-progress-done { background-color: red; }
+
 @media(min-width:1000px) {
     .invoice-template {
         -webkit-transform: scale(0.9);

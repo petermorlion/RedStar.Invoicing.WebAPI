@@ -229,6 +229,7 @@
     <Content Include="aurelia\src\app.js">
       <DependentUpon>app.html</DependentUpon>
     </Content>
+    <Content Include="aurelia\src\components\custom-progress.html" />
     <Content Include="aurelia\src\modules\invoice-generator.html" />
     <Content Include="aurelia\src\modules\invoice-generator.js">
       <DependentUpon>invoice-generator.html</DependentUpon>

@@ -1,4 +1,6 @@
 <template>
+    <require from="../components/custom-progress.html"></require>
+
 	<h1>Invoice Settings</h1>
 	<form>
 		<input type="file" files.bind="files" accept="image/*"></input>
@@ -6,4 +8,5 @@
 		<textarea id="invoice-template" value.bind="invoiceTemplate"></textarea>
 		<button click.delegate="submit()">Submit</button>
 	</form>
+    <custom-progress status.bind="status"></custom-progress>
 </template>
