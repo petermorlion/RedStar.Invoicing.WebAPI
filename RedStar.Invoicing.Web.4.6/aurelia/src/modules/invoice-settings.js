@@ -6,8 +6,14 @@ export class InvoiceSettings {
     constructor(http, toastr) {
         this.http = http;
         this.status = 'idle';
-	}
-	
+    }
+
+    finishAjaxCall() {
+        this.status = 'done';
+        var vm = this;
+        setTimeout(function() { vm.status = 'idle'; }, 1500);
+    }
+
     submit() {
         this.status = 'busy';
 
@@ -29,15 +35,12 @@ export class InvoiceSettings {
                 .send()
                 .then(response => {
                     console.log(response.response);
-                    this.status = 'done';
+                    this.finishAjaxCall();
                 }).catch(err => {
+                    // TODO: error handling
                     console.log(err);
-                    this.status = 'done';
+                    this.finishAjaxCall();
                 });
-
-	        setTimeout(function() {
-	            this.status = 'idle';
-	        }, 1500);
 	    };
 
 	    reader.readAsDataURL(this.files[0]);

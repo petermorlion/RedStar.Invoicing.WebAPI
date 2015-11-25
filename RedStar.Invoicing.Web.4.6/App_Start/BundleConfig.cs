@@ -25,7 +25,8 @@ namespace RedStar.Invoicing.Web._4._6
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                      "~/Content/site.css",
+                      "~/jspm_packages/npm/font-awesome@4.4.0/css/font-awesome.min.css"));
         }
     }
 }

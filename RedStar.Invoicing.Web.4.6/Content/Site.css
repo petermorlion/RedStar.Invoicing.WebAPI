@@ -3,6 +3,11 @@
     padding-bottom: 20px;
 }
 
+.splash {
+    text-align: center;
+    font-size: 72px;
+}
+
 /* Set padding to keep content from hitting the edges */
 .body-content {
     padding-left: 15px;
@@ -23,10 +28,10 @@ textarea {
     max-width: 280px;
 }
 
-.custom-progress { width: 100px; height: 100px; }
-.custom-progress-idle {}
-.custom-progress-busy { background-color: green; }
-.custom-progress-done { background-color: red; }
+.custom-progress { width: 100px; height: 100px; font-size: 40px; }
+.custom-progress-idle { display: none; }
+.custom-progress-busy .check { display: none; }
+.custom-progress-done .spinner { display: none; }
 
 @media(min-width:1000px) {
     .invoice-template {
