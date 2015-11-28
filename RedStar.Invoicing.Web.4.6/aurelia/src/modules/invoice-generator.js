@@ -1,6 +1,7 @@
 ﻿import {inject} from 'aurelia-framework';
 import {computedFrom} from 'aurelia-framework';
 import {HttpClient} from 'aurelia-http-client';
+import {InvoiceTemplate} from '../components/invoice-template.js';
 
 @inject(HttpClient)
 export class InvoiceGenerator {
@@ -17,7 +18,8 @@ export class InvoiceGenerator {
             .get(`http://${window.location.host}/api/invoicegenerator`)
             .then(response => {
                 this.logoUrl = response.content.LogoUrl;
-                this.invoiceTemplate = response.content.InvoiceTemplate;
+                //this.invoiceTemplate = response.content.InvoiceTemplate;
+                this.invoiceTemplate = new InvoiceTemplate(`<template>${response.content.InvoiceTemplate}</template>`);
             }).catch(err => {
                 console.log(err); 
             });

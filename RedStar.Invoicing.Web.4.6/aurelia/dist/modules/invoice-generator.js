@@ -1,5 +1,5 @@
-System.register(['babel-runtime/helpers/create-class', 'babel-runtime/helpers/class-call-check', 'babel-runtime/helpers/create-decorated-class', 'aurelia-framework', 'aurelia-http-client'], function (_export) {
-    var _createClass, _classCallCheck, _createDecoratedClass, inject, computedFrom, HttpClient, InvoiceGenerator, InvoiceItem;
+System.register(['babel-runtime/helpers/create-class', 'babel-runtime/helpers/class-call-check', 'babel-runtime/helpers/create-decorated-class', 'aurelia-framework', 'aurelia-http-client', '../components/invoice-template.js'], function (_export) {
+    var _createClass, _classCallCheck, _createDecoratedClass, inject, computedFrom, HttpClient, InvoiceTemplate, InvoiceGenerator, InvoiceItem;
 
     return {
         setters: [function (_babelRuntimeHelpersCreateClass) {
@@ -13,6 +13,8 @@ System.register(['babel-runtime/helpers/create-class', 'babel-runtime/helpers/cl
             computedFrom = _aureliaFramework.computedFrom;
         }, function (_aureliaHttpClient) {
             HttpClient = _aureliaHttpClient.HttpClient;
+        }, function (_componentsInvoiceTemplateJs) {
+            InvoiceTemplate = _componentsInvoiceTemplateJs.InvoiceTemplate;
         }],
         execute: function () {
             'use strict';
@@ -36,7 +38,8 @@ System.register(['babel-runtime/helpers/create-class', 'babel-runtime/helpers/cl
                         // TODO: use /api/
                         .get('http://' + window.location.host + '/api/invoicegenerator').then(function (response) {
                             _this.logoUrl = response.content.LogoUrl;
-                            _this.invoiceTemplate = response.content.InvoiceTemplate;
+                            //this.invoiceTemplate = response.content.InvoiceTemplate;
+                            _this.invoiceTemplate = new InvoiceTemplate('<template>' + response.content.InvoiceTemplate + '</template>');
                         })['catch'](function (err) {
                             console.log(err);
                         });
