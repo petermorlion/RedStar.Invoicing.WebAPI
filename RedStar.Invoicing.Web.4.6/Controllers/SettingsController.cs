@@ -12,7 +12,6 @@ using System.Configuration;
 using Microsoft.Azure.Documents.Client;
 using Microsoft.Azure.Documents;
 using Microsoft.Azure.Documents.Linq;
-using Newtonsoft.Json;
 
 namespace RedStar.Invoicing.Web._4._6.Controllers
 {
