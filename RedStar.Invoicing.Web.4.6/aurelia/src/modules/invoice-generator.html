@@ -4,20 +4,20 @@
         <div class="col-xs-4 invoice-form container">
             <div class="row">
                 <div class="col-xs-6"><label for="invoiceNumber">Invoice Number</label></div>
-                <div class="col-xs-6"><input id="invoiceNumber" value.bind="invoiceNumber" /></div>
+                <div class="col-xs-6"><input id="invoiceNumber" value.bind="invoice.invoiceNumber" /></div>
             </div>
             <div class="row">
                 <div class="col-xs-6"><label for="invoiceDate">Invoice Date</label></div>
-                <div class="col-xs-6"><input id="invoiceDate" value.bind="invoiceDate" /></div>
+                <div class="col-xs-6"><input id="invoiceDate" value.bind="invoice.invoiceDate" /></div>
             </div>
             <div class="row">
                 <div class="col-xs-6"><label for="customerDetails">Customer Details</label></div>
-                <div class="col-xs-6"><textarea id="customerDetails" value.bind="customerDetails"></textarea></div>
+                <div class="col-xs-6"><textarea id="customerDetails" value.bind="invoice.customerDetails"></textarea></div>
             </div>
             <div class="row">
                 <div class="col-xs-12"><h2>Invoice items</h2></div>
             </div>
-            <div class="row invoice-form-invoice-item" repeat.for="item of items">
+            <div class="row invoice-form-invoice-item" repeat.for="item of invoice.items">
                 <div class="col-xs-6"><label>Amount</label></div>
                 <div class="col-xs-6"><input value.bind="item.amount" /></div>
                 <div class="col-xs-6"><label>Description</label></div>
@@ -26,7 +26,7 @@
                 <div class="col-xs-6"><input value.bind="item.unitPrice" /></div>
             </div>
             <div class="row">
-                <div class="col-xs-12"><button value="add" click.delegate="addInvoiceItem()">Add</button></div>
+                <div class="col-xs-12"><button value="add" click.delegate="invoice.addInvoiceItem()">Add</button></div>
             </div>
             <div class="row">
                 <div class="col-xs-12"><button click.delegate="print()">Print</button></div>
@@ -35,7 +35,7 @@
 
         <div class="col-xs-8">
             <!--<div class="invoice-template" id="invoice-template" innerhtml.bind="invoiceTemplate"></div>-->
-            <compose view-model.bind="invoiceTemplate"></compose>
+            <compose view-model.bind="invoiceTemplate" model.bind="invoice"></compose>
         </div>
     </div>
 </template>

@@ -1,20 +1,19 @@
-System.register(['babel-runtime/helpers/create-class', 'babel-runtime/helpers/class-call-check', 'babel-runtime/helpers/create-decorated-class', 'aurelia-framework', 'aurelia-http-client', '../components/invoice-template.js'], function (_export) {
-    var _createClass, _classCallCheck, _createDecoratedClass, inject, computedFrom, HttpClient, InvoiceTemplate, InvoiceGenerator, InvoiceItem;
+System.register(['babel-runtime/helpers/create-class', 'babel-runtime/helpers/class-call-check', 'aurelia-framework', 'aurelia-http-client', '../components/invoice-template.js', '../components/invoice.js'], function (_export) {
+    var _createClass, _classCallCheck, inject, HttpClient, InvoiceTemplate, Invoice, InvoiceGenerator;
 
     return {
         setters: [function (_babelRuntimeHelpersCreateClass) {
             _createClass = _babelRuntimeHelpersCreateClass['default'];
         }, function (_babelRuntimeHelpersClassCallCheck) {
             _classCallCheck = _babelRuntimeHelpersClassCallCheck['default'];
-        }, function (_babelRuntimeHelpersCreateDecoratedClass) {
-            _createDecoratedClass = _babelRuntimeHelpersCreateDecoratedClass['default'];
         }, function (_aureliaFramework) {
             inject = _aureliaFramework.inject;
-            computedFrom = _aureliaFramework.computedFrom;
         }, function (_aureliaHttpClient) {
             HttpClient = _aureliaHttpClient.HttpClient;
         }, function (_componentsInvoiceTemplateJs) {
             InvoiceTemplate = _componentsInvoiceTemplateJs.InvoiceTemplate;
+        }, function (_componentsInvoiceJs) {
+            Invoice = _componentsInvoiceJs.Invoice;
         }],
         execute: function () {
             'use strict';
@@ -22,9 +21,6 @@ System.register(['babel-runtime/helpers/create-class', 'babel-runtime/helpers/cl
             InvoiceGenerator = (function () {
                 function InvoiceGenerator(http) {
                     _classCallCheck(this, _InvoiceGenerator);
-
-                    this.items = [];
-                    this.invoiceTemplate = '';
 
                     this.http = http;
                 }
@@ -39,15 +35,11 @@ System.register(['babel-runtime/helpers/create-class', 'babel-runtime/helpers/cl
                         .get('http://' + window.location.host + '/api/invoicegenerator').then(function (response) {
                             _this.logoUrl = response.content.LogoUrl;
                             //this.invoiceTemplate = response.content.InvoiceTemplate;
-                            _this.invoiceTemplate = new InvoiceTemplate('<template>' + response.content.InvoiceTemplate + '</template>');
+                            _this.invoice = new Invoice();
+                            _this.invoiceTemplate = new InvoiceTemplate('<template>' + response.content.InvoiceTemplate + '</template>', _this.invoice);
                         })['catch'](function (err) {
                             console.log(err);
                         });
-                    }
-                }, {
-                    key: 'addInvoiceItem',
-                    value: function addInvoiceItem() {
-                        this.items.push(new InvoiceItem());
                     }
                 }, {
                     key: 'print',
@@ -62,25 +54,6 @@ System.register(['babel-runtime/helpers/create-class', 'babel-runtime/helpers/cl
                             console.log(err);
                         });
                     }
-                }, {
-                    key: 'subtotal',
-                    get: function get() {
-                        var sum = 0;
-                        this.items.map(function (i) {
-                            return sum += i.total;
-                        });
-                        return sum;
-                    }
-                }, {
-                    key: 'vat',
-                    get: function get() {
-                        return 0.21 * this.subtotal;
-                    }
-                }, {
-                    key: 'total',
-                    get: function get() {
-                        return this.subtotal + this.vat;
-                    }
                 }]);
 
                 var _InvoiceGenerator = InvoiceGenerator;
@@ -89,28 +62,6 @@ System.register(['babel-runtime/helpers/create-class', 'babel-runtime/helpers/cl
             })();
 
             _export('InvoiceGenerator', InvoiceGenerator);
-
-            InvoiceItem = (function () {
-                function InvoiceItem() {
-                    _classCallCheck(this, InvoiceItem);
-
-                    this.amount = 1;
-                    this.description = '';
-                    this.unitPrice = 1;
-                }
-
-                _createDecoratedClass(InvoiceItem, [{
-                    key: 'total',
-                    decorators: [computedFrom('unitPrice', 'amount')],
-                    get: function get() {
-                        return this.unitPrice * this.amount;
-                    }
-                }]);
-
-                return InvoiceItem;
-            })();
-
-            _export('InvoiceItem', InvoiceItem);
         }
     };
 });

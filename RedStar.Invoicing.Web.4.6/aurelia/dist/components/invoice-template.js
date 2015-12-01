@@ -13,10 +13,11 @@ System.register(['babel-runtime/helpers/create-class', 'babel-runtime/helpers/cl
             'use strict';
 
             InvoiceTemplate = (function () {
-                function InvoiceTemplate(templateHtml) {
+                function InvoiceTemplate(templateHtml, model) {
                     _classCallCheck(this, InvoiceTemplate);
 
                     this.templateHtml = templateHtml;
+                    this.model = model;
                 }
 
                 _createClass(InvoiceTemplate, [{

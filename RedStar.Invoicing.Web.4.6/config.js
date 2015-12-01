@@ -23,8 +23,8 @@ System.config({
     "babel-runtime": "npm:babel-runtime@5.8.29",
     "core-js": "npm:core-js@1.2.6",
     "font-awesome": "npm:font-awesome@4.4.0",
-    "github:aurelia/binding@0.11.0": {
-      "aurelia-metadata": "github:aurelia/metadata@0.10.0",
+    "github:aurelia/binding@0.11.4": {
+      "aurelia-metadata": "github:aurelia/metadata@0.10.1",
       "aurelia-pal": "github:aurelia/pal@0.3.0",
       "aurelia-task-queue": "github:aurelia/task-queue@0.9.0",
       "core-js": "npm:core-js@1.2.6"
@@ -38,16 +38,16 @@ System.config({
       "aurelia-logging-console": "github:aurelia/logging-console@0.9.0",
       "aurelia-pal": "github:aurelia/pal@0.3.0",
       "aurelia-pal-browser": "github:aurelia/pal-browser@0.3.0",
-      "aurelia-router": "github:aurelia/router@0.14.0",
-      "aurelia-templating": "github:aurelia/templating@0.17.1",
-      "aurelia-templating-binding": "github:aurelia/templating-binding@0.17.0",
-      "aurelia-templating-resources": "github:aurelia/templating-resources@0.17.0",
+      "aurelia-router": "github:aurelia/router@0.14.1",
+      "aurelia-templating": "github:aurelia/templating@0.17.5",
+      "aurelia-templating-binding": "github:aurelia/templating-binding@0.17.1",
+      "aurelia-templating-resources": "github:aurelia/templating-resources@0.17.4",
       "aurelia-templating-router": "github:aurelia/templating-router@0.18.0",
       "core-js": "npm:core-js@1.2.6"
     },
-    "github:aurelia/dependency-injection@0.12.0": {
+    "github:aurelia/dependency-injection@0.12.1": {
       "aurelia-logging": "github:aurelia/logging@0.9.0",
-      "aurelia-metadata": "github:aurelia/metadata@0.10.0",
+      "aurelia-metadata": "github:aurelia/metadata@0.10.1",
       "aurelia-pal": "github:aurelia/pal@0.3.0",
       "core-js": "npm:core-js@1.2.6"
     },
@@ -55,15 +55,15 @@ System.config({
       "aurelia-logging": "github:aurelia/logging@0.9.0"
     },
     "github:aurelia/framework@0.18.0": {
-      "aurelia-binding": "github:aurelia/binding@0.11.0",
-      "aurelia-dependency-injection": "github:aurelia/dependency-injection@0.12.0",
+      "aurelia-binding": "github:aurelia/binding@0.11.4",
+      "aurelia-dependency-injection": "github:aurelia/dependency-injection@0.12.1",
       "aurelia-loader": "github:aurelia/loader@0.11.0",
       "aurelia-logging": "github:aurelia/logging@0.9.0",
-      "aurelia-metadata": "github:aurelia/metadata@0.10.0",
+      "aurelia-metadata": "github:aurelia/metadata@0.10.1",
       "aurelia-pal": "github:aurelia/pal@0.3.0",
       "aurelia-path": "github:aurelia/path@0.11.0",
       "aurelia-task-queue": "github:aurelia/task-queue@0.9.0",
-      "aurelia-templating": "github:aurelia/templating@0.17.1",
+      "aurelia-templating": "github:aurelia/templating@0.17.5",
       "core-js": "npm:core-js@1.2.6"
     },
     "github:aurelia/history-browser@0.10.0": {
@@ -78,18 +78,18 @@ System.config({
     },
     "github:aurelia/loader-default@0.12.0": {
       "aurelia-loader": "github:aurelia/loader@0.11.0",
-      "aurelia-metadata": "github:aurelia/metadata@0.10.0",
+      "aurelia-metadata": "github:aurelia/metadata@0.10.1",
       "aurelia-pal": "github:aurelia/pal@0.3.0"
     },
     "github:aurelia/loader@0.11.0": {
-      "aurelia-metadata": "github:aurelia/metadata@0.10.0",
+      "aurelia-metadata": "github:aurelia/metadata@0.10.1",
       "aurelia-path": "github:aurelia/path@0.11.0"
     },
     "github:aurelia/logging-console@0.9.0": {
       "aurelia-logging": "github:aurelia/logging@0.9.0",
       "aurelia-pal": "github:aurelia/pal@0.3.0"
     },
-    "github:aurelia/metadata@0.10.0": {
+    "github:aurelia/metadata@0.10.1": {
       "aurelia-pal": "github:aurelia/pal@0.3.0",
       "core-js": "npm:core-js@1.2.6"
     },
@@ -100,8 +100,8 @@ System.config({
       "aurelia-path": "github:aurelia/path@0.11.0",
       "core-js": "npm:core-js@1.2.6"
     },
-    "github:aurelia/router@0.14.0": {
-      "aurelia-dependency-injection": "github:aurelia/dependency-injection@0.12.0",
+    "github:aurelia/router@0.14.1": {
+      "aurelia-dependency-injection": "github:aurelia/dependency-injection@0.12.1",
       "aurelia-event-aggregator": "github:aurelia/event-aggregator@0.10.0",
       "aurelia-history": "github:aurelia/history@0.9.0",
       "aurelia-logging": "github:aurelia/logging@0.9.0",
@@ -112,37 +112,37 @@ System.config({
     "github:aurelia/task-queue@0.9.0": {
       "aurelia-pal": "github:aurelia/pal@0.3.0"
     },
-    "github:aurelia/templating-binding@0.17.0": {
-      "aurelia-binding": "github:aurelia/binding@0.11.0",
+    "github:aurelia/templating-binding@0.17.1": {
+      "aurelia-binding": "github:aurelia/binding@0.11.4",
       "aurelia-logging": "github:aurelia/logging@0.9.0",
-      "aurelia-templating": "github:aurelia/templating@0.17.1"
+      "aurelia-templating": "github:aurelia/templating@0.17.5"
     },
-    "github:aurelia/templating-resources@0.17.0": {
-      "aurelia-binding": "github:aurelia/binding@0.11.0",
-      "aurelia-dependency-injection": "github:aurelia/dependency-injection@0.12.0",
+    "github:aurelia/templating-resources@0.17.4": {
+      "aurelia-binding": "github:aurelia/binding@0.11.4",
+      "aurelia-dependency-injection": "github:aurelia/dependency-injection@0.12.1",
       "aurelia-loader": "github:aurelia/loader@0.11.0",
       "aurelia-logging": "github:aurelia/logging@0.9.0",
       "aurelia-pal": "github:aurelia/pal@0.3.0",
       "aurelia-path": "github:aurelia/path@0.11.0",
       "aurelia-task-queue": "github:aurelia/task-queue@0.9.0",
-      "aurelia-templating": "github:aurelia/templating@0.17.1",
+      "aurelia-templating": "github:aurelia/templating@0.17.5",
       "core-js": "npm:core-js@1.2.6"
     },
     "github:aurelia/templating-router@0.18.0": {
-      "aurelia-dependency-injection": "github:aurelia/dependency-injection@0.12.0",
+      "aurelia-dependency-injection": "github:aurelia/dependency-injection@0.12.1",
       "aurelia-logging": "github:aurelia/logging@0.9.0",
-      "aurelia-metadata": "github:aurelia/metadata@0.10.0",
+      "aurelia-metadata": "github:aurelia/metadata@0.10.1",
       "aurelia-pal": "github:aurelia/pal@0.3.0",
       "aurelia-path": "github:aurelia/path@0.11.0",
-      "aurelia-router": "github:aurelia/router@0.14.0",
-      "aurelia-templating": "github:aurelia/templating@0.17.1"
+      "aurelia-router": "github:aurelia/router@0.14.1",
+      "aurelia-templating": "github:aurelia/templating@0.17.5"
     },
-    "github:aurelia/templating@0.17.1": {
-      "aurelia-binding": "github:aurelia/binding@0.11.0",
-      "aurelia-dependency-injection": "github:aurelia/dependency-injection@0.12.0",
+    "github:aurelia/templating@0.17.5": {
+      "aurelia-binding": "github:aurelia/binding@0.11.4",
+      "aurelia-dependency-injection": "github:aurelia/dependency-injection@0.12.1",
       "aurelia-loader": "github:aurelia/loader@0.11.0",
       "aurelia-logging": "github:aurelia/logging@0.9.0",
-      "aurelia-metadata": "github:aurelia/metadata@0.10.0",
+      "aurelia-metadata": "github:aurelia/metadata@0.10.1",
       "aurelia-pal": "github:aurelia/pal@0.3.0",
       "aurelia-path": "github:aurelia/path@0.11.0",
       "aurelia-task-queue": "github:aurelia/task-queue@0.9.0",

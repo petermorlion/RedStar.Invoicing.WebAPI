@@ -1,13 +1,10 @@
 ﻿import {inject} from 'aurelia-framework';
-import {computedFrom} from 'aurelia-framework';
 import {HttpClient} from 'aurelia-http-client';
 import {InvoiceTemplate} from '../components/invoice-template.js';
+import {Invoice} from '../components/invoice.js';
 
 @inject(HttpClient)
 export class InvoiceGenerator {
-    items = [];
-    invoiceTemplate = '';
-
     constructor(http) {
         this.http = http;
     }
@@ -19,14 +16,11 @@ export class InvoiceGenerator {
             .then(response => {
                 this.logoUrl = response.content.LogoUrl;
                 //this.invoiceTemplate = response.content.InvoiceTemplate;
-                this.invoiceTemplate = new InvoiceTemplate(`<template>${response.content.InvoiceTemplate}</template>`);
+                this.invoice = new Invoice();
+                this.invoiceTemplate = new InvoiceTemplate(`<template>${response.content.InvoiceTemplate}</template>`, this.invoice);
             }).catch(err => {
                 console.log(err); 
             });
-    }
-
-    addInvoiceItem() {
-        this.items.push(new InvoiceItem());
     }
 
     print() {           
@@ -44,30 +38,5 @@ export class InvoiceGenerator {
         }).catch(err => {
             console.log(err);
         });
-    }
-
-    get subtotal() {
-        let sum = 0;
-        this.items.map(i => sum += i.total);
-        return sum;
-    }
-
-    get vat() {
-        return 0.21 * this.subtotal;
-    }
-
-    get total() {
-        return this.subtotal + this.vat;
-    }
-}
-
-export class InvoiceItem {
-    amount = 1;
-    description = '';
-    unitPrice = 1;
-
-    @computedFrom('unitPrice', 'amount')
-    get total() {
-        return this.unitPrice * this.amount;
     }
 }
