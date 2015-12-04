@@ -8,6 +8,18 @@ export class InvoiceSettings {
         this.status = 'idle';
     }
 
+    activate() {
+        this.http
+            // TODO: use /api/
+            .get(`http://${window.location.host}/api/settings`)
+            .then(response => {
+                //this.logoUrl = response.content.LogoUrl;
+                this.invoiceTemplate = response.content.InvoiceTemplate;
+            }).catch(err => {
+                console.log(err); 
+            });
+    }
+
     finishAjaxCall() {
         this.status = 'done';
         var vm = this;

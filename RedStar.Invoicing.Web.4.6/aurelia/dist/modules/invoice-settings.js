@@ -23,6 +23,20 @@ System.register(['babel-runtime/helpers/create-class', 'babel-runtime/helpers/cl
                 }
 
                 _createClass(InvoiceSettings, [{
+                    key: 'activate',
+                    value: function activate() {
+                        var _this = this;
+
+                        this.http
+                        // TODO: use /api/
+                        .get('http://' + window.location.host + '/api/settings').then(function (response) {
+                            //this.logoUrl = response.content.LogoUrl;
+                            _this.invoiceTemplate = response.content.InvoiceTemplate;
+                        })['catch'](function (err) {
+                            console.log(err);
+                        });
+                    }
+                }, {
                     key: 'finishAjaxCall',
                     value: function finishAjaxCall() {
                         this.status = 'done';
@@ -34,7 +48,7 @@ System.register(['babel-runtime/helpers/create-class', 'babel-runtime/helpers/cl
                 }, {
                     key: 'submit',
                     value: function submit() {
-                        var _this = this;
+                        var _this2 = this;
 
                         this.status = 'busy';
 
@@ -45,17 +59,17 @@ System.register(['babel-runtime/helpers/create-class', 'babel-runtime/helpers/cl
 
                             var settingsDTO = {
                                 logo: file,
-                                logoName: _this.files[0].name,
-                                invoiceTemplate: _this.invoiceTemplate
+                                logoName: _this2.files[0].name,
+                                invoiceTemplate: _this2.invoiceTemplate
                             };
 
-                            _this.http.createRequest('http://' + window.location.host + '/api/settings').asPost().withHeader('Content-Type', 'application/json; charset=utf-8').withContent(settingsDTO).send().then(function (response) {
+                            _this2.http.createRequest('http://' + window.location.host + '/api/settings').asPost().withHeader('Content-Type', 'application/json; charset=utf-8').withContent(settingsDTO).send().then(function (response) {
                                 console.log(response.response);
-                                _this.finishAjaxCall();
+                                _this2.finishAjaxCall();
                             })['catch'](function (err) {
                                 // TODO: error handling
                                 console.log(err);
-                                _this.finishAjaxCall();
+                                _this2.finishAjaxCall();
                             });
                         };
 

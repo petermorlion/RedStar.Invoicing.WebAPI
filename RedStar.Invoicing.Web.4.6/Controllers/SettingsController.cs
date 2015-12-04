@@ -12,6 +12,7 @@ using System.Configuration;
 using Microsoft.Azure.Documents.Client;
 using Microsoft.Azure.Documents;
 using Microsoft.Azure.Documents.Linq;
+using RedStar.Invoicing.Web._4._6.DataAccess;
 
 namespace RedStar.Invoicing.Web._4._6.Controllers
 {
@@ -22,9 +23,23 @@ namespace RedStar.Invoicing.Web._4._6.Controllers
         private const string DatabaseId = "RedStarInvoicing";
         private const string DocumentCollectionId = "UserSettings";
 
-        public SettingsController()
+        [Route("")]
+        [HttpGet]
+        public async System.Threading.Tasks.Task<InvoiceGeneratorDTO> Get()
         {
+            var query = new UserSettingsQuery();
+            var userSettings = await query.Execute(User.Identity.GetUserId());
 
+            if (!userSettings.HasValue)
+            {
+                throw new HttpResponseException(new HttpResponseMessage(System.Net.HttpStatusCode.BadRequest));
+            }
+
+            return new InvoiceGeneratorDTO
+            {
+                InvoiceTemplate = userSettings.Value.InvoiceTemplate,
+                LogoUrl = userSettings.Value.LogoUrl
+            };
         }
 
         [Route("")]
