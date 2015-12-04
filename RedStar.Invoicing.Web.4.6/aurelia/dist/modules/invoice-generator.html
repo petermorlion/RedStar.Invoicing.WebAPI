@@ -34,8 +34,9 @@
         </div>
 
         <div class="col-xs-8">
-            <!--<div class="invoice-template" id="invoice-template" innerhtml.bind="invoiceTemplate"></div>-->
-            <compose view-model.bind="invoiceTemplate" model.bind="invoice"></compose>
+            <div class="invoice-template">
+                <compose view-model.bind="invoiceTemplate" model.bind="invoice"></compose>
+            </div>
         </div>
     </div>
 </template>

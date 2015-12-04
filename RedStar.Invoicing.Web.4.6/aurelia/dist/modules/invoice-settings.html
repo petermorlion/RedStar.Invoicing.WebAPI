@@ -5,17 +5,23 @@
     <p>
         Define your template here. Any bindings must start with "model.", i.e. &lt;input value.bind="model.invoiceNumber"&gt;
     </p>
-    <form>
-        <div class="form-group">
-            <label for="logoInput">Logo</label>
-            <input id="logoInput" type="file" files.bind="files" accept="image/*"></input>
+    <div class="row">
+        <div class="col-xs-6">
+            <form>
+                <div class="form-group">
+                    <label for="logoInput">Logo</label>
+                    <input id="logoInput" type="file" files.bind="files" accept="image/*"></input>
+                </div>
+                <div class="form-group">
+                    <label for="invoice-template">Invoice Template</label>
+                    <textarea id="invoice-template" value.bind="invoiceTemplate" class="invoice-template-textarea"></textarea>
+                </div>
+                <button click.delegate="submit()">Submit</button>
+                <custom-progress status.bind="status"></custom-progress>
+            </form>
         </div>
-        <div class="form-group">
-            <label for="invoice-template">Invoice Template</label>
-            <textarea id="invoice-template" value.bind="invoiceTemplate" class="invoice-template-textarea"></textarea>
+        <div class="col-xs-6 invoice-template-settings">
+            <div innerhtml.bind="invoiceTemplate"></div>
         </div>
-        <button click.delegate="submit()">Submit</button>
-    </form>
-    <custom-progress status.bind="status"></custom-progress>
-    <div innerhtml.bind="invoiceTemplate"></div>
+    </div>
 </template>
