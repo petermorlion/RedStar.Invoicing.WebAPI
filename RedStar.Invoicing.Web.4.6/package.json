@@ -4,6 +4,7 @@
       "aurelia-bootstrapper": "github:aurelia/bootstrapper@^0.19.0",
       "aurelia-framework": "github:aurelia/framework@^0.18.0",
       "aurelia-http-client": "github:aurelia/http-client@^0.13.0",
+      "codemirror": "npm:codemirror@^5.9.0",
       "font-awesome": "npm:font-awesome@^4.4.0"
     },
     "devDependencies": {

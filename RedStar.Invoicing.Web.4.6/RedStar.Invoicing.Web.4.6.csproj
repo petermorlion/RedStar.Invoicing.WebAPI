@@ -234,6 +234,7 @@
       <DependentUpon>app.html</DependentUpon>
     </Content>
     <Content Include="aurelia\src\components\custom-progress.html" />
+    <Content Include="aurelia\src\components\html-editor.html" />
     <Content Include="aurelia\src\components\invoice-template.js" />
     <Content Include="aurelia\src\components\invoice.js" />
     <Content Include="aurelia\src\modules\invoice-generator.html" />
