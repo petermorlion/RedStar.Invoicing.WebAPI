@@ -1,6 +1,6 @@
 <template>
     <require from="../components/custom-progress.html"></require>
-    <require from="../components/html-editor.html"></require>
+    <require from="../components/html-editor"></require>
 
     <h1>Invoice Settings</h1>
     <p>
@@ -15,10 +15,12 @@
                 </div>
                 <div class="form-group">
                     <label for="invoice-template">Invoice Template</label>
-                    <html-editor value.bind="invoiceTemplate"></html-editor>
+                    <html-editor html.two-way="invoiceTemplate"></html-editor>
+                    <!--<html-editor value.bind="status"></html-editor>-->
                 </div>
                 <button click.delegate="submit()">Submit</button>
                 <custom-progress status.bind="status"></custom-progress>
+                <span>${status}</span>
             </form>
         </div>
         <div class="col-xs-6 invoice-template-settings">
