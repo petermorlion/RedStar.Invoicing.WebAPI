@@ -29,6 +29,8 @@ System.register(['babel-runtime/helpers/define-decorated-property-descriptor', '
                 _createDecoratedClass(HtmlEditor, [{
                     key: 'attached',
                     value: function attached() {
+                        var _this = this;
+
                         var textArea = document.getElementById('invoice-template');
                         var options = {
                             mode: 'htmlmixed',
@@ -41,8 +43,7 @@ System.register(['babel-runtime/helpers/define-decorated-property-descriptor', '
                         var vm = this;
 
                         codeMirror.on('change', function (instance, changeObj) {
-                            // TODO: use arrow function?
-                            vm.html = instance.doc.getValue();
+                            _this.html = instance.doc.getValue();
                             console.log('viewmodel updated');
                         });
 

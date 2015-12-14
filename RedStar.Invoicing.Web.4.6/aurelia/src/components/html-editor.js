@@ -15,19 +15,14 @@ export class HtmlEditor {
 
         var codeMirror = fromTextArea(textArea, options);
 
-        var vm = this;
-
-        codeMirror.on('change', function(instance, changeObj) {
-            // TODO: use arrow function?
-            vm.html = instance.doc.getValue();
-            console.log('viewmodel updated');
+        codeMirror.on('change', (instance, changeObj) => {
+            this.html = instance.doc.getValue();
         });
 
         this.editor = codeMirror;
     }
 
     htmlChanged() {
-        console.log('value changed');
         if (this.editor && !this.updatedFromAjaxCall)
         {
             this.editor.doc.setValue(this.html);
