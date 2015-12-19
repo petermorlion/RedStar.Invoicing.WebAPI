@@ -40,11 +40,8 @@ System.register(['babel-runtime/helpers/define-decorated-property-descriptor', '
 
                         var codeMirror = fromTextArea(textArea, options);
 
-                        var vm = this;
-
                         codeMirror.on('change', function (instance, changeObj) {
                             _this.html = instance.doc.getValue();
-                            console.log('viewmodel updated');
                         });
 
                         this.editor = codeMirror;
@@ -52,7 +49,6 @@ System.register(['babel-runtime/helpers/define-decorated-property-descriptor', '
                 }, {
                     key: 'htmlChanged',
                     value: function htmlChanged() {
-                        console.log('value changed');
                         if (this.editor && !this.updatedFromAjaxCall) {
                             this.editor.doc.setValue(this.html);
                             this.updatedFromAjaxCall = true;
