@@ -69,6 +69,7 @@ echo Handling .NET Web Application deployment.
 
 :: 1. Restore NuGet packages
 IF /I "RedStar.Invoicing.sln" NEQ "" (
+  echo Restoring NuGet packages
   call :ExecuteCmd nuget restore "%DEPLOYMENT_SOURCE%\RedStar.Invoicing.sln"
   IF !ERRORLEVEL! NEQ 0 goto error
 )
@@ -84,6 +85,7 @@ IF !ERRORLEVEL! NEQ 0 goto error
 
 :: 3. KuduSync
 IF /I "%IN_PLACE_DEPLOYMENT%" NEQ "1" (
+  echo Executing KuduSync
   call :ExecuteCmd "%KUDU_SYNC_CMD%" -v 50 -f "%DEPLOYMENT_TEMP%" -t "%DEPLOYMENT_TARGET%" -n "%NEXT_MANIFEST_PATH%" -p "%PREVIOUS_MANIFEST_PATH%" -i ".git;.hg;.deployment;deploy.cmd"
   IF !ERRORLEVEL! NEQ 0 goto error
 )
@@ -94,7 +96,21 @@ IF /I "%IN_PLACE_DEPLOYMENT%" NEQ "1" (
 IF DEFINED POST_DEPLOYMENT_ACTION call "%POST_DEPLOYMENT_ACTION%"
 IF !ERRORLEVEL! NEQ 0 goto error
 
+:: 4. Install npm packages
+IF EXIST "%DEPLOYMENT_TARGET%\package.json" (
+  echo Installing npm packages
+  cd "%DEPLOYMENT_TARGET%"
+  call npm install
+  IF !ERRORLEVEL! NEQ 0 goto error
+)
 
+:: 5. Install jspm packages
+IF EXIST "%DEPLOYMENT_TARGET%\config.js" (
+  echo Installing jspm packages
+  cd "%DEPLOYMENT_TARGET%"
+  call jspm install
+  IF !ERRORLEVEL! NEQ 0 goto error
+)
 
 goto end
 
