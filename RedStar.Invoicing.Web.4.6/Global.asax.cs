@@ -1,5 +1,7 @@
-﻿using System;
+﻿using RedStar.Invoicing.Web._4._6.Migrations;
+using System;
 using System.Collections.Generic;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Web;
 using System.Web.Http;
@@ -13,6 +15,10 @@ namespace RedStar.Invoicing.Web._4._6
     {
         protected void Application_Start()
         {
+            var configuration = new Configuration();
+            var migrator = new DbMigrator(configuration);
+            migrator.Update();
+            
             AreaRegistration.RegisterAllAreas();
             GlobalConfiguration.Configure(WebApiConfig.Register);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
