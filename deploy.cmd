@@ -108,6 +108,7 @@ IF EXIST "%DEPLOYMENT_TARGET%\package.json" (
 IF EXIST "%DEPLOYMENT_TARGET%\config.js" (
   echo Installing jspm packages
   cd "%DEPLOYMENT_TARGET%"
+  call npm install jspm -g
   call jspm install
   IF !ERRORLEVEL! NEQ 0 goto error
 )
