@@ -113,6 +113,14 @@ IF EXIST "%DEPLOYMENT_TARGET%\config.js" (
   IF !ERRORLEVEL! NEQ 0 goto error
 )
 
+:: 6. Execute Gulp file
+IF EXIST "%DEPLOYMENT_TARGET%\config.js" (
+  echo Executing Gulp file
+  cd "%DEPLOYMENT_TARGET%"
+  call npm install gulp-cli -g
+  call gulp
+)
+
 goto end
 
 :: Execute command routine that will echo out when error

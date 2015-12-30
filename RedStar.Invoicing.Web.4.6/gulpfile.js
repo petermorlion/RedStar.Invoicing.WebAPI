@@ -22,3 +22,5 @@ gulp.task('build-html', function () {
 });
 
 gulp.task('build', ['babel', 'build-html']);
+
+gulp.task('default', ['build']);
