@@ -1,0 +1,22 @@
+{
+  "name": "RedStar.Invoicing.Client",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/petermorlion/RedStar.Invoicing"
+  },
+  "author": "Peter Morlion",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/petermorlion/RedStar.Invoicing/issues"
+  },
+  "homepage": "https://github.com/petermorlion/RedStar.Invoicing"
+}
