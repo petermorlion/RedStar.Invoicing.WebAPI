@@ -8,26 +8,26 @@ export class InvoiceGenerator {
     constructor(http) {
         this.http = http;
     }
-    
+
     activate() {
-        this.http
-            // TODO: use /api/
-            .get(`http://${window.location.host}/api/invoicegenerator`)
-            .then(response => {
-                this.logoUrl = response.content.LogoUrl;
-                //this.invoiceTemplate = response.content.InvoiceTemplate;
-                this.invoice = new Invoice();
-                this.invoiceTemplate = new InvoiceTemplate(`<template>${response.content.InvoiceTemplate}</template>`, this.invoice);
-            }).catch(err => {
-                console.log(err); 
-            });
+        // this.http
+        //     // TODO: use /api/
+        //     .get(`http://${window.location.host}/api/invoicegenerator`)
+        //     .then(response => {
+        //         this.logoUrl = response.content.LogoUrl;
+        //         //this.invoiceTemplate = response.content.InvoiceTemplate;
+        //         this.invoice = new Invoice();
+        //         this.invoiceTemplate = new InvoiceTemplate(`<template>${response.content.InvoiceTemplate}</template>`, this.invoice);
+        //     }).catch(err => {
+        //         console.log(err);
+        //     });
     }
 
-    print() {           
+    print() {
         //TODO: get template from server and then use property instead of DOM
         let html = document.getElementById('invoice-template').innerHTML;
         let json = { html : html, invoiceNumber: this.invoiceNumber };
-        
+
         this.http.createRequest(`http://${window.location.host}/api/invoice`)
             .asPost()
             .withHeader('Content-Type', 'application/json; charset=utf-8')
