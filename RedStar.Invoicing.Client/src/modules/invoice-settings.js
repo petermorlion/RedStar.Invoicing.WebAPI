@@ -9,15 +9,15 @@ export class InvoiceSettings {
     }
 
     activate() {
-        this.http
-            // TODO: use /api/
-            .get(`http://${window.location.host}/api/settings`)
-            .then(response => {
-                //this.logoUrl = response.content.LogoUrl;
-                this.invoiceTemplate = response.content.InvoiceTemplate;
-            }).catch(err => {
-                console.log(err); 
-            });
+        // this.http
+        //     // TODO: use /api/
+        //     .get(`http://${window.location.host}/api/settings`)
+        //     .then(response => {
+        //         //this.logoUrl = response.content.LogoUrl;
+        //         this.invoiceTemplate = response.content.InvoiceTemplate;
+        //     }).catch(err => {
+        //         console.log(err);
+        //     });
     }
 
     finishAjaxCall() {
@@ -39,7 +39,7 @@ export class InvoiceSettings {
 	            logoName: this.files[0].name,
 	            invoiceTemplate: this.invoiceTemplate
 	        };
-		
+
 	        this.http.createRequest(`http://${window.location.host}/api/settings`)
                 .asPost()
                 .withHeader('Content-Type', 'application/json; charset=utf-8')
