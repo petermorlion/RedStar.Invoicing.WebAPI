@@ -9,6 +9,11 @@ namespace RedStar.Invoicing.WebAPI.Controllers
     [Route("api/[controller]")]
     public class SettingsController : Controller
     {
+        public SettingsController()
+        {
+
+        }
+
         // GET: api/values
         [HttpGet]
         public IEnumerable<string> Get()
