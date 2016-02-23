@@ -18,6 +18,6 @@
   },
   "dependencies": {
     "RedStar.Invoicing.Queries": "1.0.0-*",
-    "RedStar.Invoicing.WebAPI": "1.0.0-*"
+    "RedStar.Invoicing.Domain": "1.0.0-*"
   }
 }
