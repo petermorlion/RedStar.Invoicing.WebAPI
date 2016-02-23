@@ -1,6 +1,6 @@
-{
+﻿{
   "version": "1.0.0-*",
-  "description": "RedStar.Invoicing.FileSystem Class Library",
+  "description": "RedStar.Invoicing.Queries Class Library",
   "authors": [ "Peter" ],
   "tags": [ "" ],
   "projectUrl": "",
@@ -17,7 +17,6 @@
     }
   },
   "dependencies": {
-    "RedStar.Invoicing.Queries": "1.0.0-*",
-    "RedStar.Invoicing.WebAPI": "1.0.0-*"
+    "RedStar.Invoicing.Domain": "1.0.0-*"
   }
 }
