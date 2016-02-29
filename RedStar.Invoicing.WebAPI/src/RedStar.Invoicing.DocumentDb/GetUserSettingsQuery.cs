@@ -5,9 +5,9 @@ using RedStar.Invoicing.Queries;
 
 namespace RedStar.Invoicing.DocumentDb
 {
-    public class UserSettingsQuery : IUserSettingsQuery
+    public class GetUserSettingsQuery : IGetUserSettingsQuery
     {
-        public UserSettingsQuery()
+        public GetUserSettingsQuery()
         {
         }
 

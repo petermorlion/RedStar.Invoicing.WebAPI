@@ -6,7 +6,7 @@ using RedStar.Invoicing.Queries;
 
 namespace RedStar.Invoicing.FileSystem
 {
-    public class UserSettingsQuery : IUserSettingsQuery
+    public class GetUserSettingsQuery : IGetUserSettingsQuery
     {
         private const string UserSettingsFile = "./userSettings.json";
 

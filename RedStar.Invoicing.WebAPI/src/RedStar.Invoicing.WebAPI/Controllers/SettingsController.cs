@@ -9,18 +9,18 @@ namespace RedStar.Invoicing.WebAPI.Controllers
     [Route("api/[controller]")]
     public class SettingsController : Controller
     {
-        private readonly IUserSettingsQuery _userSettingsQuery;
+        private readonly IGetUserSettingsQuery _getUserSettingsQuery;
 
-        public SettingsController(IUserSettingsQuery userSettingsQuery)
+        public SettingsController(IGetUserSettingsQuery getUserSettingsQuery)
         {
-            _userSettingsQuery = userSettingsQuery;
+            _getUserSettingsQuery = getUserSettingsQuery;
         }
 
         // GET: api/values
         [HttpGet]
         public async Task<Settings> Get()
         {
-            var userSettings = await _userSettingsQuery.Execute("1");
+            var userSettings = await _getUserSettingsQuery.Execute("1");
             if (!userSettings.HasValue)
             {
                 return new Settings

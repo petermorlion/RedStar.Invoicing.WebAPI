@@ -3,7 +3,7 @@ using RedStar.Invoicing.Domain;
 
 namespace RedStar.Invoicing.Queries
 {
-    public interface IUserSettingsQuery
+    public interface IGetUserSettingsQuery
     {
         Task<Optional<UserSettings>> Execute(string userId);
     }

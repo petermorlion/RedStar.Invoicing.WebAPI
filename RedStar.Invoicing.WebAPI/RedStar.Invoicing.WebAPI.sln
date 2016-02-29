@@ -22,6 +22,8 @@ Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "RedStar.Invoicing.FileSyste
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "RedStar.Invoicing.DocumentDb", "src\RedStar.Invoicing.DocumentDb\RedStar.Invoicing.DocumentDb.xproj", "{18933022-6569-41FE-BA98-6E1922C23B4B}"
 EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "RedStar.Invoicing.Commands", "src\RedStar.Invoicing.Commands\RedStar.Invoicing.Commands.xproj", "{D81164A5-EE1B-4D85-87F4-860C2FCB09FE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -48,6 +50,10 @@ Global
 		{18933022-6569-41FE-BA98-6E1922C23B4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{18933022-6569-41FE-BA98-6E1922C23B4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{18933022-6569-41FE-BA98-6E1922C23B4B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D81164A5-EE1B-4D85-87F4-860C2FCB09FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D81164A5-EE1B-4D85-87F4-860C2FCB09FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D81164A5-EE1B-4D85-87F4-860C2FCB09FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D81164A5-EE1B-4D85-87F4-860C2FCB09FE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -58,5 +64,6 @@ Global
 		{8CEC243D-6F45-4EB7-A275-56164CFDF34D} = {53353C7F-43C8-45B4-8BD9-E649B7605015}
 		{BB0D8EBD-4095-4DE8-A208-7CE15876909D} = {53353C7F-43C8-45B4-8BD9-E649B7605015}
 		{18933022-6569-41FE-BA98-6E1922C23B4B} = {53353C7F-43C8-45B4-8BD9-E649B7605015}
+		{D81164A5-EE1B-4D85-87F4-860C2FCB09FE} = {53353C7F-43C8-45B4-8BD9-E649B7605015}
 	EndGlobalSection
 EndGlobal

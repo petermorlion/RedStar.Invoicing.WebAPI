@@ -27,9 +27,9 @@ namespace RedStar.Invoicing.WebAPI
             services.AddMvc();
 
 #if DEBUG
-            services.AddTransient<IUserSettingsQuery, FileSystem.UserSettingsQuery>();
+            services.AddTransient<IGetUserSettingsQuery, FileSystem.GetUserSettingsQuery>();
 #else
-            services.AddTransient<IUserSettingsQuery, DocumentDb.UserSettingsQuery>();
+            services.AddTransient<IGetUserSettingsQuery, DocumentDb.GetUserSettingsQuery>();
 #endif
         }
 
