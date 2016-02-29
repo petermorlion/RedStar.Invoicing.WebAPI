@@ -8,7 +8,7 @@ namespace RedStar.Invoicing.FileSystem.Commands
     {
         public Task Execute(UserSettings userSettings)
         {
-            throw new System.NotImplementedException();
+            return new Task(() => { });
         }
     }
 }

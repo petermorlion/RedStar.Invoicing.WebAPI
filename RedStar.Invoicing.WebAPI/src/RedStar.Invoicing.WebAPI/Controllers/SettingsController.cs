@@ -1,6 +1,6 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Microsoft.AspNet.Mvc;
+using RedStar.Invoicing.Commands;
 using RedStar.Invoicing.WebAPI.DataContracts;
 using RedStar.Invoicing.Queries;
 
@@ -10,10 +10,12 @@ namespace RedStar.Invoicing.WebAPI.Controllers
     public class SettingsController : Controller
     {
         private readonly IGetUserSettingsQuery _getUserSettingsQuery;
+        private readonly IPersistUserSettingsCommand _persistUserSettingsCommand;
 
-        public SettingsController(IGetUserSettingsQuery getUserSettingsQuery)
+        public SettingsController(IGetUserSettingsQuery getUserSettingsQuery, IPersistUserSettingsCommand persistUserSettingsCommand)
         {
             _getUserSettingsQuery = getUserSettingsQuery;
+            _persistUserSettingsCommand = persistUserSettingsCommand;
         }
 
         // GET: api/values
@@ -39,8 +41,9 @@ namespace RedStar.Invoicing.WebAPI.Controllers
 
         // POST api/values
         [HttpPost]
-        public void Post([FromBody]string value)
+        public void Post([FromBody]Settings value)
         {
+            _persistUserSettingsCommand.Execute(null);
         }
     }
 }

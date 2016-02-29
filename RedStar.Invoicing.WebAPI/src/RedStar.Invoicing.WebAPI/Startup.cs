@@ -3,6 +3,7 @@ using Microsoft.AspNet.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using RedStar.Invoicing.Commands;
 using RedStar.Invoicing.Queries;
 
 namespace RedStar.Invoicing.WebAPI
@@ -28,8 +29,10 @@ namespace RedStar.Invoicing.WebAPI
 
 #if DEBUG
             services.AddTransient<IGetUserSettingsQuery, FileSystem.Queries.GetUserSettingsQuery>();
+            services.AddTransient<IPersistUserSettingsCommand, FileSystem.Commands.PersistUserSettingsCommand>();
 #else
             services.AddTransient<IGetUserSettingsQuery, DocumentDb.Queries.GetUserSettingsQuery>();
+            services.AddTransient<IPersistUserSettingsCommand, DocumentDb.Commands.PersistUserSettingsCommand>();
 #endif
         }
 
