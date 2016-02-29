@@ -41,9 +41,9 @@ namespace RedStar.Invoicing.WebAPI.Controllers
 
         // POST api/values
         [HttpPost]
-        public void Post([FromBody]Settings value)
+        public async void Post([FromBody]Settings value)
         {
-            _persistUserSettingsCommand.Execute(null);
+            await _persistUserSettingsCommand.Execute(null);
         }
     }
 }
