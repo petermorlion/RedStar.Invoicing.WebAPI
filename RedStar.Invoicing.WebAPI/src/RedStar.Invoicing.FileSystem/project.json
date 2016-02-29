@@ -19,6 +19,7 @@
   },
   "dependencies": {
     "RedStar.Invoicing.Queries": "1.0.0-*",
-    "RedStar.Invoicing.Domain": "1.0.0-*"
+    "RedStar.Invoicing.Domain": "1.0.0-*",
+    "RedStar.Invoicing.Commands": "1.0.0-*"
   }
 }
