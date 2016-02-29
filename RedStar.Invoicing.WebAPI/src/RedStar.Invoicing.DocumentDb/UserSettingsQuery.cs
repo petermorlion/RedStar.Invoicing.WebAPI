@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using RedStar.Invoicing.Domain;
-using RedStar.Invoicing.WebAPI.Queries;
+using RedStar.Invoicing.Queries;
 
 namespace RedStar.Invoicing.DocumentDb
 {
