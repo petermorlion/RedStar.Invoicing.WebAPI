@@ -1,5 +1,6 @@
-﻿using System;
+﻿using System.IO;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 using RedStar.Invoicing.Domain;
 using RedStar.Invoicing.Queries;
 
@@ -7,13 +8,19 @@ namespace RedStar.Invoicing.FileSystem
 {
     public class UserSettingsQuery : IUserSettingsQuery
     {
-        public UserSettingsQuery()
-        {
-        }
+        private const string UserSettingsFile = "./userSettings.json";
 
-        public Task<Optional<UserSettings>> Execute(string userId)
+        public async Task<Optional<UserSettings>> Execute(string userId)
         {
-            throw new NotImplementedException();
+            if (!File.Exists(UserSettingsFile))
+            {
+                return new Optional<UserSettings>(null);
+            }
+
+            var json = File.ReadAllText("./userSettings.json");
+            var userSettings = JsonConvert.DeserializeObject<UserSettings>(json);
+            
+            return new Optional<UserSettings>(userSettings);
         }
     }
 }

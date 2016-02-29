@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using Microsoft.AspNet.Mvc;
 using RedStar.Invoicing.WebAPI.DataContracts;
 using RedStar.Invoicing.Queries;
@@ -17,8 +18,19 @@ namespace RedStar.Invoicing.WebAPI.Controllers
 
         // GET: api/values
         [HttpGet]
-        public Settings Get()
+        public async Task<Settings> Get()
         {
+            var userSettings = await _userSettingsQuery.Execute("1");
+            if (!userSettings.HasValue)
+            {
+                throw new NotImplementedException("Exception not implemented yet.");
+            }
+
+            return new Settings
+            {
+                InvoiceTemplate = userSettings.Value.InvoiceTemplate,
+                LogoUrl = userSettings.Value.LogoUrl
+            };
             //var query = new UserSettingsQuery();
             //var userSettings = await query.Execute(User.Identity.GetUserId());
 
@@ -32,8 +44,6 @@ namespace RedStar.Invoicing.WebAPI.Controllers
             //    InvoiceTemplate = userSettings.Value.InvoiceTemplate,
             //    LogoUrl = userSettings.Value.LogoUrl
             //};
-
-            throw new NotImplementedException();
         }
 
         // GET api/values/5

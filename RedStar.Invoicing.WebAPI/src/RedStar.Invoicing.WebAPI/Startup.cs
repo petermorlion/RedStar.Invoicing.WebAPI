@@ -3,6 +3,7 @@ using Microsoft.AspNet.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using RedStar.Invoicing.Queries;
 
 namespace RedStar.Invoicing.WebAPI
 {
@@ -25,11 +26,11 @@ namespace RedStar.Invoicing.WebAPI
             // Add framework services.
             services.AddMvc();
 
-//#if DEBUG
-//            services.AddTransient<FileSystem.UserSettingsQuery>();
-//#else
-//            services.AddTransient<DocumentDb.UserSettingsQuery>();
-//#endif
+#if DEBUG
+            services.AddTransient<IUserSettingsQuery, FileSystem.UserSettingsQuery>();
+#else
+            services.AddTransient<IUserSettingsQuery, DocumentDb.UserSettingsQuery>();
+#endif
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
