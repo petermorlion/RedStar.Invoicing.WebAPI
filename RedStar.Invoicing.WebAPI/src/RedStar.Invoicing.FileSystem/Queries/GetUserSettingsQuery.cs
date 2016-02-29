@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 using RedStar.Invoicing.Domain;
 using RedStar.Invoicing.Queries;
 
-namespace RedStar.Invoicing.FileSystem
+namespace RedStar.Invoicing.FileSystem.Queries
 {
     public class GetUserSettingsQuery : IGetUserSettingsQuery
     {
