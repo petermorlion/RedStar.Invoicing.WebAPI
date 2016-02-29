@@ -9,15 +9,14 @@ export class InvoiceSettings {
     }
 
     activate() {
-        // this.http
-        //     // TODO: use /api/
-        //     .get(`http://${window.location.host}/api/settings`)
-        //     .then(response => {
-        //         //this.logoUrl = response.content.LogoUrl;
-        //         this.invoiceTemplate = response.content.InvoiceTemplate;
-        //     }).catch(err => {
-        //         console.log(err);
-        //     });
+        this.http
+            .get(`http://${window.location.host}/api/settings`)
+            .then(response => {
+                //this.logoUrl = response.content.LogoUrl;
+                this.invoiceTemplate = response.content.InvoiceTemplate;
+            }).catch(err => {
+                console.log(err);
+            });
     }
 
     finishAjaxCall() {
