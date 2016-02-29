@@ -25,11 +25,11 @@ namespace RedStar.Invoicing.WebAPI
             // Add framework services.
             services.AddMvc();
 
-#if DEBUG
-            services.AddTransient<FileSystem.UserSettingsQuery>();
-#else
-            services.AddTransient<DocumentDb.UserSettingsQuery>();
-#endif
+//#if DEBUG
+//            services.AddTransient<FileSystem.UserSettingsQuery>();
+//#else
+//            services.AddTransient<DocumentDb.UserSettingsQuery>();
+//#endif
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

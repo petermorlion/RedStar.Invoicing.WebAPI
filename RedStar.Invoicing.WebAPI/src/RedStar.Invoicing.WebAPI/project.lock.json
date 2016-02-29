@@ -1235,38 +1235,12 @@
           "lib/portable-net45+wp80+win8+wpa81+dnxcore50/Newtonsoft.Json.dll": {}
         }
       },
-      "RedStar.Invoicing.DocumentDb/1.0.0": {
-        "type": "project",
-        "framework": "DNXCore,Version=v5.0",
-        "dependencies": {
-          "Microsoft.CSharp": "4.0.1-beta-23516",
-          "RedStar.Invoicing.Domain": "1.0.0",
-          "RedStar.Invoicing.Queries": "1.0.0",
-          "System.Collections": "4.0.11-beta-23516",
-          "System.Linq": "4.0.1-beta-23516",
-          "System.Runtime": "4.0.21-beta-23516",
-          "System.Threading": "4.0.11-beta-23516"
-        }
-      },
       "RedStar.Invoicing.Domain/1.0.0": {
         "type": "project",
         "framework": "DNXCore,Version=v5.0",
         "dependencies": {
           "Microsoft.CSharp": "4.0.1-beta-23516",
           "Newtonsoft.Json": "7.0.1",
-          "System.Collections": "4.0.11-beta-23516",
-          "System.Linq": "4.0.1-beta-23516",
-          "System.Runtime": "4.0.21-beta-23516",
-          "System.Threading": "4.0.11-beta-23516"
-        }
-      },
-      "RedStar.Invoicing.FileSystem/1.0.0": {
-        "type": "project",
-        "framework": "DNXCore,Version=v5.0",
-        "dependencies": {
-          "Microsoft.CSharp": "4.0.1-beta-23516",
-          "RedStar.Invoicing.Domain": "1.0.0",
-          "RedStar.Invoicing.Queries": "1.0.0",
           "System.Collections": "4.0.11-beta-23516",
           "System.Linq": "4.0.1-beta-23516",
           "System.Runtime": "4.0.21-beta-23516",
@@ -3404,38 +3378,12 @@
           "lib/portable-net45+wp80+win8+wpa81+dnxcore50/Newtonsoft.Json.dll": {}
         }
       },
-      "RedStar.Invoicing.DocumentDb/1.0.0": {
-        "type": "project",
-        "framework": "DNXCore,Version=v5.0",
-        "dependencies": {
-          "Microsoft.CSharp": "4.0.1-beta-23516",
-          "RedStar.Invoicing.Domain": "1.0.0",
-          "RedStar.Invoicing.Queries": "1.0.0",
-          "System.Collections": "4.0.11-beta-23516",
-          "System.Linq": "4.0.1-beta-23516",
-          "System.Runtime": "4.0.21-beta-23516",
-          "System.Threading": "4.0.11-beta-23516"
-        }
-      },
       "RedStar.Invoicing.Domain/1.0.0": {
         "type": "project",
         "framework": "DNXCore,Version=v5.0",
         "dependencies": {
           "Microsoft.CSharp": "4.0.1-beta-23516",
           "Newtonsoft.Json": "7.0.1",
-          "System.Collections": "4.0.11-beta-23516",
-          "System.Linq": "4.0.1-beta-23516",
-          "System.Runtime": "4.0.21-beta-23516",
-          "System.Threading": "4.0.11-beta-23516"
-        }
-      },
-      "RedStar.Invoicing.FileSystem/1.0.0": {
-        "type": "project",
-        "framework": "DNXCore,Version=v5.0",
-        "dependencies": {
-          "Microsoft.CSharp": "4.0.1-beta-23516",
-          "RedStar.Invoicing.Domain": "1.0.0",
-          "RedStar.Invoicing.Queries": "1.0.0",
           "System.Collections": "4.0.11-beta-23516",
           "System.Linq": "4.0.1-beta-23516",
           "System.Runtime": "4.0.21-beta-23516",
@@ -5979,38 +5927,12 @@
           "lib/portable-net45+wp80+win8+wpa81+dnxcore50/Newtonsoft.Json.dll": {}
         }
       },
-      "RedStar.Invoicing.DocumentDb/1.0.0": {
-        "type": "project",
-        "framework": "DNXCore,Version=v5.0",
-        "dependencies": {
-          "Microsoft.CSharp": "4.0.1-beta-23516",
-          "RedStar.Invoicing.Domain": "1.0.0",
-          "RedStar.Invoicing.Queries": "1.0.0",
-          "System.Collections": "4.0.11-beta-23516",
-          "System.Linq": "4.0.1-beta-23516",
-          "System.Runtime": "4.0.21-beta-23516",
-          "System.Threading": "4.0.11-beta-23516"
-        }
-      },
       "RedStar.Invoicing.Domain/1.0.0": {
         "type": "project",
         "framework": "DNXCore,Version=v5.0",
         "dependencies": {
           "Microsoft.CSharp": "4.0.1-beta-23516",
           "Newtonsoft.Json": "7.0.1",
-          "System.Collections": "4.0.11-beta-23516",
-          "System.Linq": "4.0.1-beta-23516",
-          "System.Runtime": "4.0.21-beta-23516",
-          "System.Threading": "4.0.11-beta-23516"
-        }
-      },
-      "RedStar.Invoicing.FileSystem/1.0.0": {
-        "type": "project",
-        "framework": "DNXCore,Version=v5.0",
-        "dependencies": {
-          "Microsoft.CSharp": "4.0.1-beta-23516",
-          "RedStar.Invoicing.Domain": "1.0.0",
-          "RedStar.Invoicing.Queries": "1.0.0",
           "System.Collections": "4.0.11-beta-23516",
           "System.Linq": "4.0.1-beta-23516",
           "System.Runtime": "4.0.21-beta-23516",
@@ -7320,21 +7242,13 @@
     }
   },
   "libraries": {
-    "RedStar.Invoicing.DocumentDb/1.0.0": {
-      "type": "project",
-      "path": "../RedStar.Invoicing.DocumentDb/project.json"
-    },
     "RedStar.Invoicing.Domain/1.0.0": {
       "type": "project",
-      "path": "../../../RedStar.Invoicing.Domain/project.json"
-    },
-    "RedStar.Invoicing.FileSystem/1.0.0": {
-      "type": "project",
-      "path": "../RedStar.Invoicing.FileSystem/project.json"
+      "path": "../RedStar.Invoicing.Domain/project.json"
     },
     "RedStar.Invoicing.Queries/1.0.0": {
       "type": "project",
-      "path": "../../RedStar.Invoicing.Queries/project.json"
+      "path": "../RedStar.Invoicing.Queries/project.json"
     },
     "Microsoft.AspNet.Antiforgery/1.0.0-rc1-final": {
       "type": "package",
@@ -11535,9 +11449,7 @@
       "Microsoft.Extensions.Logging.Console >= 1.0.0-rc1-final",
       "Microsoft.Extensions.Logging.Debug >= 1.0.0-rc1-final",
       "RedStar.Invoicing.Domain >= 1.0.0-*",
-      "RedStar.Invoicing.Queries >= 1.0.0-*",
-      "RedStar.Invoicing.DocumentDb >= 1.0.0-*",
-      "RedStar.Invoicing.FileSystem >= 1.0.0-*"
+      "RedStar.Invoicing.Queries >= 1.0.0-*"
     ],
     "DNXCore,Version=v5.0": []
   }

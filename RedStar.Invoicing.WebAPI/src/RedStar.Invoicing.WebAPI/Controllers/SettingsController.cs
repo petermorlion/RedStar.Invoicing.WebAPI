@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNet.Mvc;
 using RedStar.Invoicing.WebAPI.DataContracts;
-using RedStar.Invoicing.WebAPI.Queries;
+using RedStar.Invoicing.Queries;
 
 namespace RedStar.Invoicing.WebAPI.Controllers
 {

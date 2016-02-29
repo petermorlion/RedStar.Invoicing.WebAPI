@@ -51,18 +51,6 @@
           "System.Threading": "4.0.11-beta-23516"
         }
       },
-      "RedStar.Invoicing.Queries/1.0.0": {
-        "type": "project",
-        "framework": "DNXCore,Version=v5.0",
-        "dependencies": {
-          "Microsoft.CSharp": "4.0.1-beta-23516",
-          "RedStar.Invoicing.Domain": "1.0.0",
-          "System.Collections": "4.0.11-beta-23516",
-          "System.Linq": "4.0.1-beta-23516",
-          "System.Runtime": "4.0.21-beta-23516",
-          "System.Threading": "4.0.11-beta-23516"
-        }
-      },
       "System.Collections/4.0.11-beta-23516": {
         "type": "package",
         "dependencies": {
@@ -359,18 +347,6 @@
         "dependencies": {
           "Microsoft.CSharp": "4.0.1-beta-23516",
           "Newtonsoft.Json": "7.0.1",
-          "System.Collections": "4.0.11-beta-23516",
-          "System.Linq": "4.0.1-beta-23516",
-          "System.Runtime": "4.0.21-beta-23516",
-          "System.Threading": "4.0.11-beta-23516"
-        }
-      },
-      "RedStar.Invoicing.Queries/1.0.0": {
-        "type": "project",
-        "framework": "DNXCore,Version=v5.0",
-        "dependencies": {
-          "Microsoft.CSharp": "4.0.1-beta-23516",
-          "RedStar.Invoicing.Domain": "1.0.0",
           "System.Collections": "4.0.11-beta-23516",
           "System.Linq": "4.0.1-beta-23516",
           "System.Runtime": "4.0.21-beta-23516",
@@ -697,18 +673,6 @@
           "System.Threading": "4.0.11-beta-23516"
         }
       },
-      "RedStar.Invoicing.Queries/1.0.0": {
-        "type": "project",
-        "framework": "DNXCore,Version=v5.0",
-        "dependencies": {
-          "Microsoft.CSharp": "4.0.1-beta-23516",
-          "RedStar.Invoicing.Domain": "1.0.0",
-          "System.Collections": "4.0.11-beta-23516",
-          "System.Linq": "4.0.1-beta-23516",
-          "System.Runtime": "4.0.21-beta-23516",
-          "System.Threading": "4.0.11-beta-23516"
-        }
-      },
       "runtime.win7.System.Private.Uri/4.0.1-beta-23516": {
         "type": "package",
         "compile": {
@@ -985,10 +949,6 @@
     "RedStar.Invoicing.Domain/1.0.0": {
       "type": "project",
       "path": "../RedStar.Invoicing.Domain/project.json"
-    },
-    "RedStar.Invoicing.Queries/1.0.0": {
-      "type": "project",
-      "path": "../RedStar.Invoicing.Queries/project.json"
     },
     "Microsoft.CSharp/4.0.1-beta-23516": {
       "type": "package",
@@ -1952,7 +1912,6 @@
   },
   "projectFileDependencyGroups": {
     "": [
-      "RedStar.Invoicing.Queries >= 1.0.0-*",
       "RedStar.Invoicing.Domain >= 1.0.0-*"
     ],
     "DNXCore,Version=v5.0": [

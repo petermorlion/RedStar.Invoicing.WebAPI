@@ -16,8 +16,6 @@
     "Microsoft.Extensions.Logging.Debug": "1.0.0-rc1-final",
     "RedStar.Invoicing.Domain": "1.0.0-*",
     "RedStar.Invoicing.Queries": "1.0.0-*",
-    "RedStar.Invoicing.DocumentDb": "1.0.0-*",
-    "RedStar.Invoicing.FileSystem": "1.0.0-*"
   },
 
   "commands": {

@@ -984,11 +984,11 @@
   "libraries": {
     "RedStar.Invoicing.Domain/1.0.0": {
       "type": "project",
-      "path": "../../../RedStar.Invoicing.Domain/project.json"
+      "path": "../RedStar.Invoicing.Domain/project.json"
     },
     "RedStar.Invoicing.Queries/1.0.0": {
       "type": "project",
-      "path": "../../RedStar.Invoicing.Queries/project.json"
+      "path": "../RedStar.Invoicing.Queries/project.json"
     },
     "Microsoft.CSharp/4.0.1-beta-23516": {
       "type": "package",
