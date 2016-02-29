@@ -29,7 +29,7 @@ namespace RedStar.Invoicing.WebAPI
 #if DEBUG
             services.AddTransient<IGetUserSettingsQuery, FileSystem.Queries.GetUserSettingsQuery>();
 #else
-            services.AddTransient<IGetUserSettingsQuery, DocumentDb.GetUserSettingsQuery>();
+            services.AddTransient<IGetUserSettingsQuery, DocumentDb.Queries.GetUserSettingsQuery>();
 #endif
         }
 
