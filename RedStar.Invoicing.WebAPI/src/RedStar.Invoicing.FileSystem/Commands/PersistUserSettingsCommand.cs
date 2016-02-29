@@ -1,4 +1,6 @@
-﻿using System.Threading.Tasks;
+﻿using System.IO;
+using System.Threading.Tasks;
+using Newtonsoft.Json;
 using RedStar.Invoicing.Commands;
 using RedStar.Invoicing.Domain;
 
@@ -6,9 +8,10 @@ namespace RedStar.Invoicing.FileSystem.Commands
 {
     public class PersistUserSettingsCommand : IPersistUserSettingsCommand
     {
-        public Task Execute(UserSettings userSettings)
+        public async Task Execute(UserSettings userSettings)
         {
-            return new Task(() => { });
+            var json = JsonConvert.SerializeObject(userSettings);
+            File.WriteAllText(Locations.UserSettingsFile, json);
         }
     }
 }

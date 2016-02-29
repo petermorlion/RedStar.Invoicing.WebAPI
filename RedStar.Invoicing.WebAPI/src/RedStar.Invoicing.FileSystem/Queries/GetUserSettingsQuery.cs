@@ -8,16 +8,14 @@ namespace RedStar.Invoicing.FileSystem.Queries
 {
     public class GetUserSettingsQuery : IGetUserSettingsQuery
     {
-        private const string UserSettingsFile = "./userSettings.json";
-
         public async Task<Optional<UserSettings>> Execute(string userId)
         {
-            if (!File.Exists(UserSettingsFile))
+            if (!File.Exists(Locations.UserSettingsFile))
             {
                 return new Optional<UserSettings>(null);
             }
 
-            var json = File.ReadAllText("./userSettings.json");
+            var json = File.ReadAllText(Locations.UserSettingsFile);
             var userSettings = JsonConvert.DeserializeObject<UserSettings>(json);
             
             return new Optional<UserSettings>(userSettings);

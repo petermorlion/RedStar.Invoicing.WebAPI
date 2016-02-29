@@ -1,6 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.AspNet.Mvc;
 using RedStar.Invoicing.Commands;
+using RedStar.Invoicing.Domain;
 using RedStar.Invoicing.WebAPI.DataContracts;
 using RedStar.Invoicing.Queries;
 
@@ -41,9 +42,22 @@ namespace RedStar.Invoicing.WebAPI.Controllers
 
         // POST api/values
         [HttpPost]
-        public async void Post([FromBody]Settings value)
+        public async Task<IActionResult> Post([FromBody]Settings value)
         {
-            await _persistUserSettingsCommand.Execute(null);
+            if (value == null)
+            {
+                return this.HttpBadRequest();
+            }
+
+            var userSettings = new UserSettings
+            {
+                LogoUrl = value.LogoUrl,
+                InvoiceTemplate = value.InvoiceTemplate
+            };
+
+            await _persistUserSettingsCommand.Execute(userSettings);
+
+            return Ok();
         }
     }
 }
