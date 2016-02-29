@@ -18,19 +18,23 @@ namespace RedStar.Invoicing.WebAPI.Controllers
 
         // GET: api/values
         [HttpGet]
-        public async Task<Settings> Get()
+        public async Task<IActionResult> Get()
         {
             var userSettings = await _userSettingsQuery.Execute("1");
             if (!userSettings.HasValue)
             {
-                throw new NotImplementedException("Exception not implemented yet.");
+                return new HttpOkObjectResult(new Settings
+                {
+                    InvoiceTemplate = "",
+                    LogoUrl = ""
+                });
             }
 
-            return new Settings
+            return new HttpOkObjectResult(new Settings
             {
                 InvoiceTemplate = userSettings.Value.InvoiceTemplate,
                 LogoUrl = userSettings.Value.LogoUrl
-            };
+            });
             //var query = new UserSettingsQuery();
             //var userSettings = await query.Execute(User.Identity.GetUserId());
 
