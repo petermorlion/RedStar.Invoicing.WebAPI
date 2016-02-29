@@ -19,7 +19,6 @@ namespace RedStar.Invoicing.WebAPI.Controllers
             _persistUserSettingsCommand = persistUserSettingsCommand;
         }
 
-        // GET: api/values
         [HttpGet]
         public async Task<Settings> Get()
         {
@@ -40,7 +39,6 @@ namespace RedStar.Invoicing.WebAPI.Controllers
             };
         }
 
-        // POST api/values
         [HttpPost]
         public async Task<IActionResult> Post([FromBody]Settings value)
         {
