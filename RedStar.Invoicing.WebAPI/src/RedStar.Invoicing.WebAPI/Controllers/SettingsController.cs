@@ -44,7 +44,7 @@ namespace RedStar.Invoicing.WebAPI.Controllers
         {
             if (value == null)
             {
-                return this.HttpBadRequest();
+                return HttpBadRequest();
             }
 
             var userSettings = new UserSettings
