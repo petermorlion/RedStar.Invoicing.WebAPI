@@ -2,11 +2,13 @@
 import {HttpClient} from 'aurelia-http-client';
 import {InvoiceTemplate} from '../components/invoice-template.js';
 import {Invoice} from '../components/invoice.js';
+import {Configuration} from '../components/config.js';
 
-@inject(HttpClient)
+@inject(HttpClient, Configuration)
 export class InvoiceGenerator {
-    constructor(http) {
+    constructor(http, config) {
         this.http = http;
+        this.config = config;
     }
 
     activate() {
@@ -28,7 +30,7 @@ export class InvoiceGenerator {
         let html = document.getElementById('invoice-template').innerHTML;
         let json = { html : html, invoiceNumber: this.invoiceNumber };
 
-        this.http.createRequest(`http://${window.location.host}/api/invoice`)
+        this.http.createRequest(`http://${this.config.serverUri}/api/invoice`)
             .asPost()
             .withHeader('Content-Type', 'application/json; charset=utf-8')
             .withContent(json)

@@ -3,6 +3,6 @@
     public class Settings
     {
         public string InvoiceTemplate { get; set; }
-        public string LogoUrl { get; set; }
+        public string Logo { get; set; }
     }
 }

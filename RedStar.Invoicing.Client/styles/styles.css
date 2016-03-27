@@ -173,3 +173,10 @@ div.au-stagger {
     opacity: 1;
   }
 }
+
+.custom-progress { width: 100px; height: 100px; }
+.custom-progress-idle { display: none; }
+.custom-progress-busy .check { display: none; }
+.custom-progress-done .spinner { display: none; }
+.custom-progress-busy .spinner { display: inline; }
+.custom-progress-done .check { display: inline; }

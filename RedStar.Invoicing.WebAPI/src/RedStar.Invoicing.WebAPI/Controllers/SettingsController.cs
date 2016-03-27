@@ -42,20 +42,27 @@ namespace RedStar.Invoicing.WebAPI.Controllers
         [HttpPost]
         public async Task<IActionResult> Post([FromBody]Settings value)
         {
-            if (value == null)
+            try
             {
-                return HttpBadRequest();
+                if (value == null)
+                {
+                    return HttpBadRequest();
+                }
+
+                var userSettings = new UserSettings
+                {
+                    //LogoUrl = value.LogoUrl,
+                    InvoiceTemplate = value.InvoiceTemplate
+                };
+
+                await _persistUserSettingsCommand.Execute(userSettings);
+
+                return Ok();
             }
-
-            var userSettings = new UserSettings
+            catch (System.Exception)
             {
-                LogoUrl = value.LogoUrl,
-                InvoiceTemplate = value.InvoiceTemplate
-            };
-
-            await _persistUserSettingsCommand.Execute(userSettings);
-
-            return Ok();
+                return NotFound();
+            }
         }
     }
 }
