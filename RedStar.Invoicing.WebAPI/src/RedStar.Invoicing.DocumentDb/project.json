@@ -1,4 +1,4 @@
-﻿{
+{
   "version": "1.0.0-*",
   "description": "RedStar.Invoicing.DocumentDb Class Library",
   "authors": [ "Peter" ],
@@ -8,6 +8,7 @@
   "frameworks": {
     "dnxcore50": {
       "dependencies": {
+        "Microsoft.Framework.Configuration": "1.0.0-beta8",
         "Microsoft.CSharp": "4.0.1-beta-23516",
         "System.Collections": "4.0.11-beta-23516",
         "System.Linq": "4.0.1-beta-23516",
@@ -17,6 +18,8 @@
     }
   },
   "dependencies": {
+    "Microsoft.Extensions.OptionsModel": "1.0.0-rc1-final",
+    "RedStar.Invoicing.Commands": "1.0.0-*",
     "RedStar.Invoicing.Domain": "1.0.0-*",
     "RedStar.Invoicing.Queries": "1.0.0-*"
   }

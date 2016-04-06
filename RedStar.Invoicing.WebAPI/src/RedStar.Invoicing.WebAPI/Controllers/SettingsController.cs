@@ -28,14 +28,14 @@ namespace RedStar.Invoicing.WebAPI.Controllers
                 return new Settings
                 {
                     InvoiceTemplate = "",
-                    LogoUrl = ""
+                    //LogoUrl = ""
                 };
             }
 
             return new Settings
             {
                 InvoiceTemplate = userSettings.Value.InvoiceTemplate,
-                LogoUrl = userSettings.Value.LogoUrl
+                //LogoUrl = userSettings.Value.LogoUrl
             };
         }
 
@@ -61,7 +61,7 @@ namespace RedStar.Invoicing.WebAPI.Controllers
             }
             catch (System.Exception)
             {
-                return NotFound();
+                return HttpNotFound();
             }
         }
     }

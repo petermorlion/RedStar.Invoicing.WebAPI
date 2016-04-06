@@ -4,6 +4,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using RedStar.Invoicing.Commands;
+using RedStar.Invoicing.DocumentDb;
 using RedStar.Invoicing.Queries;
 
 namespace RedStar.Invoicing.WebAPI
@@ -16,6 +17,7 @@ namespace RedStar.Invoicing.WebAPI
             var builder = new ConfigurationBuilder()
                 .AddJsonFile("appsettings.json")
                 .AddEnvironmentVariables();
+
             Configuration = builder.Build();
         }
 
@@ -26,6 +28,10 @@ namespace RedStar.Invoicing.WebAPI
         {
             // Add framework services.
             services.AddMvc();
+
+            services.AddOptions();
+
+            services.Configure<DocumentDbSettings>(Configuration.GetSection("DocumentDbSettings"));
 
 #if DEBUG
             services.AddTransient<IGetUserSettingsQuery, FileSystem.Queries.GetUserSettingsQuery>();
