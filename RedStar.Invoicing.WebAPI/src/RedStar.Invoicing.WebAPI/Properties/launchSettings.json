@@ -13,15 +13,17 @@
       "launchBrowser": true,
       "launchUrl": "api/settings",
       "environmentVariables": {
-        "DocumentDbSettings:AuthorizationKey": "test",
+        "DocumentDbSettings:AuthorizationKey": "testKey",
         "Hosting:Environment": "Development",
-        "DocumentDbSettings:Endpoint": "test"
+        "DocumentDbSettings:Endpoint": "testEndpoint"
       }
     },
     "web": {
       "commandName": "web",
       "environmentVariables": {
-        "Hosting:Environment": "Development"
+        "DocumentDbSettings:AuthorizationKey": "TestAuthorizationKey",
+        "Hosting:Environment": "Development",
+        "DocumentDbSettings:Endpoint": "TestEndpoint"
       }
     }
   }
