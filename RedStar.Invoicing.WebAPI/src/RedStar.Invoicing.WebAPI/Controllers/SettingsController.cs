@@ -10,6 +10,9 @@ namespace RedStar.Invoicing.WebAPI.Controllers
     [Route("api/[controller]")]
     public class SettingsController : Controller
     {
+        // TODO: use current user id
+        private const string UserId = "4552d6c3-8f56-4c1e-b975-245c2adcebab";
+
         private readonly IGetUserSettingsQuery _getUserSettingsQuery;
         private readonly IPersistUserSettingsCommand _persistUserSettingsCommand;
 
@@ -52,6 +55,7 @@ namespace RedStar.Invoicing.WebAPI.Controllers
                 var userSettings = new UserSettings
                 {
                     //LogoUrl = value.LogoUrl,
+                    UserId = UserId,
                     InvoiceTemplate = value.InvoiceTemplate
                 };
 
