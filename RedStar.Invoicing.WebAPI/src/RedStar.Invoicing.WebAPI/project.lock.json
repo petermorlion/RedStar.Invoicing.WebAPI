@@ -656,6 +656,19 @@
           "lib/dotnet5.4/Microsoft.AspNet.StaticFiles.dll": {}
         }
       },
+      "Microsoft.AspNet.WebApi.Client/5.2.3": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Net.Http": "2.2.22",
+          "Newtonsoft.Json": "6.0.4"
+        },
+        "compile": {
+          "lib/portable-wp8+netcore45+net45+wp81+wpa81/System.Net.Http.Formatting.dll": {}
+        },
+        "runtime": {
+          "lib/portable-wp8+netcore45+net45+wp81+wpa81/System.Net.Http.Formatting.dll": {}
+        }
+      },
       "Microsoft.AspNet.WebUtilities/1.0.0-rc1-final": {
         "type": "package",
         "dependencies": {
@@ -674,6 +687,21 @@
         "runtime": {
           "lib/dotnet5.4/Microsoft.AspNet.WebUtilities.dll": {}
         }
+      },
+      "Microsoft.Bcl/1.1.9": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Bcl.Build": "1.0.14"
+        },
+        "compile": {
+          "lib/portable-net45+win8+wp8+wpa81/_._": {}
+        },
+        "runtime": {
+          "lib/portable-net45+win8+wp8+wpa81/_._": {}
+        }
+      },
+      "Microsoft.Bcl.Build/1.0.14": {
+        "type": "package"
       },
       "Microsoft.CodeAnalysis.Analyzers/1.0.0": {
         "type": "package"
@@ -1257,6 +1285,21 @@
           "lib/dnxcore50/Microsoft.Framework.Configuration.Abstractions.dll": {}
         }
       },
+      "Microsoft.Net.Http/2.2.22": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Bcl": "1.1.9",
+          "Microsoft.Bcl.Build": "1.0.14"
+        },
+        "compile": {
+          "lib/portable-net45+win8/System.Net.Http.Extensions.dll": {},
+          "lib/portable-net45+win8/System.Net.Http.Primitives.dll": {}
+        },
+        "runtime": {
+          "lib/portable-net45+win8/System.Net.Http.Extensions.dll": {},
+          "lib/portable-net45+win8/System.Net.Http.Primitives.dll": {}
+        }
+      },
       "Microsoft.Net.Http.Headers/1.0.0-rc1-final": {
         "type": "package",
         "dependencies": {
@@ -1273,6 +1316,36 @@
         },
         "runtime": {
           "lib/dotnet5.4/Microsoft.Net.Http.Headers.dll": {}
+        }
+      },
+      "Microsoft.Rest.ClientRuntime/2.1.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.CSharp": "4.0.0",
+          "Newtonsoft.Json": "7.0.1",
+          "System.Diagnostics.Tools": "4.0.0",
+          "System.Net.Http": "4.0.0",
+          "System.Runtime.Serialization.Primitives": "4.0.10",
+          "System.Threading.Tasks": "4.0.10",
+          "System.Xml.ReaderWriter": "4.0.10"
+        },
+        "compile": {
+          "lib/dnxcore50/Microsoft.Rest.ClientRuntime.dll": {}
+        },
+        "runtime": {
+          "lib/dnxcore50/Microsoft.Rest.ClientRuntime.dll": {}
+        }
+      },
+      "Microsoft.Rest.ClientRuntime.Azure/3.1.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Rest.ClientRuntime": "[2.1.0, 3.0.0)"
+        },
+        "compile": {
+          "lib/dnxcore50/Microsoft.Rest.ClientRuntime.Azure.dll": {}
+        },
+        "runtime": {
+          "lib/dnxcore50/Microsoft.Rest.ClientRuntime.Azure.dll": {}
         }
       },
       "Microsoft.Win32.Primitives/4.0.0": {
@@ -1331,15 +1404,20 @@
         "type": "project",
         "framework": "DNXCore,Version=v5.0",
         "dependencies": {
+          "Microsoft.AspNet.WebApi.Client": "5.2.3",
           "Microsoft.CSharp": "4.0.1-beta-23516",
           "Microsoft.Extensions.OptionsModel": "1.0.0-rc1-final",
           "Microsoft.Framework.Configuration": "1.0.0-beta8",
+          "Microsoft.Rest.ClientRuntime.Azure": "3.1.0",
           "RedStar.Invoicing.Commands": "1.0.0",
           "RedStar.Invoicing.Domain": "1.0.0",
           "RedStar.Invoicing.Queries": "1.0.0",
           "System.Collections": "4.0.11-beta-23516",
           "System.Linq": "4.0.1-beta-23516",
+          "System.Net.Http": "4.0.1-beta-23516",
           "System.Runtime": "4.0.21-beta-23516",
+          "System.Runtime.Extensions": "4.0.11-beta-23516",
+          "System.Security.Cryptography.Algorithms": "4.0.0-beta-23516",
           "System.Threading": "4.0.11-beta-23516"
         }
       },
@@ -1729,6 +1807,19 @@
           "ref/dotnet5.4/System.Linq.Expressions.dll": {}
         }
       },
+      "System.Net.Http/4.0.1-beta-23516": {
+        "type": "package",
+        "dependencies": {
+          "System.IO": "4.0.0",
+          "System.Net.Primitives": "4.0.0",
+          "System.Runtime": "4.0.0",
+          "System.Text.Encoding": "4.0.0",
+          "System.Threading.Tasks": "4.0.0"
+        },
+        "compile": {
+          "ref/dotnet5.2/System.Net.Http.dll": {}
+        }
+      },
       "System.Net.Primitives/4.0.11-beta-23516": {
         "type": "package",
         "dependencies": {
@@ -1990,6 +2081,19 @@
         },
         "runtime": {
           "lib/DNXCore50/System.Runtime.Loader.dll": {}
+        }
+      },
+      "System.Runtime.Serialization.Primitives/4.0.10": {
+        "type": "package",
+        "dependencies": {
+          "System.Resources.ResourceManager": "4.0.0",
+          "System.Runtime": "4.0.20"
+        },
+        "compile": {
+          "ref/dotnet/System.Runtime.Serialization.Primitives.dll": {}
+        },
+        "runtime": {
+          "lib/dotnet/System.Runtime.Serialization.Primitives.dll": {}
         }
       },
       "System.Security.Claims/4.0.1-beta-23516": {
@@ -2922,6 +3026,19 @@
           "lib/dotnet5.4/Microsoft.AspNet.StaticFiles.dll": {}
         }
       },
+      "Microsoft.AspNet.WebApi.Client/5.2.3": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Net.Http": "2.2.22",
+          "Newtonsoft.Json": "6.0.4"
+        },
+        "compile": {
+          "lib/portable-wp8+netcore45+net45+wp81+wpa81/System.Net.Http.Formatting.dll": {}
+        },
+        "runtime": {
+          "lib/portable-wp8+netcore45+net45+wp81+wpa81/System.Net.Http.Formatting.dll": {}
+        }
+      },
       "Microsoft.AspNet.WebUtilities/1.0.0-rc1-final": {
         "type": "package",
         "dependencies": {
@@ -2940,6 +3057,21 @@
         "runtime": {
           "lib/dotnet5.4/Microsoft.AspNet.WebUtilities.dll": {}
         }
+      },
+      "Microsoft.Bcl/1.1.9": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Bcl.Build": "1.0.14"
+        },
+        "compile": {
+          "lib/portable-net45+win8+wp8+wpa81/_._": {}
+        },
+        "runtime": {
+          "lib/portable-net45+win8+wp8+wpa81/_._": {}
+        }
+      },
+      "Microsoft.Bcl.Build/1.0.14": {
+        "type": "package"
       },
       "Microsoft.CodeAnalysis.Analyzers/1.0.0": {
         "type": "package"
@@ -3523,6 +3655,21 @@
           "lib/dnxcore50/Microsoft.Framework.Configuration.Abstractions.dll": {}
         }
       },
+      "Microsoft.Net.Http/2.2.22": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Bcl": "1.1.9",
+          "Microsoft.Bcl.Build": "1.0.14"
+        },
+        "compile": {
+          "lib/portable-net45+win8/System.Net.Http.Extensions.dll": {},
+          "lib/portable-net45+win8/System.Net.Http.Primitives.dll": {}
+        },
+        "runtime": {
+          "lib/portable-net45+win8/System.Net.Http.Extensions.dll": {},
+          "lib/portable-net45+win8/System.Net.Http.Primitives.dll": {}
+        }
+      },
       "Microsoft.Net.Http.Headers/1.0.0-rc1-final": {
         "type": "package",
         "dependencies": {
@@ -3539,6 +3686,36 @@
         },
         "runtime": {
           "lib/dotnet5.4/Microsoft.Net.Http.Headers.dll": {}
+        }
+      },
+      "Microsoft.Rest.ClientRuntime/2.1.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.CSharp": "4.0.0",
+          "Newtonsoft.Json": "7.0.1",
+          "System.Diagnostics.Tools": "4.0.0",
+          "System.Net.Http": "4.0.0",
+          "System.Runtime.Serialization.Primitives": "4.0.10",
+          "System.Threading.Tasks": "4.0.10",
+          "System.Xml.ReaderWriter": "4.0.10"
+        },
+        "compile": {
+          "lib/dnxcore50/Microsoft.Rest.ClientRuntime.dll": {}
+        },
+        "runtime": {
+          "lib/dnxcore50/Microsoft.Rest.ClientRuntime.dll": {}
+        }
+      },
+      "Microsoft.Rest.ClientRuntime.Azure/3.1.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Rest.ClientRuntime": "[2.1.0, 3.0.0)"
+        },
+        "compile": {
+          "lib/dnxcore50/Microsoft.Rest.ClientRuntime.Azure.dll": {}
+        },
+        "runtime": {
+          "lib/dnxcore50/Microsoft.Rest.ClientRuntime.Azure.dll": {}
         }
       },
       "Microsoft.Win32.Primitives/4.0.0": {
@@ -3597,15 +3774,20 @@
         "type": "project",
         "framework": "DNXCore,Version=v5.0",
         "dependencies": {
+          "Microsoft.AspNet.WebApi.Client": "5.2.3",
           "Microsoft.CSharp": "4.0.1-beta-23516",
           "Microsoft.Extensions.OptionsModel": "1.0.0-rc1-final",
           "Microsoft.Framework.Configuration": "1.0.0-beta8",
+          "Microsoft.Rest.ClientRuntime.Azure": "3.1.0",
           "RedStar.Invoicing.Commands": "1.0.0",
           "RedStar.Invoicing.Domain": "1.0.0",
           "RedStar.Invoicing.Queries": "1.0.0",
           "System.Collections": "4.0.11-beta-23516",
           "System.Linq": "4.0.1-beta-23516",
+          "System.Net.Http": "4.0.1-beta-23516",
           "System.Runtime": "4.0.21-beta-23516",
+          "System.Runtime.Extensions": "4.0.11-beta-23516",
+          "System.Security.Cryptography.Algorithms": "4.0.0-beta-23516",
           "System.Threading": "4.0.11-beta-23516"
         }
       },
@@ -3781,6 +3963,33 @@
         },
         "runtime": {
           "runtimes/win7/lib/dotnet5.4/System.IO.FileSystem.Watcher.dll": {}
+        }
+      },
+      "runtime.win7.System.Net.Http/4.0.1-beta-23516": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Win32.Primitives": "4.0.0",
+          "System.Collections": "4.0.10",
+          "System.Diagnostics.Debug": "4.0.10",
+          "System.Globalization": "4.0.10",
+          "System.IO": "4.0.10",
+          "System.IO.Compression": "4.0.0",
+          "System.Net.Primitives": "4.0.10",
+          "System.Resources.ResourceManager": "4.0.0",
+          "System.Runtime": "4.0.20",
+          "System.Runtime.Extensions": "4.0.10",
+          "System.Runtime.Handles": "4.0.0",
+          "System.Runtime.InteropServices": "4.0.20",
+          "System.Security.Cryptography.X509Certificates": "4.0.0-beta-23516",
+          "System.Text.Encoding": "4.0.10",
+          "System.Threading": "4.0.0",
+          "System.Threading.Tasks": "4.0.10"
+        },
+        "compile": {
+          "ref/dotnet/_._": {}
+        },
+        "runtime": {
+          "runtimes/win7/lib/DNXCore50/System.Net.Http.dll": {}
         }
       },
       "runtime.win7.System.Net.Primitives/4.0.11-beta-23516": {
@@ -4222,6 +4431,26 @@
           "lib/DNXCore50/System.IO.dll": {}
         }
       },
+      "System.IO.Compression/4.0.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Collections": "4.0.0",
+          "System.IO": "4.0.0",
+          "System.Resources.ResourceManager": "4.0.0",
+          "System.Runtime": "4.0.0",
+          "System.Runtime.Extensions": "4.0.0",
+          "System.Runtime.InteropServices": "4.0.0",
+          "System.Text.Encoding": "4.0.0",
+          "System.Threading": "4.0.0",
+          "System.Threading.Tasks": "4.0.0"
+        },
+        "compile": {
+          "ref/dotnet/System.IO.Compression.dll": {}
+        },
+        "runtime": {
+          "lib/dotnet/System.IO.Compression.dll": {}
+        }
+      },
       "System.IO.FileSystem/4.0.1-beta-23516": {
         "type": "package",
         "dependencies": {
@@ -4281,6 +4510,19 @@
         },
         "compile": {
           "ref/dotnet5.4/System.Linq.Expressions.dll": {}
+        }
+      },
+      "System.Net.Http/4.0.1-beta-23516": {
+        "type": "package",
+        "dependencies": {
+          "System.IO": "4.0.0",
+          "System.Net.Primitives": "4.0.0",
+          "System.Runtime": "4.0.0",
+          "System.Text.Encoding": "4.0.0",
+          "System.Threading.Tasks": "4.0.0"
+        },
+        "compile": {
+          "ref/dotnet5.2/System.Net.Http.dll": {}
         }
       },
       "System.Net.Primitives/4.0.11-beta-23516": {
@@ -4606,6 +4848,19 @@
         },
         "runtime": {
           "lib/dotnet/System.Runtime.Numerics.dll": {}
+        }
+      },
+      "System.Runtime.Serialization.Primitives/4.0.10": {
+        "type": "package",
+        "dependencies": {
+          "System.Resources.ResourceManager": "4.0.0",
+          "System.Runtime": "4.0.20"
+        },
+        "compile": {
+          "ref/dotnet/System.Runtime.Serialization.Primitives.dll": {}
+        },
+        "runtime": {
+          "lib/dotnet/System.Runtime.Serialization.Primitives.dll": {}
         }
       },
       "System.Security.Claims/4.0.1-beta-23516": {
@@ -5594,6 +5849,19 @@
           "lib/dotnet5.4/Microsoft.AspNet.StaticFiles.dll": {}
         }
       },
+      "Microsoft.AspNet.WebApi.Client/5.2.3": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Net.Http": "2.2.22",
+          "Newtonsoft.Json": "6.0.4"
+        },
+        "compile": {
+          "lib/portable-wp8+netcore45+net45+wp81+wpa81/System.Net.Http.Formatting.dll": {}
+        },
+        "runtime": {
+          "lib/portable-wp8+netcore45+net45+wp81+wpa81/System.Net.Http.Formatting.dll": {}
+        }
+      },
       "Microsoft.AspNet.WebUtilities/1.0.0-rc1-final": {
         "type": "package",
         "dependencies": {
@@ -5612,6 +5880,21 @@
         "runtime": {
           "lib/dotnet5.4/Microsoft.AspNet.WebUtilities.dll": {}
         }
+      },
+      "Microsoft.Bcl/1.1.9": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Bcl.Build": "1.0.14"
+        },
+        "compile": {
+          "lib/portable-net45+win8+wp8+wpa81/_._": {}
+        },
+        "runtime": {
+          "lib/portable-net45+win8+wp8+wpa81/_._": {}
+        }
+      },
+      "Microsoft.Bcl.Build/1.0.14": {
+        "type": "package"
       },
       "Microsoft.CodeAnalysis.Analyzers/1.0.0": {
         "type": "package"
@@ -6195,6 +6478,21 @@
           "lib/dnxcore50/Microsoft.Framework.Configuration.Abstractions.dll": {}
         }
       },
+      "Microsoft.Net.Http/2.2.22": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Bcl": "1.1.9",
+          "Microsoft.Bcl.Build": "1.0.14"
+        },
+        "compile": {
+          "lib/portable-net45+win8/System.Net.Http.Extensions.dll": {},
+          "lib/portable-net45+win8/System.Net.Http.Primitives.dll": {}
+        },
+        "runtime": {
+          "lib/portable-net45+win8/System.Net.Http.Extensions.dll": {},
+          "lib/portable-net45+win8/System.Net.Http.Primitives.dll": {}
+        }
+      },
       "Microsoft.Net.Http.Headers/1.0.0-rc1-final": {
         "type": "package",
         "dependencies": {
@@ -6211,6 +6509,36 @@
         },
         "runtime": {
           "lib/dotnet5.4/Microsoft.Net.Http.Headers.dll": {}
+        }
+      },
+      "Microsoft.Rest.ClientRuntime/2.1.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.CSharp": "4.0.0",
+          "Newtonsoft.Json": "7.0.1",
+          "System.Diagnostics.Tools": "4.0.0",
+          "System.Net.Http": "4.0.0",
+          "System.Runtime.Serialization.Primitives": "4.0.10",
+          "System.Threading.Tasks": "4.0.10",
+          "System.Xml.ReaderWriter": "4.0.10"
+        },
+        "compile": {
+          "lib/dnxcore50/Microsoft.Rest.ClientRuntime.dll": {}
+        },
+        "runtime": {
+          "lib/dnxcore50/Microsoft.Rest.ClientRuntime.dll": {}
+        }
+      },
+      "Microsoft.Rest.ClientRuntime.Azure/3.1.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Rest.ClientRuntime": "[2.1.0, 3.0.0)"
+        },
+        "compile": {
+          "lib/dnxcore50/Microsoft.Rest.ClientRuntime.Azure.dll": {}
+        },
+        "runtime": {
+          "lib/dnxcore50/Microsoft.Rest.ClientRuntime.Azure.dll": {}
         }
       },
       "Microsoft.Win32.Primitives/4.0.0": {
@@ -6269,15 +6597,20 @@
         "type": "project",
         "framework": "DNXCore,Version=v5.0",
         "dependencies": {
+          "Microsoft.AspNet.WebApi.Client": "5.2.3",
           "Microsoft.CSharp": "4.0.1-beta-23516",
           "Microsoft.Extensions.OptionsModel": "1.0.0-rc1-final",
           "Microsoft.Framework.Configuration": "1.0.0-beta8",
+          "Microsoft.Rest.ClientRuntime.Azure": "3.1.0",
           "RedStar.Invoicing.Commands": "1.0.0",
           "RedStar.Invoicing.Domain": "1.0.0",
           "RedStar.Invoicing.Queries": "1.0.0",
           "System.Collections": "4.0.11-beta-23516",
           "System.Linq": "4.0.1-beta-23516",
+          "System.Net.Http": "4.0.1-beta-23516",
           "System.Runtime": "4.0.21-beta-23516",
+          "System.Runtime.Extensions": "4.0.11-beta-23516",
+          "System.Security.Cryptography.Algorithms": "4.0.0-beta-23516",
           "System.Threading": "4.0.11-beta-23516"
         }
       },
@@ -6453,6 +6786,33 @@
         },
         "runtime": {
           "runtimes/win7/lib/dotnet5.4/System.IO.FileSystem.Watcher.dll": {}
+        }
+      },
+      "runtime.win7.System.Net.Http/4.0.1-beta-23516": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Win32.Primitives": "4.0.0",
+          "System.Collections": "4.0.10",
+          "System.Diagnostics.Debug": "4.0.10",
+          "System.Globalization": "4.0.10",
+          "System.IO": "4.0.10",
+          "System.IO.Compression": "4.0.0",
+          "System.Net.Primitives": "4.0.10",
+          "System.Resources.ResourceManager": "4.0.0",
+          "System.Runtime": "4.0.20",
+          "System.Runtime.Extensions": "4.0.10",
+          "System.Runtime.Handles": "4.0.0",
+          "System.Runtime.InteropServices": "4.0.20",
+          "System.Security.Cryptography.X509Certificates": "4.0.0-beta-23516",
+          "System.Text.Encoding": "4.0.10",
+          "System.Threading": "4.0.0",
+          "System.Threading.Tasks": "4.0.10"
+        },
+        "compile": {
+          "ref/dotnet/_._": {}
+        },
+        "runtime": {
+          "runtimes/win7/lib/DNXCore50/System.Net.Http.dll": {}
         }
       },
       "runtime.win7.System.Net.Primitives/4.0.11-beta-23516": {
@@ -6894,6 +7254,26 @@
           "lib/DNXCore50/System.IO.dll": {}
         }
       },
+      "System.IO.Compression/4.0.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Collections": "4.0.0",
+          "System.IO": "4.0.0",
+          "System.Resources.ResourceManager": "4.0.0",
+          "System.Runtime": "4.0.0",
+          "System.Runtime.Extensions": "4.0.0",
+          "System.Runtime.InteropServices": "4.0.0",
+          "System.Text.Encoding": "4.0.0",
+          "System.Threading": "4.0.0",
+          "System.Threading.Tasks": "4.0.0"
+        },
+        "compile": {
+          "ref/dotnet/System.IO.Compression.dll": {}
+        },
+        "runtime": {
+          "lib/dotnet/System.IO.Compression.dll": {}
+        }
+      },
       "System.IO.FileSystem/4.0.1-beta-23516": {
         "type": "package",
         "dependencies": {
@@ -6953,6 +7333,19 @@
         },
         "compile": {
           "ref/dotnet5.4/System.Linq.Expressions.dll": {}
+        }
+      },
+      "System.Net.Http/4.0.1-beta-23516": {
+        "type": "package",
+        "dependencies": {
+          "System.IO": "4.0.0",
+          "System.Net.Primitives": "4.0.0",
+          "System.Runtime": "4.0.0",
+          "System.Text.Encoding": "4.0.0",
+          "System.Threading.Tasks": "4.0.0"
+        },
+        "compile": {
+          "ref/dotnet5.2/System.Net.Http.dll": {}
         }
       },
       "System.Net.Primitives/4.0.11-beta-23516": {
@@ -7278,6 +7671,19 @@
         },
         "runtime": {
           "lib/dotnet/System.Runtime.Numerics.dll": {}
+        }
+      },
+      "System.Runtime.Serialization.Primitives/4.0.10": {
+        "type": "package",
+        "dependencies": {
+          "System.Resources.ResourceManager": "4.0.0",
+          "System.Runtime": "4.0.20"
+        },
+        "compile": {
+          "ref/dotnet/System.Runtime.Serialization.Primitives.dll": {}
+        },
+        "runtime": {
+          "lib/dotnet/System.Runtime.Serialization.Primitives.dll": {}
         }
       },
       "System.Security.Claims/4.0.1-beta-23516": {
@@ -8175,6 +8581,20 @@
         "Microsoft.AspNet.StaticFiles.nuspec"
       ]
     },
+    "Microsoft.AspNet.WebApi.Client/5.2.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "3kiI8peSXbXHDDrRuo+QaX0iCEVRe0nvn2dBDRw656uPX32UalbBlSIDUDlJxu05eau4tnuhsikiUuugvvoUoQ==",
+      "files": [
+        "lib/net45/System.Net.Http.Formatting.dll",
+        "lib/net45/System.Net.Http.Formatting.xml",
+        "lib/portable-wp8+netcore45+net45+wp81+wpa81/System.Net.Http.Formatting.dll",
+        "lib/portable-wp8+netcore45+net45+wp81+wpa81/System.Net.Http.Formatting.xml",
+        "Microsoft.AspNet.WebApi.Client.5.2.3.nupkg",
+        "Microsoft.AspNet.WebApi.Client.5.2.3.nupkg.sha512",
+        "Microsoft.AspNet.WebApi.Client.nuspec"
+      ]
+    },
     "Microsoft.AspNet.WebUtilities/1.0.0-rc1-final": {
       "type": "package",
       "serviceable": true,
@@ -8187,6 +8607,127 @@
         "Microsoft.AspNet.WebUtilities.1.0.0-rc1-final.nupkg",
         "Microsoft.AspNet.WebUtilities.1.0.0-rc1-final.nupkg.sha512",
         "Microsoft.AspNet.WebUtilities.nuspec"
+      ]
+    },
+    "Microsoft.Bcl/1.1.9": {
+      "type": "package",
+      "sha512": "USQ55innJy8K+tAXvVa1O8dUTp2s7pmJ5cJj6Tl02HtGc2xBDj0P2QH5620HbGXIWKWYhydoeQF8Rm/JRDBGhw==",
+      "files": [
+        "content/monoandroid/_._",
+        "content/monotouch/_._",
+        "content/net45/_._",
+        "content/portable-net45+win8+wp8+wpa81/_._",
+        "content/portable-net45+win8+wpa81/_._",
+        "content/portable-net451+win81/_._",
+        "content/portable-net451+win81+wpa81/_._",
+        "content/portable-win81+wp81+wpa81/_._",
+        "content/sl4/_._",
+        "content/sl5/_._",
+        "content/win8/_._",
+        "content/wp8/_._",
+        "content/wpa81/_._",
+        "lib/monoandroid/_._",
+        "lib/monotouch/_._",
+        "lib/net40/ensureRedirect.xml",
+        "lib/net40/System.IO.dll",
+        "lib/net40/System.IO.xml",
+        "lib/net40/System.Runtime.dll",
+        "lib/net40/System.Runtime.xml",
+        "lib/net40/System.Threading.Tasks.dll",
+        "lib/net40/System.Threading.Tasks.xml",
+        "lib/net45/_._",
+        "lib/portable-net40+sl4+win8/ensureRedirect.xml",
+        "lib/portable-net40+sl4+win8/System.IO.dll",
+        "lib/portable-net40+sl4+win8/System.IO.xml",
+        "lib/portable-net40+sl4+win8/System.Runtime.dll",
+        "lib/portable-net40+sl4+win8/System.Runtime.xml",
+        "lib/portable-net40+sl4+win8/System.Threading.Tasks.dll",
+        "lib/portable-net40+sl4+win8/System.Threading.Tasks.xml",
+        "lib/portable-net40+sl4+win8+wp71+wpa81/ensureRedirect.xml",
+        "lib/portable-net40+sl4+win8+wp71+wpa81/System.IO.dll",
+        "lib/portable-net40+sl4+win8+wp71+wpa81/System.IO.xml",
+        "lib/portable-net40+sl4+win8+wp71+wpa81/System.Runtime.dll",
+        "lib/portable-net40+sl4+win8+wp71+wpa81/System.Runtime.xml",
+        "lib/portable-net40+sl4+win8+wp71+wpa81/System.Threading.Tasks.dll",
+        "lib/portable-net40+sl4+win8+wp71+wpa81/System.Threading.Tasks.xml",
+        "lib/portable-net40+sl4+win8+wp8+wpa81/ensureRedirect.xml",
+        "lib/portable-net40+sl4+win8+wp8+wpa81/System.IO.dll",
+        "lib/portable-net40+sl4+win8+wp8+wpa81/System.IO.xml",
+        "lib/portable-net40+sl4+win8+wp8+wpa81/System.Runtime.dll",
+        "lib/portable-net40+sl4+win8+wp8+wpa81/System.Runtime.xml",
+        "lib/portable-net40+sl4+win8+wp8+wpa81/System.Threading.Tasks.dll",
+        "lib/portable-net40+sl4+win8+wp8+wpa81/System.Threading.Tasks.xml",
+        "lib/portable-net40+sl5+win8+wp8+wpa81/ensureRedirect.xml",
+        "lib/portable-net40+sl5+win8+wp8+wpa81/System.IO.dll",
+        "lib/portable-net40+sl5+win8+wp8+wpa81/System.IO.xml",
+        "lib/portable-net40+sl5+win8+wp8+wpa81/System.Runtime.dll",
+        "lib/portable-net40+sl5+win8+wp8+wpa81/System.Runtime.xml",
+        "lib/portable-net40+sl5+win8+wp8+wpa81/System.Threading.Tasks.dll",
+        "lib/portable-net40+sl5+win8+wp8+wpa81/System.Threading.Tasks.xml",
+        "lib/portable-net40+win8/ensureRedirect.xml",
+        "lib/portable-net40+win8/System.IO.dll",
+        "lib/portable-net40+win8/System.IO.xml",
+        "lib/portable-net40+win8/System.Runtime.dll",
+        "lib/portable-net40+win8/System.Runtime.xml",
+        "lib/portable-net40+win8/System.Threading.Tasks.dll",
+        "lib/portable-net40+win8/System.Threading.Tasks.xml",
+        "lib/portable-net40+win8+wp8+wpa81/ensureRedirect.xml",
+        "lib/portable-net40+win8+wp8+wpa81/System.IO.dll",
+        "lib/portable-net40+win8+wp8+wpa81/System.IO.xml",
+        "lib/portable-net40+win8+wp8+wpa81/System.Runtime.dll",
+        "lib/portable-net40+win8+wp8+wpa81/System.Runtime.xml",
+        "lib/portable-net40+win8+wp8+wpa81/System.Threading.Tasks.dll",
+        "lib/portable-net40+win8+wp8+wpa81/System.Threading.Tasks.xml",
+        "lib/portable-net45+win8+wp8+wpa81/_._",
+        "lib/portable-net45+win8+wpa81/_._",
+        "lib/portable-net451+win81/_._",
+        "lib/portable-net451+win81+wpa81/_._",
+        "lib/portable-win81+wp81+wpa81/_._",
+        "lib/sl4/System.IO.dll",
+        "lib/sl4/System.IO.xml",
+        "lib/sl4/System.Runtime.dll",
+        "lib/sl4/System.Runtime.xml",
+        "lib/sl4/System.Threading.Tasks.dll",
+        "lib/sl4/System.Threading.Tasks.xml",
+        "lib/sl4-windowsphone71/ensureRedirect.xml",
+        "lib/sl4-windowsphone71/System.IO.dll",
+        "lib/sl4-windowsphone71/System.IO.xml",
+        "lib/sl4-windowsphone71/System.Runtime.dll",
+        "lib/sl4-windowsphone71/System.Runtime.xml",
+        "lib/sl4-windowsphone71/System.Threading.Tasks.dll",
+        "lib/sl4-windowsphone71/System.Threading.Tasks.xml",
+        "lib/sl5/System.IO.dll",
+        "lib/sl5/System.IO.xml",
+        "lib/sl5/System.Runtime.dll",
+        "lib/sl5/System.Runtime.xml",
+        "lib/sl5/System.Threading.Tasks.dll",
+        "lib/sl5/System.Threading.Tasks.xml",
+        "lib/win8/_._",
+        "lib/wp8/_._",
+        "lib/wpa81/_._",
+        "License-Stable.rtf",
+        "Microsoft.Bcl.1.1.9.nupkg",
+        "Microsoft.Bcl.1.1.9.nupkg.sha512",
+        "Microsoft.Bcl.nuspec"
+      ]
+    },
+    "Microsoft.Bcl.Build/1.0.14": {
+      "type": "package",
+      "sha512": "cDLKSvNvRa519hplsbSoYqO69TjdDIhfjtKUM0g20/nVROoWsGav9KCI9HtnGjLmdV1+TcUUDhbotcllibjPEA==",
+      "files": [
+        "content/net40/_._",
+        "content/netcore45/_._",
+        "content/portable-net40+win8+sl4+wp71+wpa81/_._",
+        "content/sl4/_._",
+        "content/sl4-windowsphone71/_._",
+        "License-Stable.rtf",
+        "Microsoft.Bcl.Build.1.0.14.nupkg",
+        "Microsoft.Bcl.Build.1.0.14.nupkg.sha512",
+        "Microsoft.Bcl.Build.nuspec",
+        "tools/Install.ps1",
+        "tools/Microsoft.Bcl.Build.targets",
+        "tools/Microsoft.Bcl.Build.Tasks.dll",
+        "tools/Uninstall.ps1"
       ]
     },
     "Microsoft.CodeAnalysis.Analyzers/1.0.0": {
@@ -8775,6 +9316,70 @@
         "Microsoft.Framework.Configuration.Abstractions.nuspec"
       ]
     },
+    "Microsoft.Net.Http/2.2.22": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "bqVLJ2UimlAEs2bn3y28lB1pmFRxuysv9pFyB0A86WEMYGYTfDyfjAGjm0fiaSRjlMNU1jVnp8Mxt8qe4OmpXQ==",
+      "files": [
+        "lib/monoandroid/System.Net.Http.Extensions.dll",
+        "lib/monoandroid/System.Net.Http.Extensions.XML",
+        "lib/monoandroid/System.Net.Http.Primitives.dll",
+        "lib/monoandroid/System.Net.Http.Primitives.xml",
+        "lib/monotouch/System.Net.Http.Extensions.dll",
+        "lib/monotouch/System.Net.Http.Extensions.XML",
+        "lib/monotouch/System.Net.Http.Primitives.dll",
+        "lib/monotouch/System.Net.Http.Primitives.xml",
+        "lib/net40/ensureRedirect.xml",
+        "lib/net40/System.Net.Http.dll",
+        "lib/net40/System.Net.Http.Extensions.dll",
+        "lib/net40/System.Net.Http.Extensions.XML",
+        "lib/net40/System.Net.Http.Primitives.dll",
+        "lib/net40/System.Net.Http.Primitives.xml",
+        "lib/net40/System.Net.Http.WebRequest.dll",
+        "lib/net40/System.Net.Http.WebRequest.xml",
+        "lib/net40/System.Net.Http.xml",
+        "lib/net45/ensureRedirect.xml",
+        "lib/net45/System.Net.Http.Extensions.dll",
+        "lib/net45/System.Net.Http.Extensions.XML",
+        "lib/net45/System.Net.Http.Primitives.dll",
+        "lib/net45/System.Net.Http.Primitives.xml",
+        "lib/portable-net40+sl4+win8+wp71+wpa81/ensureRedirect.xml",
+        "lib/portable-net40+sl4+win8+wp71+wpa81/System.Net.Http.dll",
+        "lib/portable-net40+sl4+win8+wp71+wpa81/System.Net.Http.Extensions.dll",
+        "lib/portable-net40+sl4+win8+wp71+wpa81/System.Net.Http.Extensions.XML",
+        "lib/portable-net40+sl4+win8+wp71+wpa81/System.Net.Http.Primitives.dll",
+        "lib/portable-net40+sl4+win8+wp71+wpa81/System.Net.Http.Primitives.XML",
+        "lib/portable-net40+sl4+win8+wp71+wpa81/System.Net.Http.xml",
+        "lib/portable-net45+win8/ensureRedirect.xml",
+        "lib/portable-net45+win8/System.Net.Http.Extensions.dll",
+        "lib/portable-net45+win8/System.Net.Http.Extensions.XML",
+        "lib/portable-net45+win8/System.Net.Http.Primitives.dll",
+        "lib/portable-net45+win8/System.Net.Http.Primitives.xml",
+        "lib/portable-net45+win8+wpa81/ensureRedirect.xml",
+        "lib/portable-net45+win8+wpa81/System.Net.Http.Extensions.dll",
+        "lib/portable-net45+win8+wpa81/System.Net.Http.Extensions.XML",
+        "lib/portable-net45+win8+wpa81/System.Net.Http.Primitives.dll",
+        "lib/portable-net45+win8+wpa81/System.Net.Http.Primitives.xml",
+        "lib/sl4-windowsphone71/System.Net.Http.dll",
+        "lib/sl4-windowsphone71/System.Net.Http.Extensions.dll",
+        "lib/sl4-windowsphone71/System.Net.Http.Extensions.XML",
+        "lib/sl4-windowsphone71/System.Net.Http.Primitives.dll",
+        "lib/sl4-windowsphone71/System.Net.Http.Primitives.XML",
+        "lib/sl4-windowsphone71/System.Net.Http.xml",
+        "lib/win8/System.Net.Http.Extensions.dll",
+        "lib/win8/System.Net.Http.Extensions.XML",
+        "lib/win8/System.Net.Http.Primitives.dll",
+        "lib/win8/System.Net.Http.Primitives.xml",
+        "lib/wpa81/System.Net.Http.Extensions.dll",
+        "lib/wpa81/System.Net.Http.Extensions.XML",
+        "lib/wpa81/System.Net.Http.Primitives.dll",
+        "lib/wpa81/System.Net.Http.Primitives.xml",
+        "License-Stable.rtf",
+        "Microsoft.Net.Http.2.2.22.nupkg",
+        "Microsoft.Net.Http.2.2.22.nupkg.sha512",
+        "Microsoft.Net.Http.nuspec"
+      ]
+    },
     "Microsoft.Net.Http.Headers/1.0.0-rc1-final": {
       "type": "package",
       "serviceable": true,
@@ -8787,6 +9392,36 @@
         "Microsoft.Net.Http.Headers.1.0.0-rc1-final.nupkg",
         "Microsoft.Net.Http.Headers.1.0.0-rc1-final.nupkg.sha512",
         "Microsoft.Net.Http.Headers.nuspec"
+      ]
+    },
+    "Microsoft.Rest.ClientRuntime/2.1.0": {
+      "type": "package",
+      "sha512": "iUzIetBC1CIc+1Jyn8XcP1vxoC/xV7mzz5+OHqjMyCHcZ/nqZcHLxWhemTlSMAehTkjxVkcb4yVov4TxFOB/8A==",
+      "files": [
+        "lib/dnxcore50/Microsoft.Rest.ClientRuntime.dll",
+        "lib/dnxcore50/Microsoft.Rest.ClientRuntime.xml",
+        "lib/net45/Microsoft.Rest.ClientRuntime.dll",
+        "lib/net45/Microsoft.Rest.ClientRuntime.xml",
+        "lib/portable-net45+win+wpa81/Microsoft.Rest.ClientRuntime.dll",
+        "lib/portable-net45+win+wpa81/Microsoft.Rest.ClientRuntime.xml",
+        "Microsoft.Rest.ClientRuntime.2.1.0.nupkg",
+        "Microsoft.Rest.ClientRuntime.2.1.0.nupkg.sha512",
+        "Microsoft.Rest.ClientRuntime.nuspec"
+      ]
+    },
+    "Microsoft.Rest.ClientRuntime.Azure/3.1.0": {
+      "type": "package",
+      "sha512": "jp3u9bfn3K2bnKbWYtmVTFISKipBo3XGC3UgwnzHkjWOh5URazrxMFBxzeXLlK5ed848w8IvSLU8Rlip8GsvDQ==",
+      "files": [
+        "lib/dnxcore50/Microsoft.Rest.ClientRuntime.Azure.dll",
+        "lib/dnxcore50/Microsoft.Rest.ClientRuntime.Azure.xml",
+        "lib/net45/Microsoft.Rest.ClientRuntime.Azure.dll",
+        "lib/net45/Microsoft.Rest.ClientRuntime.Azure.xml",
+        "lib/portable-net45+win+wpa81/Microsoft.Rest.ClientRuntime.Azure.dll",
+        "lib/portable-net45+win+wpa81/Microsoft.Rest.ClientRuntime.Azure.xml",
+        "Microsoft.Rest.ClientRuntime.Azure.3.1.0.nupkg",
+        "Microsoft.Rest.ClientRuntime.Azure.3.1.0.nupkg.sha512",
+        "Microsoft.Rest.ClientRuntime.Azure.nuspec"
       ]
     },
     "Microsoft.Win32.Primitives/4.0.0": {
@@ -8978,6 +9613,19 @@
         "runtimes/win7/lib/win8/_._",
         "runtimes/win7/lib/wp8/_._",
         "runtimes/win7/lib/wpa81/_._"
+      ]
+    },
+    "runtime.win7.System.Net.Http/4.0.1-beta-23516": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "bCVvitLtx/FGp/F14Yvq6Zkb05n6dwRleYNCSAnnX8YpNTKuKYpBJhEpMBUaOjalsM4lqMfE/kd99LtbZRHaiw==",
+      "files": [
+        "ref/dotnet/_._",
+        "runtime.win7.System.Net.Http.4.0.1-beta-23516.nupkg",
+        "runtime.win7.System.Net.Http.4.0.1-beta-23516.nupkg.sha512",
+        "runtime.win7.System.Net.Http.nuspec",
+        "runtimes/win7/lib/DNXCore50/System.Net.Http.dll",
+        "runtimes/win7/lib/netcore50/System.Net.Http.dll"
       ]
     },
     "runtime.win7.System.Net.Primitives/4.0.11-beta-23516": {
@@ -10050,6 +10698,46 @@
         "System.IO.nuspec"
       ]
     },
+    "System.IO.Compression/4.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "S+ljBE3py8pujTrsOOYHtDg2cnAifn6kBu/pfh1hMWIXd8DoVh0ADTA6Puv4q+nYj+Msm6JoFLNwuRSmztbsDQ==",
+      "files": [
+        "lib/dotnet/System.IO.Compression.dll",
+        "lib/MonoAndroid10/_._",
+        "lib/MonoTouch10/_._",
+        "lib/net45/_._",
+        "lib/netcore50/System.IO.Compression.dll",
+        "lib/win8/_._",
+        "lib/wpa81/_._",
+        "lib/xamarinios10/_._",
+        "lib/xamarinmac20/_._",
+        "ref/dotnet/de/System.IO.Compression.xml",
+        "ref/dotnet/es/System.IO.Compression.xml",
+        "ref/dotnet/fr/System.IO.Compression.xml",
+        "ref/dotnet/it/System.IO.Compression.xml",
+        "ref/dotnet/ja/System.IO.Compression.xml",
+        "ref/dotnet/ko/System.IO.Compression.xml",
+        "ref/dotnet/ru/System.IO.Compression.xml",
+        "ref/dotnet/System.IO.Compression.dll",
+        "ref/dotnet/System.IO.Compression.xml",
+        "ref/dotnet/zh-hans/System.IO.Compression.xml",
+        "ref/dotnet/zh-hant/System.IO.Compression.xml",
+        "ref/MonoAndroid10/_._",
+        "ref/MonoTouch10/_._",
+        "ref/net45/_._",
+        "ref/netcore50/System.IO.Compression.dll",
+        "ref/netcore50/System.IO.Compression.xml",
+        "ref/win8/_._",
+        "ref/wpa81/_._",
+        "ref/xamarinios10/_._",
+        "ref/xamarinmac20/_._",
+        "runtime.json",
+        "System.IO.Compression.4.0.0.nupkg",
+        "System.IO.Compression.4.0.0.nupkg.sha512",
+        "System.IO.Compression.nuspec"
+      ]
+    },
     "System.IO.FileSystem/4.0.1-beta-23516": {
       "type": "package",
       "serviceable": true,
@@ -10246,6 +10934,45 @@
         "System.Linq.Expressions.4.0.11-beta-23516.nupkg",
         "System.Linq.Expressions.4.0.11-beta-23516.nupkg.sha512",
         "System.Linq.Expressions.nuspec"
+      ]
+    },
+    "System.Net.Http/4.0.1-beta-23516": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "WbmX0jo84S72GVhRbKtBBUkx2dQ1hzb4TRSLfaiktRh7QKnSP9ctzTxBvXghWQ6GnswBzTHnuc69msImZH5b6A==",
+      "files": [
+        "lib/net45/_._",
+        "lib/win8/_._",
+        "lib/wpa81/_._",
+        "ref/dotnet5.2/de/System.Net.Http.xml",
+        "ref/dotnet5.2/es/System.Net.Http.xml",
+        "ref/dotnet5.2/fr/System.Net.Http.xml",
+        "ref/dotnet5.2/it/System.Net.Http.xml",
+        "ref/dotnet5.2/ja/System.Net.Http.xml",
+        "ref/dotnet5.2/ko/System.Net.Http.xml",
+        "ref/dotnet5.2/ru/System.Net.Http.xml",
+        "ref/dotnet5.2/System.Net.Http.dll",
+        "ref/dotnet5.2/System.Net.Http.xml",
+        "ref/dotnet5.2/zh-hans/System.Net.Http.xml",
+        "ref/dotnet5.2/zh-hant/System.Net.Http.xml",
+        "ref/net45/_._",
+        "ref/netcore50/de/System.Net.Http.xml",
+        "ref/netcore50/es/System.Net.Http.xml",
+        "ref/netcore50/fr/System.Net.Http.xml",
+        "ref/netcore50/it/System.Net.Http.xml",
+        "ref/netcore50/ja/System.Net.Http.xml",
+        "ref/netcore50/ko/System.Net.Http.xml",
+        "ref/netcore50/ru/System.Net.Http.xml",
+        "ref/netcore50/System.Net.Http.dll",
+        "ref/netcore50/System.Net.Http.xml",
+        "ref/netcore50/zh-hans/System.Net.Http.xml",
+        "ref/netcore50/zh-hant/System.Net.Http.xml",
+        "ref/win8/_._",
+        "ref/wpa81/_._",
+        "runtime.json",
+        "System.Net.Http.4.0.1-beta-23516.nupkg",
+        "System.Net.Http.4.0.1-beta-23516.nupkg.sha512",
+        "System.Net.Http.nuspec"
       ]
     },
     "System.Net.Primitives/4.0.11-beta-23516": {
@@ -11067,6 +11794,38 @@
         "System.Runtime.Numerics.4.0.0.nupkg",
         "System.Runtime.Numerics.4.0.0.nupkg.sha512",
         "System.Runtime.Numerics.nuspec"
+      ]
+    },
+    "System.Runtime.Serialization.Primitives/4.0.10": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "NPc8DZIomf5tGjYtz/KTHI01IPcVlypfhCux32AbLPDjTotdvL8TpKRwMyQJ6Kh08yprRVH7uBD1PdJiuoFzag==",
+      "files": [
+        "lib/dotnet/System.Runtime.Serialization.Primitives.dll",
+        "lib/MonoAndroid10/_._",
+        "lib/MonoTouch10/_._",
+        "lib/net46/_._",
+        "lib/xamarinios10/_._",
+        "lib/xamarinmac20/_._",
+        "ref/dotnet/de/System.Runtime.Serialization.Primitives.xml",
+        "ref/dotnet/es/System.Runtime.Serialization.Primitives.xml",
+        "ref/dotnet/fr/System.Runtime.Serialization.Primitives.xml",
+        "ref/dotnet/it/System.Runtime.Serialization.Primitives.xml",
+        "ref/dotnet/ja/System.Runtime.Serialization.Primitives.xml",
+        "ref/dotnet/ko/System.Runtime.Serialization.Primitives.xml",
+        "ref/dotnet/ru/System.Runtime.Serialization.Primitives.xml",
+        "ref/dotnet/System.Runtime.Serialization.Primitives.dll",
+        "ref/dotnet/System.Runtime.Serialization.Primitives.xml",
+        "ref/dotnet/zh-hans/System.Runtime.Serialization.Primitives.xml",
+        "ref/dotnet/zh-hant/System.Runtime.Serialization.Primitives.xml",
+        "ref/MonoAndroid10/_._",
+        "ref/MonoTouch10/_._",
+        "ref/net46/_._",
+        "ref/xamarinios10/_._",
+        "ref/xamarinmac20/_._",
+        "System.Runtime.Serialization.Primitives.4.0.10.nupkg",
+        "System.Runtime.Serialization.Primitives.4.0.10.nupkg.sha512",
+        "System.Runtime.Serialization.Primitives.nuspec"
       ]
     },
     "System.Security.Claims/4.0.1-beta-23516": {
