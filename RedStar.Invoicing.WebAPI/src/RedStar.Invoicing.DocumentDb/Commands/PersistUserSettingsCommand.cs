@@ -46,15 +46,11 @@ namespace RedStar.Invoicing.DocumentDb.Commands
 
                 if (response.StatusCode != HttpStatusCode.OK)
                 {
-                    var responseContent = await response.Content.ReadAsStringAsync();
-
-                    //return new Optional<UserSettings>(null);
+                    // handle error
                 }
                 else
                 {
-                    //var json = await response.Content.ReadAsStringAsync();
-                    //var userSettings = JsonConvert.DeserializeObject<UserSettings>(json);
-                    //return new Optional<UserSettings>(userSettings);
+                    //return success?
                 }
             }
         }
