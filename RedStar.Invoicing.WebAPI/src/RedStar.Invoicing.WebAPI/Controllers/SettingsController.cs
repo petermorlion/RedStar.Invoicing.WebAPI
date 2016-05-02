@@ -63,7 +63,7 @@ namespace RedStar.Invoicing.WebAPI.Controllers
 
                 return Ok();
             }
-            catch (System.Exception)
+            catch (System.Exception e)
             {
                 return HttpNotFound();
             }

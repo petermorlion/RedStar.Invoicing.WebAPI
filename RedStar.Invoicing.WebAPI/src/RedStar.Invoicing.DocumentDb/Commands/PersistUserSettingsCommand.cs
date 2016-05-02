@@ -32,20 +32,22 @@ namespace RedStar.Invoicing.DocumentDb.Commands
             {
                 var utcNow = DateTime.UtcNow;
                 httpClient.DefaultRequestHeaders.Add("x-ms-date", utcNow.ToString("r"));
-                httpClient.DefaultRequestHeaders.Add("x-ms-version", "2015-08-06");
+                httpClient.DefaultRequestHeaders.Add("x-ms-version", "2015-12-16");
                 httpClient.DefaultRequestHeaders.Add("x-ms-documentdb-is-upsert", "true");
 
-                var resourceLink = string.Format("dbs/{0}/colls/{1}/docs", DatabaseId, CollectionId);
+                var resourceLink = string.Format("dbs/{0}/colls/{1}", DatabaseId, CollectionId);
                 var baseUrl = new Uri(documentDbUrl);
 
                 var masterKeyAuthorizationSignatureGenerator = new MasterKeyAuthorizationSignatureGenerator();
                 var authHeader = masterKeyAuthorizationSignatureGenerator.Generate("POST", resourceLink, "docs", authorizationKey, "master", "1.0", utcNow);
                 httpClient.DefaultRequestHeaders.Add("authorization", authHeader);
 
-                var response = await httpClient.PostAsJsonAsync(new Uri(baseUrl, resourceLink), userSettings);
+                var response = await httpClient.PostAsJsonAsync(new Uri(baseUrl, resourceLink + "/docs"), userSettings);
 
-                if (response.StatusCode == HttpStatusCode.NotFound)
+                if (response.StatusCode != HttpStatusCode.OK)
                 {
+                    var responseContent = await response.Content.ReadAsStringAsync();
+
                     //return new Optional<UserSettings>(null);
                 }
                 else
